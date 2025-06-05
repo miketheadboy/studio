@@ -59,7 +59,7 @@ const AppClientPage: FC = () => {
   const [museLoader, setMuseLoader] = useState(false);
   const [albumTitle, setAlbumTitle] = useState("Click 'Conjure Album Title!' to generate an idea.");
   const [albumTitleLoader, setAlbumTitleLoader] = useState(false);
-  const [dylanQuote, setDylanQuote] = useState("What's Dylan sayin' today?");
+  const [dylanQuote, setDylanQuote] = useState("What's Dylan sayin' today? Maybe something about a simple twist of fate...");
   const [bridgeContext, setBridgeContext] = useState("");
   const [bridgePrompt, setBridgePrompt] = useState("Ideas for your bridge...");
   const [bridgeLoader, setBridgeLoader] = useState(false);
@@ -145,7 +145,7 @@ const AppClientPage: FC = () => {
   const [ideaCatcherText, setIdeaCatcherText] = useState("");
   const [melodicIdeasText, setMelodicIdeasText] = useState("");
   const [songCanvasText, setSongCanvasText] = useState("");
-  const [songCanvasFont, setSongCanvasFont] = useState("var(--font-special-elite), cursive");
+  const [songCanvasFont, setSongCanvasFont] = useState("var(--font-special-elite), cursive"); // Default to typewriter
   const [projectStatusMessage, setProjectStatusMessage] = useState("");
   
   const [tipBoxText, setTipBoxText] = useState("");
@@ -374,7 +374,7 @@ const AppClientPage: FC = () => {
         if (textareaId === 'songCanvasTextArea') setSongCanvasText(newText);
         else if (textareaId === 'ideaCatcherTextArea') setIdeaCatcherText(newText);
         else if (textareaId === 'melodicIdeasTextArea') setMelodicIdeasText(newText);
-        else if (textareaId === 'fullSongOutput') setFullSongDraft(newText);
+        else if (textareaId === 'fullSongOutputTextarea') setFullSongDraft(newText);
 
 
         // Manually update cursor and scroll after state update
@@ -443,7 +443,7 @@ const AppClientPage: FC = () => {
       else if (result.data.overallConcept) { // Handle MelodyIdeaOutput
         content = result.data; // Store the whole object
       }
-      else if (result.data.rhymeIdea) content = result.data.rhythmIdea; // example for rhythm
+      else if (result.data.rhythmIdea) content = result.data.rhythmIdea; // example for rhythm
       else if (result.data.prompt) content = result.data.prompt; // example for muse
       else if (result.data.title) content = result.data.title; // example for album title
       else if (result.data.artistExamples) content = result.data.artistExamples;
@@ -681,30 +681,30 @@ const AppClientPage: FC = () => {
     <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
       <header className="text-center mb-10">
         <h1 className="page-title-font text-5xl sm:text-6xl font-bold mb-2">Mike's Songwriting Workspace</h1>
-        <p className="text-lg text-gray-700 mt-2 dylan-quote">"He not busy being born is busy dying."</p>
+        <p className="text-lg text-muted-foreground mt-2 dylan-quote">"He not busy being born is busy dying." &mdash; B. Dylan</p>
       </header>
 
       <Accordion type="multiple" defaultValue={['item-intro', 'item-canvas']} className="w-full space-y-6">
         {/* Intro Section */}
         <AccordionItem value="item-intro" className="main-section-box" id="introSection">
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
-            <h2 className="handwritten-main-title-font text-4xl text-gray-800">Welcome, Storyteller.</h2>
+            <h2 className="handwritten-main-title-font text-4xl">Welcome, Storyteller.</h2>
           </AccordionTrigger>
           <AccordionContent className="pt-4">
-            <p className="text-gray-700 leading-relaxed typewriter-font text-base">
+            <p className="text-foreground leading-relaxed text-base">
               This is your attic, your coffee-stained notebook, your late-night diner booth. A space for words to wander, for melodies to take root, for songs to find their voice.
               Here, you'll find curious phrases, AI companions for rhyme and reason, tools to shape chords, and echoes of troubadours past.
               It's designed to nudge you through the quiet moments and help your ideas blossom, from the first fleeting thought to a fully formed draft.
             </p>
-            <div className="mt-4 typewriter-font text-sm text-gray-600">
-              <h4 className="font-semibold text-gray-700 scrapbook-note-font">A Songwriting Primer (A Few Thoughts):</h4>
+            <div className="mt-4 text-sm text-muted-foreground">
+              <h4 className="font-semibold scrapbook-note-font text-lg">A Songwriting Primer (A Few Thoughts):</h4>
               <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
                 <li><strong>Start Anywhere:</strong> A title, a chord, a feeling, a single line. Don't wait for perfection.</li>
                 <li><strong>Collect Ideas:</strong> Use the tools here, jot notes in the "Scratchpad" or "Song Canvas." Capture everything.</li>
                 <li><strong>Structure Can Emerge:</strong> Try a common structure, or let your ideas dictate the form. The "Structure Blocks" can help.
                 <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="link" size="sm" className="text-blue-500 p-0 h-auto ml-1" onClick={() => document.getElementById('songCanvasSectionAccordionTrigger')?.click()}>Learn more.</Button>
+                      <Button variant="link" size="sm" className="text-primary p-0 h-auto ml-1 hover:text-accent" onClick={() => document.getElementById('songCanvasSectionAccordionTrigger')?.click()}>Learn more.</Button>
                     </TooltipTrigger>
                     <TooltipContent><p>Use the Song Structure Helper in the Songwriter's Canvas.</p></TooltipContent>
                   </Tooltip>
@@ -727,46 +727,46 @@ const AppClientPage: FC = () => {
         {/* How To Section */}
         <AccordionItem value="item-how-to" className="main-section-box" id="howToSection">
             <AccordionTrigger className="collapsible-header-style hover:no-underline">
-                <h2 className="handwritten-section-title-font text-gray-800">Notes on the Craft: A Songwriting Flow</h2>
+                <h2 className="handwritten-section-title-font">Notes on the Craft: A Songwriting Flow</h2>
             </AccordionTrigger>
-            <AccordionContent className="pt-4 typewriter-font">
-                 <p className="text-gray-700 space-y-4 mt-4">This workspace is a collection of tools to help you build a song. Here's one way you might use them:</p>
+            <AccordionContent className="pt-4">
+                 <p className="text-foreground space-y-4 mt-4">This workspace is a collection of tools to help you build a song. Here's one way you might use them:</p>
                  <ol className="list-decimal list-inside ml-4 space-y-3 mt-2">
                      <li>
                          <strong>Find Your Spark (Sparks & Muses Section):</strong>
                          <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
-                             <li>Summon <strong className="text-teal-700">The Muse's Whisper</strong> for thematic prompts.</li>
-                             <li>Get ideas for your song's <strong className="text-orange-700">Bridge Builder</strong>.</li>
-                             <li>Seek wisdom in the <strong className="text-yellow-800">Poet's Corner</strong> (Dylan quotes).</li>
-                             <li>Find a catchy name in the <strong className="text-green-700">Album Title Alley</strong>.</li>
-                             <li>Get a <strong className="text-gray-700">Melody Spark</strong>.</li>
-                             <li>Consult the <strong className="text-purple-700">Rhythm Architect</strong>.</li>
-                             <li>Find <strong className="text-gray-700">Artist Inspiration</strong>.</li>
-                              <li><strong className="text-gray-700">Study a Song</strong>.</li>
+                             <li>Summon <strong style={{color: "hsl(var(--primary))"}}>The Muse's Whisper</strong> for thematic prompts.</li>
+                             <li>Get ideas for your song's <strong style={{color: "hsl(30 50% 64%)"}}>Bridge Builder</strong>.</li>
+                             <li>Seek wisdom in the <strong style={{color: "hsl(var(--secondary))"}}>Poet's Corner</strong> (Dylan quotes).</li>
+                             <li>Find a catchy name in the <strong style={{color: "hsl(var(--accent))"}}>Album Title Alley</strong>.</li>
+                             <li>Get a <strong style={{color: "hsl(200 50% 60%)"}}>Melody Spark</strong>.</li>
+                             <li>Consult the <strong style={{color: "hsl(280 50% 56%)"}}>Rhythm Architect</strong>.</li>
+                             <li>Find <strong style={{color: "hsl(240 50% 65%)"}}>Artist Inspiration</strong>.</li>
+                              <li><strong style={{color: "hsl(200 50% 60%)"}}>Study a Song</strong>.</li>
                              <li>Any spark? Use the "Send to..." buttons to add it to your Song Canvas or its note sections.</li>
                          </ul>
                      </li>
                      <li>
                          <strong>Develop Lyrics (Lyrical Toolkit Section):</strong>
                          <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
-                            <li>Engage in <strong className="text-gray-500">Word Association Tennis</strong>.</li>
-                            <li>Explore the <strong className="text-orange-700">Phrase Spark</strong>.</li>
-                            <li>Take any line to the <strong className="text-teal-700">Word Lab</strong>.</li>
-                            <li>Build powerful imagery with the <strong className="text-slate-700">Metaphor Builder</strong>.</li>
-                            <li>Analyze emotional tone with the <strong className="text-blue-400">Lyrical Mood Ring</strong>.</li>
-                            <li>Discover patterns with the <strong className="text-purple-600">Rhyme Scheme Generator</strong>.</li>
-                            <li>Expand phrases with the <strong className="text-orange-500">Section Expander</strong>.</li>
-                            <li>Draft lyrics in <strong className="text-cyan-800">The Songwriter's Canvas</strong>.</li>
+                            <li>Engage in <strong style={{color: "hsl(var(--foreground)/0.8)"}}>Word Association Tennis</strong>.</li>
+                            <li>Explore the <strong style={{color: "hsl(30 90% 58%)"}}>Phrase Spark</strong>.</li>
+                            <li>Take any line to the <strong style={{color: "hsl(190 60% 50%)"}}>Word Lab</strong>.</li>
+                            <li>Build powerful imagery with the <strong style={{color: "hsl(240 50% 65%)"}}>Metaphor Builder</strong>.</li>
+                            <li>Analyze emotional tone with the <strong style={{color: "hsl(220 60% 60%)"}}>Lyrical Mood Ring</strong>.</li>
+                            <li>Discover patterns with the <strong style={{color: "hsl(300 70% 50%)"}}>Rhyme Scheme Generator</strong>.</li>
+                            <li>Expand phrases with the <strong style={{color: "hsl(33 100% 50%)"}}>Section Expander</strong>.</li>
+                            <li>Draft lyrics in <strong style={{color: "hsl(var(--primary))"}}>The Songwriter's Canvas</strong>.</li>
                          </ul>
                      </li>
                      <li>
                         <strong>Explore Musical Ideas (Musical Toolkit Section):</strong>
                         <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
-                            <li>Get chord ideas from <strong className="text-red-700">Chord Corner</strong>.</li>
-                            <li>Use <strong className="text-yellow-800">The Chord Forge</strong>.</li>
-                            <li>Twist progressions with <strong className="text-blue-700">The Chord Alchemist</strong>.</li>
-                            <li>Get voicing ideas with <strong className="text-lime-600">Chord Voicing Suggester</strong>.</li>
-                            <li>Find <strong className="text-gray-700">Instrumentation Inspiration</strong>.</li>
+                            <li>Get chord ideas from <strong style={{color: "hsl(var(--secondary))"}}>Chord Corner</strong>.</li>
+                            <li>Use <strong style={{color: "hsl(var(--accent))"}}>The Chord Forge</strong>.</li>
+                            <li>Twist progressions with <strong style={{color: "hsl(260 50% 60%)"}}>The Chord Alchemist</strong>.</li>
+                            <li>Get voicing ideas with <strong style={{color: "hsl(120 40% 55%)"}}>Chord Voicing Suggester</strong>.</li>
+                            <li>Find <strong style={{color: "hsl(240 50% 65%)"}}>Instrumentation Inspiration</strong>.</li>
                         </ul>
                     </li>
                     <li>
@@ -775,15 +775,15 @@ const AppClientPage: FC = () => {
                     <li>
                         <strong>The Songwriter's Canvas:</strong> Your central hub.
                         <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
-                            <li>Set <strong className="text-amber-800">Working Title</strong>, <strong className="text-amber-800">Key/Tempo</strong>, <strong className="text-amber-800">Mood/Theme</strong>.</li>
-                            <li>Use <strong className="text-amber-800">Quick Notes / Scratchpad</strong>.</li>
-                             <li>Sketch in <strong className="text-blue-800">Melodic Ideas / Contour Notes</strong>.</li>
-                            <li>Main <strong className="text-amber-800">Song Draft & Lyrics</strong> area.</li>
-                            <li><strong className="text-blue-700">Save/Load Project</strong>.</li>
+                            <li>Set <strong style={{color: "hsl(var(--primary))"}}>Working Title</strong>, <strong style={{color: "hsl(var(--primary))"}}>Key/Tempo</strong>, <strong style={{color: "hsl(var(--primary))"}}>Mood/Theme</strong>.</li>
+                            <li>Use <strong style={{color: "hsl(var(--muted-foreground))"}}>Quick Notes / Scratchpad</strong>.</li>
+                             <li>Sketch in <strong style={{color: "hsl(var(--muted-foreground))"}}>Melodic Ideas / Contour Notes</strong>.</li>
+                            <li>Main <strong style={{color: "hsl(var(--foreground))"}}>Song Draft & Lyrics</strong> area.</li>
+                            <li><strong style={{color: "hsl(var(--primary))"}}>Save/Load Project</strong>.</li>
                         </ul>
                     </li>
                  </ol>
-                  <p><strong className="text-gray-700">The Backstage Pass (Modal):</strong> This pop-up window is where AI suggestions for rhymes and expanded phrases will appear.</p>
+                  <p><strong style={{color: "hsl(var(--foreground))"}}>The Backstage Pass (Modal):</strong> This pop-up window is where AI suggestions for rhymes and expanded phrases will appear.</p>
             </AccordionContent>
         </AccordionItem>
 
@@ -799,14 +799,14 @@ const AppClientPage: FC = () => {
                 <CardTitle className="muse-whisper-title subsection-title">The Muse's Whisper</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"An artist has got to be careful never really to arrive at a place where he thinks he's AT somewhere."</p>
-                <Button onClick={() => handleToolAction(ai.summonMuse, setMusePrompt, setMuseLoader, "Awaiting inspiration...")} disabled={museLoader} className="w-full btn-secondary">
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"An artist has got to be careful never really to arrive at a place where he thinks he's AT somewhere."</p>
+                <Button onClick={() => handleToolAction(ai.summonMuse, setMusePrompt, setMuseLoader, "Awaiting inspiration...")} disabled={museLoader} className="w-full" variant="secondary">
                   {museLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />} Summon the Muse!
                 </Button>
                 <div className="output-display-area" id="musePromptDisplayOutput">{musePrompt}</div>
                 {musePrompt !== "Awaiting inspiration..." && !musePrompt.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('songCanvasTextArea', musePrompt)} className="btn-send-canvas">Add to Song Canvas</Button>
+                    <Button onClick={() => appendToTextarea('songCanvasTextArea', musePrompt)} variant="outline">Add to Song Canvas</Button>
                   </div>
                 )}
               </CardContent>
@@ -815,14 +815,14 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
               <CardHeader><CardTitle className="name-that-noise-title subsection-title">Album Title Alley</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"I contain multitudes."</p>
-                <Button onClick={() => handleToolAction(ai.generateAlbumTitle, setAlbumTitle, setAlbumTitleLoader, "Click 'Conjure Album Title!'")} disabled={albumTitleLoader} className="w-full btn-primary">
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I contain multitudes."</p>
+                <Button onClick={() => handleToolAction(ai.generateAlbumTitle, setAlbumTitle, setAlbumTitleLoader, "Click 'Conjure Album Title!'")} disabled={albumTitleLoader} className="w-full" variant="default">
                   {albumTitleLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} Conjure Album Title!
                 </Button>
-                <div className="output-display-area text-green-700 text-2xl alt-heading-font flex items-center justify-center h-20" id="albumTitleDisplayOutput">{albumTitle}</div>
+                <div className="output-display-area alt-heading-font flex items-center justify-center h-20 text-3xl" style={{color: "hsl(var(--accent-foreground))", backgroundColor: "hsl(var(--accent)/0.7)"}} id="albumTitleDisplayOutput">{albumTitle}</div>
                 {albumTitle !== "Click 'Conjure Album Title!' to generate an idea." && !albumTitle.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => setSongWorkingTitle(albumTitle)} className="btn-send-canvas">Add to Song Title</Button>
+                    <Button onClick={() => setSongWorkingTitle(albumTitle)} variant="outline">Add to Song Title</Button>
                   </div>
                 )}
               </CardContent>
@@ -831,17 +831,17 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
               <CardHeader><CardTitle className="poets-corner-title subsection-title">Poet's Corner</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"I'll let you be in my dreams if I can be in yours."</p>
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I'll let you be in my dreams if I can be in yours."</p>
                 <Button onClick={() => {
                     const randomIndex = Math.floor(Math.random() * DYLAN_QUOTES.length);
                     setDylanQuote(`"${DYLAN_QUOTES[randomIndex]}"`);
-                }} className="w-full btn-tertiary">
+                }} className="w-full" variant="ghost">
                   <BookOpen className="mr-2 h-4 w-4" /> Get Dylan Quote
                 </Button>
-                <div className="output-display-area text-yellow-800 dylan-quote text-lg min-h-[8rem] flex items-center justify-center" id="dylanQuoteDisplayOutput">{dylanQuote}</div>
-                {dylanQuote !== "What's Dylan sayin' today?" && (
+                <div className="output-display-area dylan-quote text-lg min-h-[8rem] flex items-center justify-center" style={{borderColor: "hsl(var(--secondary))"}} id="dylanQuoteDisplayOutput">{dylanQuote}</div>
+                {dylanQuote !== "What's Dylan sayin' today? Maybe something about a simple twist of fate..." && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', dylanQuote)} className="btn-send-canvas">Add to Canvas Notes</Button>
+                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', dylanQuote)} variant="outline">Add to Canvas Notes</Button>
                   </div>
                 )}
               </CardContent>
@@ -850,18 +850,18 @@ const AppClientPage: FC = () => {
             <Card className="tool-card md:col-span-1 lg:col-span-2">
               <CardHeader><CardTitle className="bridge-builder-title subsection-title">Bridge Builder Prompts</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"A bridge can still be built, while the bitter waters are rising."</p>
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A bridge can still be built, while the bitter waters are rising."</p>
                 <div className="space-y-2 mb-3">
                     <Label htmlFor="bridgeContextInput">Main Theme/Chorus Idea (Optional):</Label>
                     <Input id="bridgeContextInput" value={bridgeContext} onChange={(e) => setBridgeContext(e.target.value)} placeholder="e.g., a song about lost love and train tracks" />
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.generateBridgePrompt({context: bridgeContext}), setBridgePrompt, setBridgeLoader, "Ideas for your bridge...")} disabled={bridgeLoader} className="w-full btn-primary">
+                <Button onClick={() => handleToolAction(() => ai.generateBridgePrompt({context: bridgeContext}), setBridgePrompt, setBridgeLoader, "Ideas for your bridge...")} disabled={bridgeLoader} className="w-full" variant="default">
                   {bridgeLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Settings className="mr-2 h-4 w-4" />} Get Bridge Idea!
                 </Button>
                 <div className="output-display-area" id="bridgePromptDisplayOutput">{bridgePrompt}</div>
                  {bridgePrompt !== "Ideas for your bridge..." && !bridgePrompt.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', bridgePrompt)} className="btn-send-canvas">Add to Canvas Notes</Button>
+                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', bridgePrompt)} variant="outline">Add to Canvas Notes</Button>
                   </div>
                 )}
               </CardContent>
@@ -870,8 +870,8 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
                 <CardHeader><CardTitle className="melody-spark-title subsection-title">Melody Maker's Memo</CardTitle></CardHeader>
                 <CardContent>
-                    <p className="text-gray-700 mb-4 dylan-quote text-sm">"May your song always be sung."</p>
-                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdeaOutput, setMelodyIdeaLoader, "Melodic thoughts await...")} disabled={melodyIdeaLoader} className="w-full btn-tertiary">
+                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"May your song always be sung."</p>
+                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdeaOutput, setMelodyIdeaLoader, "Melodic thoughts await...")} disabled={melodyIdeaLoader} className="w-full" variant="ghost">
                         {melodyIdeaLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Music2 className="mr-2 h-4 w-4" />} Get Melodic Idea!
                     </Button>
                     <div className="output-display-area" id="melodyIdeaDisplayOutput">
@@ -879,7 +879,7 @@ const AppClientPage: FC = () => {
                     </div>
                     {getMelodyIdeaTextForCanvas(melodyIdeaOutput) && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', getMelodyIdeaTextForCanvas(melodyIdeaOutput))} className="btn-send-canvas">Add to Melodic Ideas</Button>
+                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', getMelodyIdeaTextForCanvas(melodyIdeaOutput))} variant="outline">Add to Melodic Ideas</Button>
                         </div>
                     )}
                 </CardContent>
@@ -888,14 +888,14 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
                 <CardHeader><CardTitle className="rhythm-architect-title subsection-title">Rhythm Architect</CardTitle></CardHeader>
                 <CardContent>
-                    <p className="text-gray-700 mb-4 dylan-quote text-sm">"The tempo is what it is."</p>
-                    <Button onClick={() => handleToolAction(() => ai.generateRhythmIdea({}), setRhythmIdea, setRhythmIdeaLoader, "Rhythmic inspiration awaits...")} disabled={rhythmIdeaLoader} className="w-full btn-secondary">
+                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"The tempo is what it is."</p>
+                    <Button onClick={() => handleToolAction(() => ai.generateRhythmIdea({}), setRhythmIdea, setRhythmIdeaLoader, "Rhythmic inspiration awaits...")} disabled={rhythmIdeaLoader} className="w-full" variant="secondary">
                          {rhythmIdeaLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SlidersHorizontal className="mr-2 h-4 w-4" />} Get Rhythm Idea!
                     </Button>
                     <div className="output-display-area" id="rhythmIdeaDisplayOutput">{rhythmIdea}</div>
                      {rhythmIdea !== "Rhythmic inspiration awaits..." && !rhythmIdea.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', rhythmIdea)} className="btn-send-canvas">Add to Canvas Notes</Button>
+                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', rhythmIdea)} variant="outline">Add to Canvas Notes</Button>
                         </div>
                     )}
                 </CardContent>
@@ -904,18 +904,18 @@ const AppClientPage: FC = () => {
             <Card className="tool-card md:col-span-3">
                 <CardHeader><CardTitle className="artist-inspiration-title subsection-title">Mentor's Corner (Artist Inspiration)</CardTitle></CardHeader>
                 <CardContent>
-                    <p className="text-gray-700 mb-4 dylan-quote text-sm">"I think a hero is any person really intent on making this a better place for all people."</p>
+                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I think a hero is any person really intent on making this a better place for all people."</p>
                     <div className="space-y-2 mb-3">
                         <Label htmlFor="desiredQualityInput">Looking for inspiration in...</Label>
                         <Input id="desiredQualityInput" value={desiredQuality} onChange={(e) => setDesiredQuality(e.target.value)} placeholder="e.g., 'Poetic Lyrics', 'Unique Chord Changes'" />
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.getArtistInspiration({ desiredQuality }), setArtistInspiration, setArtistInspirationLoader, "Artist examples...")} disabled={artistInspirationLoader || !desiredQuality} className="w-full btn-secondary">
+                    <Button onClick={() => handleToolAction(() => ai.getArtistInspiration({ desiredQuality }), setArtistInspiration, setArtistInspirationLoader, "Artist examples...")} disabled={artistInspirationLoader || !desiredQuality} className="w-full" variant="secondary">
                         {artistInspirationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Users className="mr-2 h-4 w-4" />} Find Artist Inspiration
                     </Button>
                     <div className="output-display-area" id="artistInspirationOutputResult">{artistInspiration}</div>
                     {artistInspiration !== "Artist examples will show up here..." && !artistInspiration.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', artistInspiration)} className="btn-send-canvas">Add to Canvas Notes</Button>
+                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', artistInspiration)} variant="outline">Add to Canvas Notes</Button>
                         </div>
                     )}
                 </CardContent>
@@ -924,18 +924,18 @@ const AppClientPage: FC = () => {
             <Card className="tool-card md:col-span-3">
                 <CardHeader><CardTitle className="study-song-title subsection-title">Mentor's Discography (Study a Song)</CardTitle></CardHeader>
                 <CardContent>
-                     <p className="text-gray-700 mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
+                     <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
                     <div className="space-y-2 mb-3">
                         <Label htmlFor="songStudyQueryInput">What kind of song or technique to study? (Optional)</Label>
                         <Input id="songStudyQueryInput" value={songStudyQuery} onChange={(e) => setSongStudyQuery(e.target.value)} placeholder="e.g., Songs with great storytelling in G" />
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.studySong({ query: songStudyQuery }), setStudySongResult, setStudySongLoader, "Song study suggestions...")} disabled={studySongLoader} className="w-full btn-primary">
+                    <Button onClick={() => handleToolAction(() => ai.studySong({ query: songStudyQuery }), setStudySongResult, setStudySongLoader, "Song study suggestions...")} disabled={studySongLoader} className="w-full" variant="default">
                        {studySongLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Library className="mr-2 h-4 w-4" />} Get Song Study Suggestion
                     </Button>
                     <div className="output-display-area" id="studySongOutputResult">{studySongResult}</div>
                     {studySongResult !== "Song study suggestions will appear here..." && !studySongResult.startsWith("Error") && (
                         <div className="send-buttons-container">
-                             <Button onClick={() => appendToTextarea('ideaCatcherTextArea', studySongResult)} className="btn-send-canvas">Add to Canvas Notes</Button>
+                             <Button onClick={() => appendToTextarea('ideaCatcherTextArea', studySongResult)} variant="outline">Add to Canvas Notes</Button>
                         </div>
                     )}
                 </CardContent>
@@ -953,10 +953,10 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
               <CardHeader><CardTitle className="word-association-title subsection-title">Word Association Tennis</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"You want to know what it is to be a songwriter? Write songs."</p>
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You want to know what it is to be a songwriter? Write songs."</p>
                 <div className="word-association-chat mb-4">
                   {wordAssociationChat.length === 0 ? (
-                    <p className="text-gray-500">Start a rally by typing a word or phrase below!</p>
+                    <p className="text-muted-foreground">Start a rally by typing a word or phrase below!</p>
                   ) : (
                     wordAssociationChat.map((msg, index) => (
                       <p key={index} className={msg.sender === 'user' ? 'word-association-message-user' : 'word-association-message-ai'}>
@@ -971,7 +971,7 @@ const AppClientPage: FC = () => {
                     onKeyPress={(e) => e.key === 'Enter' && handleWordAssociationSubmit()}
                   />
                 </div>
-                <Button onClick={handleWordAssociationSubmit} disabled={wordAssociationLoader} className="w-full btn-secondary">
+                <Button onClick={handleWordAssociationSubmit} disabled={wordAssociationLoader} className="w-full" variant="secondary">
                   {wordAssociationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />} Start/Continue Rally
                 </Button>
               </CardContent>
@@ -986,7 +986,7 @@ const AppClientPage: FC = () => {
                 </Button>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-6 dylan-quote text-sm">"May your song always be sung."</p>
+                <p className="text-muted-foreground mb-6 dylan-quote text-sm">"May your song always be sung."</p>
                 {showPhraseList && (
                   <>
                     <div className="space-y-6 mb-6">
@@ -1019,8 +1019,8 @@ const AppClientPage: FC = () => {
                           </Select>
                         </div>
                         <div className="flex flex-wrap gap-2 items-center justify-start md:justify-end">
-                          <Button onClick={() => { /* TODO: Random Phrase */ }} className="btn-primary"><Shuffle className="mr-2 h-4 w-4" />Random Phrase</Button>
-                          <Button onClick={handleGetAIPhrases} disabled={phraseListLoading} className="btn-tertiary">
+                          <Button onClick={() => { /* TODO: Random Phrase */ }} variant="default"><Shuffle className="mr-2 h-4 w-4" />Random Phrase</Button>
+                          <Button onClick={handleGetAIPhrases} disabled={phraseListLoading} variant="ghost">
                             {phraseListLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}Get AI Phrases
                           </Button>
                           <Button onClick={() => setShowingFavoritesOnly(!showingFavoritesOnly)} variant={showingFavoritesOnly ? "default" : "outline"}>
@@ -1041,25 +1041,25 @@ const AppClientPage: FC = () => {
                         </div>
                       )}
                     </div>
-                    <p className="text-gray-600 my-4 typewriter-font"><em>Wander through these word pairings... "May your song always be sung."</em></p>
+                    <p className="text-muted-foreground my-4"><em>Wander through these word pairings... "May your song always be sung."</em></p>
                     {phraseListLoading && <div className="loader">Loading phrases...</div>}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-h-[70vh] overflow-y-auto p-2 border rounded bg-card">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-h-[70vh] overflow-y-auto p-2 border-2 border-dashed rounded bg-card/50">
                       {filteredPhrases.map(phrase => (
-                        <Card key={phrase.text} className="phrase-card p-3 flex flex-col bg-background shadow-sm hover:shadow-md transition-shadow">
+                        <Card key={phrase.text} className="phrase-card p-3 flex flex-col bg-background shadow-sm hover:shadow-lg transition-shadow border-muted-foreground">
                            <Tooltip>
                             <TooltipTrigger asChild>
-                              <span className="phrase-card-title-font text-md font-semibold mb-1 cursor-pointer" onDragStart={(e) => { e.dataTransfer.setData('text/plain', phrase.text); e.dataTransfer.effectAllowed = 'copy';}} draggable>{phrase.text}</span>
+                              <span className="font-semibold mb-1 cursor-pointer text-lg" style={{fontFamily: "var(--font-caveat)"}} onDragStart={(e) => { e.dataTransfer.setData('text/plain', phrase.text); e.dataTransfer.effectAllowed = 'copy';}} draggable>{phrase.text}</span>
                             </TooltipTrigger>
                             <TooltipContent><p>Drag to canvas</p></TooltipContent>
                           </Tooltip>
-                          <div className="text-xs text-muted-foreground mb-2 typewriter-font">Comm: {phrase.commonality} | Syll: {phrase.totalSyllables} (A:{phrase.syllablesAdjective}, N:{phrase.syllablesNoun})</div>
-                          <div className="flex items-center justify-between mt-auto pt-2 border-t">
+                          <div className="text-xs text-muted-foreground mb-2">Comm: {phrase.commonality} | Syll: {phrase.totalSyllables} (A:{phrase.syllablesAdjective}, N:{phrase.syllablesNoun})</div>
+                          <div className="flex items-center justify-between mt-auto pt-2 border-t border-dashed">
                             <div className="flex gap-1">
                               <Tooltip><TooltipTrigger asChild>
-                                <Button size="sm" variant="outline" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Rhymes for "${phrase.noun}"`, () => ai.rhymeTennis({ word: phrase.noun }), null)}>Rhyme <Sparkles className="ml-1 h-3 w-3" /></Button>
+                                <Button size="sm" variant="ghost" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Rhymes for "${phrase.noun}"`, () => ai.rhymeTennis({ word: phrase.noun }), null)}>Rhyme <Sparkles className="ml-1 h-3 w-3" /></Button>
                               </TooltipTrigger><TooltipContent>Get rhymes for "{phrase.noun}"</TooltipContent></Tooltip>
                               <Tooltip><TooltipTrigger asChild>
-                                <Button size="sm" variant="outline" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Expanding on "${phrase.text}"`, () => ai.expandSection({ idea: phrase.text, expandType: 'verse'}), null)}>Expand <Sparkles className="ml-1 h-3 w-3" /></Button>
+                                <Button size="sm" variant="ghost" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Expanding on "${phrase.text}"`, () => ai.expandSection({ idea: phrase.text, expandType: 'verse'}), null)}>Expand <Sparkles className="ml-1 h-3 w-3" /></Button>
                               </TooltipTrigger><TooltipContent>Expand on "{phrase.text}"</TooltipContent></Tooltip>
                             </div>
                             <Tooltip><TooltipTrigger asChild>
@@ -1071,7 +1071,7 @@ const AppClientPage: FC = () => {
                         </Card>
                       ))}
                     </div>
-                    {filteredPhrases.length === 0 && !phraseListLoading && <p className="text-center text-muted-foreground py-8 text-lg typewriter-font">No phrases match your search right now.</p>}
+                    {filteredPhrases.length === 0 && !phraseListLoading && <p className="text-center text-muted-foreground py-8 text-lg">No phrases match your search right now.</p>}
                   </>
                 )}
               </CardContent>
@@ -1082,7 +1082,7 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                 <CardHeader><CardTitle className="sonic-lab-title subsection-title">Word Lab</CardTitle></CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-4 dylan-quote text-sm">"Even the President of the United States must sometimes have to stand naked."</p>
+                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Even the President of the United States must sometimes have to stand naked."</p>
                   <div className="space-y-2 mb-3">
                     <Label htmlFor="lineToRephrase">Enter a line to rephrase:</Label>
                     <Input id="lineToRephrase" value={lineToRephrase} onChange={(e) => setLineToRephrase(e.target.value)} placeholder="e.g., The sun is bright" />
@@ -1094,13 +1094,13 @@ const AppClientPage: FC = () => {
                       <SelectContent>{rephraseStyleOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.rephraseLine({ lineToRephrase, rephraseStyle }), setRephrasedLine, setLyricalLabLoader, "")} disabled={lyricalLabLoader || !lineToRephrase} className="w-full btn-tertiary">
+                  <Button onClick={() => handleToolAction(() => ai.rephraseLine({ lineToRephrase, rephraseStyle }), setRephrasedLine, setLyricalLabLoader, "")} disabled={lyricalLabLoader || !lineToRephrase} className="w-full" variant="ghost">
                     {lyricalLabLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Edit3 className="mr-2 h-4 w-4" />} Rephrase Line!
                   </Button>
                   <div className="output-display-area" id="rephrasedLineOutput">{rephrasedLine}</div>
                   {rephrasedLine && !rephrasedLine.startsWith("Error") && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', rephrasedLine)} className="btn-send-canvas">Add to Song Draft</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', rephrasedLine)} variant="outline">Add to Song Draft</Button>
                     </div>
                   )}
                 </CardContent>
@@ -1109,12 +1109,12 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                 <CardHeader><CardTitle className="lyrical-mood-ring-title subsection-title">Lyrical Mood Ring</CardTitle></CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-4 dylan-quote text-sm">"You don't need a weatherman to know which way the wind blows."</p>
+                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You don't need a weatherman to know which way the wind blows."</p>
                   <div className="space-y-2 mb-3">
                     <Label htmlFor="lyricsToAnalyze">Paste lyrics to analyze mood:</Label>
                     <Textarea id="lyricsToAnalyze" value={lyricsToAnalyze} onChange={(e) => setLyricsToAnalyze(e.target.value)} placeholder="Your lyrics here..." rows={4} />
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.analyzeLyricalMood({ lyrics: lyricsToAnalyze }), setLyricalMood, setLyricalMoodLoader, "Lyric mood analysis...")} disabled={lyricalMoodLoader || !lyricsToAnalyze} className="w-full btn-tertiary">
+                  <Button onClick={() => handleToolAction(() => ai.analyzeLyricalMood({ lyrics: lyricsToAnalyze }), setLyricalMood, setLyricalMoodLoader, "Lyric mood analysis...")} disabled={lyricalMoodLoader || !lyricsToAnalyze} className="w-full" variant="ghost">
                     {lyricalMoodLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Brain className="mr-2 h-4 w-4" />} Analyze Mood
                   </Button>
                   <div className="output-display-area" id="lyricalMoodOutput">{lyricalMood}</div>
@@ -1125,18 +1125,18 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
                 <CardHeader><CardTitle className="metaphor-builder-title subsection-title">The Alchemist's Wordsmith (Metaphor Builder)</CardTitle></CardHeader>
                 <CardContent>
-                    <p className="text-gray-700 mb-4 dylan-quote text-sm">"All the truth in the world adds up to one big lie." - Find a new way to say it.</p>
+                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"All the truth in the world adds up to one big lie." - Find a new way to say it.</p>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
                         <div className="space-y-2"><Label htmlFor="metaphorConceptInput">Concept/Object for Metaphor:</Label><Input id="metaphorConceptInput" value={metaphorConcept} onChange={e => setMetaphorConcept(e.target.value)} placeholder="e.g., love, a river, journey" /></div>
                         <div className="space-y-2"><Label htmlFor="metaphorFeelingInput">Desired Feeling/Comparison (Optional):</Label><Input id="metaphorFeelingInput" value={metaphorFeeling} onChange={e => setMetaphorFeeling(e.target.value)} placeholder="e.g., fleeting, strong, like a storm" /></div>
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.generateMetaphor({ concept: metaphorConcept, feeling: metaphorFeeling }), setMetaphorResult, setMetaphorLoader, "")} disabled={metaphorLoader || !metaphorConcept} className="w-full btn-primary">
+                    <Button onClick={() => handleToolAction(() => ai.generateMetaphor({ concept: metaphorConcept, feeling: metaphorFeeling }), setMetaphorResult, setMetaphorLoader, "")} disabled={metaphorLoader || !metaphorConcept} className="w-full" variant="default">
                         {metaphorLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />} Build Metaphor
                     </Button>
                     <div className="output-display-area" id="metaphorResultOutput">{metaphorResult}</div>
                     {metaphorResult && !metaphorResult.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('songCanvasTextArea', metaphorResult)} className="btn-send-canvas">Add to Song Draft</Button>
+                            <Button onClick={() => appendToTextarea('songCanvasTextArea', metaphorResult)} variant="outline">Add to Song Draft</Button>
                         </div>
                     )}
                 </CardContent>
@@ -1145,18 +1145,18 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
               <CardHeader><CardTitle className="rhyme-scheme-title subsection-title">Rhyme Scheme Generator</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"I was so much older then, I'm younger than that now."</p>
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I was so much older then, I'm younger than that now."</p>
                 <div className="space-y-2 mb-3">
                   <Label htmlFor="rhymeSchemeInputText">Enter a few lines or a topic:</Label>
                   <Textarea id="rhymeSchemeInputText" value={rhymeSchemeInputText} onChange={(e) => setRhymeSchemeInputText(e.target.value)} placeholder="e.g., The road unwinds before me / A story yet untold" rows={3} />
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.generateRhymeScheme({ inputText: rhymeSchemeInputText }), setRhymeSchemeResult, setRhymeSchemeLoader, "Rhyme scheme ideas...")} disabled={rhymeSchemeLoader || !rhymeSchemeInputText} className="w-full btn-tertiary">
+                <Button onClick={() => handleToolAction(() => ai.generateRhymeScheme({ inputText: rhymeSchemeInputText }), setRhymeSchemeResult, setRhymeSchemeLoader, "Rhyme scheme ideas...")} disabled={rhymeSchemeLoader || !rhymeSchemeInputText} className="w-full" variant="ghost">
                   {rhymeSchemeLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Rows className="mr-2 h-4 w-4" />} Get Rhyme Scheme
                 </Button>
                 <div className="output-display-area" id="rhymeSchemeResultOutput">{rhymeSchemeResult}</div>
                 {rhymeSchemeResult !== "Rhyme scheme ideas will appear here..." && !rhymeSchemeResult.startsWith("Error") && (
                     <div className="send-buttons-container">
-                        <Button onClick={() => appendToTextarea('songCanvasTextArea', rhymeSchemeResult)} className="btn-send-canvas">Add to Song Draft</Button>
+                        <Button onClick={() => appendToTextarea('songCanvasTextArea', rhymeSchemeResult)} variant="outline">Add to Song Draft</Button>
                     </div>
                 )}
               </CardContent>
@@ -1165,7 +1165,7 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
               <CardHeader><CardTitle className="section-expander-title subsection-title">Section Expander</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-gray-700 mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
+                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
                 <div className="space-y-2 mb-3">
                   <Label htmlFor="sectionExpanderInputText">Enter a starting line or idea:</Label>
                   <Textarea id="sectionExpanderInputText" value={sectionExpanderInputText} onChange={(e) => setSectionExpanderInputText(e.target.value)} placeholder="e.g., The city sleeps under a blanket of stars" rows={3} />
@@ -1179,13 +1179,13 @@ const AppClientPage: FC = () => {
                     </SelectContent>
                   </Select>
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.expandSection({ idea: sectionExpanderInputText, expandType: sectionExpanderType as "verse"|"chorus"|"bridge" }), setSectionExpanderResult, setSectionExpanderLoader, "Expanded lyrical section...")} disabled={sectionExpanderLoader || !sectionExpanderInputText} className="w-full btn-tertiary">
+                <Button onClick={() => handleToolAction(() => ai.expandSection({ idea: sectionExpanderInputText, expandType: sectionExpanderType as "verse"|"chorus"|"bridge" }), setSectionExpanderResult, setSectionExpanderLoader, "Expanded lyrical section...")} disabled={sectionExpanderLoader || !sectionExpanderInputText} className="w-full" variant="ghost">
                   {sectionExpanderLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Columns className="mr-2 h-4 w-4" />} Expand Section
                 </Button>
                 <div className="output-display-area" id="sectionExpanderResultOutput">{sectionExpanderResult}</div>
                  {sectionExpanderResult !== "Expanded lyrical section will appear here..." && !sectionExpanderResult.startsWith("Error") && (
                     <div className="send-buttons-container">
-                        <Button onClick={() => appendToTextarea('songCanvasTextArea', sectionExpanderResult)} className="btn-send-canvas">Add to Song Draft</Button>
+                        <Button onClick={() => appendToTextarea('songCanvasTextArea', sectionExpanderResult)} variant="outline">Add to Song Draft</Button>
                     </div>
                 )}
               </CardContent>
@@ -1204,14 +1204,14 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                 <CardHeader><CardTitle className="riff-altar-title subsection-title">Chord Corner</CardTitle></CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-4 dylan-quote text-sm">"Chaos is a friend of mine."</p>
+                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Chaos is a friend of mine."</p>
                   <div className="space-y-2 mb-3">
                     <Label htmlFor="moodSelectorChordCorner">Select a Mood:</Label>
                     <Select value={selectedMood} onValueChange={(value) => {
                         setSelectedMood(value);
                         if (value && CHORD_PROGRESSIONS[value]) {
                             const mood = CHORD_PROGRESSIONS[value];
-                            setChordProgression(`<h4 class="text-lg font-semibold text-red-700 mb-2 typewriter-font">${mood.name} Progressions:</h4>` + mood.progressions.map(p => `<div class="mb-1">${p}</div>`).join(''));
+                            setChordProgression(`<h4 class="text-lg font-semibold mb-2" style="color:hsl(var(--secondary)); font-family: var(--font-architects-daughter);">${mood.name} Progressions:</h4>` + mood.progressions.map(p => `<div class="mb-1">${p}</div>`).join(''));
                         } else {
                             setChordProgression('Select a mood to see progressions...');
                         }
@@ -1227,7 +1227,7 @@ const AppClientPage: FC = () => {
                   <div className="output-display-area" dangerouslySetInnerHTML={{ __html: chordProgression }} id="chordProgressionDisplayOutput" />
                   {selectedMood && chordProgression !== "Select a mood to see progressions..." && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', chordProgression.replace(/<[^>]+>/g, '\n').replace(/\n\n+/g, '\n').trim())} className="btn-send-canvas">Send to Song Canvas</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', chordProgression.replace(/<[^>]+>/g, '\n').replace(/\n\n+/g, '\n').trim())} variant="outline">Send to Song Canvas</Button>
                     </div>
                   )}
                 </CardContent>
@@ -1236,7 +1236,7 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                 <CardHeader><CardTitle className="chord-reharmonizer-title subsection-title">The Chord Alchemist</CardTitle></CardHeader>
                 <CardContent>
-                  <p className="text-gray-700 mb-4 dylan-quote text-sm">"I change during the course of a day."</p>
+                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I change during the course of a day."</p>
                   <div className="space-y-2 mb-3"><Label htmlFor="originalChordsInputReharm">Original Chords (e.g., C - G - Am - F)</Label><Input id="originalChordsInputReharm" value={originalChords} onChange={(e) => setOriginalChords(e.target.value)} placeholder="Enter your chord progression" /></div>
                   <div className="space-y-2 mb-3"><Label htmlFor="reharmStyleSelectInput">Reharmonization Style</Label>
                     <Select value={reharmStyle} onValueChange={setReharmStyle}><SelectTrigger id="reharmStyleSelectInput"><SelectValue /></SelectTrigger>
@@ -1248,13 +1248,13 @@ const AppClientPage: FC = () => {
                       <SelectContent>{reharmIntensityOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.reharmonizeChords({ chords: originalChords, style: reharmStyle, intensity: reharmIntensity }), setReharmonizedChords, setReharmonizerLoader, "")} disabled={reharmonizerLoader || !originalChords} className="w-full btn-primary">
+                  <Button onClick={() => handleToolAction(() => ai.reharmonizeChords({ chords: originalChords, style: reharmStyle, intensity: reharmIntensity }), setReharmonizedChords, setReharmonizerLoader, "")} disabled={reharmonizerLoader || !originalChords} className="w-full" variant="default">
                     {reharmonizerLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />} Reharmonize Chords
                   </Button>
                   <div className="output-display-area" id="reharmonizedChordsOutput">{reharmonizedChords}</div>
                   {reharmonizedChords && !reharmonizedChords.startsWith("Error") && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', reharmonizedChords)} className="btn-send-canvas">Send to Song Canvas</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', reharmonizedChords)} variant="outline">Send to Song Canvas</Button>
                     </div>
                   )}
                 </CardContent>
@@ -1264,28 +1264,28 @@ const AppClientPage: FC = () => {
             <Card className="tool-card">
                 <CardHeader><CardTitle className="chord-forge-title subsection-title">The Chord Forge</CardTitle></CardHeader>
                 <CardContent>
-                    <p className="text-gray-700 mb-4 dylan-quote text-sm">"Play it loud!"</p>
-                    <div className="mb-6 p-4 bg-muted/50 rounded-lg border">
-                        <h4 className="text-xl font-semibold text-yellow-800 mb-3 typewriter-font">Standard Progression Generator</h4>
+                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Play it loud!"</p>
+                    <div className="mb-6 p-4 bg-muted/50 rounded-lg border-2 border-dashed">
+                        <h4 className="text-xl font-semibold mb-3" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Standard Progression Generator</h4>
                         {/* Standard Progression Generator Inputs: Key, Scale, NumChords, Complexity */}
                         {/* Omitted detailed inputs for brevity, assume they exist and are handled */}
-                         <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: stdProgScale, complexity: stdProgComplexity === "3" ? 'complex': 'simple' }), setStdProgResult, setStdProgLoader, "")} disabled={stdProgLoader} className="btn-primary">
+                         <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: stdProgScale, complexity: stdProgComplexity === "3" ? 'complex': 'simple' }), setStdProgResult, setStdProgLoader, "")} disabled={stdProgLoader} variant="default">
                             {stdProgLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Music className="mr-2 h-4 w-4" />} Generate Standard Progression
                          </Button>
-                        <div className="output-display-area text-yellow-800" id="stdProgResultOutput">{stdProgResult}</div>
+                        <div className="output-display-area" style={{color: "hsl(var(--accent-foreground))"}} id="stdProgResultOutput">{stdProgResult}</div>
                         {stdProgResult && !stdProgResult.startsWith("Error") && (
-                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', stdProgResult)} className="btn-send-canvas">Send to Song Canvas</Button></div>
+                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', stdProgResult)} variant="outline">Send to Song Canvas</Button></div>
                         )}
                     </div>
-                    <div className="p-4 bg-muted/50 rounded-lg border">
-                        <h4 className="text-xl font-semibold text-yellow-800 mb-3 typewriter-font">Random Progression Generator</h4>
+                    <div className="p-4 bg-muted/50 rounded-lg border-2 border-dashed">
+                        <h4 className="text-xl font-semibold mb-3" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Random Progression Generator</h4>
                          <div className="space-y-2 mb-3"><Label htmlFor="randomProgFeelInputRandom">Desired Feel/Genre (Optional):</Label><Input id="randomProgFeelInputRandom" value={randomProgFeel} onChange={e => setRandomProgFeel(e.target.value)} placeholder="e.g., Mellow folk, Driving alt-country" /></div>
-                        <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: randomProgFeel || "any", complexity: "simple" }), setRandomProgResult, setRandomProgLoader, "")} disabled={randomProgLoader} className="btn-secondary">
+                        <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: randomProgFeel || "any", complexity: "simple" }), setRandomProgResult, setRandomProgLoader, "")} disabled={randomProgLoader} variant="secondary">
                             {randomProgLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Shuffle className="mr-2 h-4 w-4" />} Generate Random Progression
                         </Button>
-                        <div className="output-display-area text-yellow-800" id="randomProgResultOutput">{randomProgResult}</div>
+                        <div className="output-display-area" style={{color: "hsl(var(--accent-foreground))"}} id="randomProgResultOutput">{randomProgResult}</div>
                         {randomProgResult && !randomProgResult.startsWith("Error") && (
-                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', randomProgResult)} className="btn-send-canvas">Send to Song Canvas</Button></div>
+                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', randomProgResult)} variant="outline">Send to Song Canvas</Button></div>
                         )}
                     </div>
                 </CardContent>
@@ -1295,14 +1295,14 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                   <CardHeader><CardTitle className="chord-voicing-title subsection-title">Chord Voicing Suggester</CardTitle></CardHeader>
                   <CardContent>
-                      <p className="text-gray-700 mb-4 dylan-quote text-sm">"You can't be wise and in love at the same time." - Find new ways to say it with chords.</p>
+                      <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You can't be wise and in love at the same time." - Find new ways to say it with chords.</p>
                       <div className="space-y-2 mb-3"><Label htmlFor="chordsForVoicingInput">Chords to Get Voicing Ideas For (e.g., C G Am F)</Label><Input id="chordsForVoicingInput" value={chordsForVoicing} onChange={e => setChordsForVoicing(e.target.value)} placeholder="Enter a few chords..." /></div>
-                      <Button onClick={() => handleToolAction(() => ai.getChordVoicingSuggestions({ chords: chordsForVoicing }), setVoicingSuggestions, setVoicingLoader, "Chord voicing ideas...")} disabled={voicingLoader || !chordsForVoicing} className="w-full btn-tertiary">
+                      <Button onClick={() => handleToolAction(() => ai.getChordVoicingSuggestions({ chords: chordsForVoicing }), setVoicingSuggestions, setVoicingLoader, "Chord voicing ideas...")} disabled={voicingLoader || !chordsForVoicing} className="w-full" variant="ghost">
                           {voicingLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mic2 className="mr-2 h-4 w-4" />} Suggest Voicings
                       </Button>
                       <div className="output-display-area" id="voicingSuggestionsOutput">{voicingSuggestions}</div>
                       {voicingSuggestions !== "Chord voicing ideas..." && !voicingSuggestions.startsWith("Error") && (
-                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', voicingSuggestions)} className="btn-send-canvas">Send to Song Canvas</Button></div>
+                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', voicingSuggestions)} variant="outline">Send to Song Canvas</Button></div>
                       )}
                   </CardContent>
               </Card>
@@ -1310,7 +1310,7 @@ const AppClientPage: FC = () => {
               <Card className="tool-card">
                   <CardHeader><CardTitle className="instrumentation-title subsection-title">Sound Palette (Instrumentation)</CardTitle></CardHeader>
                   <CardContent>
-                      <p className="text-gray-700 mb-4 dylan-quote text-sm">"All this talk about equality..."</p>
+                      <p className="text-muted-foreground mb-4 dylan-quote text-sm">"All this talk about equality..."</p>
                       <div className="space-y-2 mb-3"><Label htmlFor="instrumentationVibeInput">Song Vibe/Genre (e.g., 'Dusty Americana')</Label><Input id="instrumentationVibeInput" value={instrumentationVibe} onChange={e => setInstrumentationVibe(e.target.value)} placeholder="Describe your song's feel" /></div>
                       <div className="space-y-2 mb-3"><Label htmlFor="instrumentationStyleEraSelectInput">Musical Style/Era:</Label>
                           <Select value={instrumentationStyleEra} onValueChange={setInstrumentationStyleEra}><SelectTrigger id="instrumentationStyleEraSelectInput"><SelectValue /></SelectTrigger>
@@ -1322,12 +1322,12 @@ const AppClientPage: FC = () => {
                               </SelectContent>
                           </Select>
                       </div>
-                      <Button onClick={() => handleToolAction(() => ai.suggestInstruments({ vibe: instrumentationVibe, styleEra: instrumentationStyleEra }), setInstrumentationResult, setInstrumentationLoader, "Instrumentation ideas...")} disabled={instrumentationLoader || !instrumentationVibe} className="w-full btn-tertiary">
+                      <Button onClick={() => handleToolAction(() => ai.suggestInstruments({ vibe: instrumentationVibe, styleEra: instrumentationStyleEra }), setInstrumentationResult, setInstrumentationLoader, "Instrumentation ideas...")} disabled={instrumentationLoader || !instrumentationVibe} className="w-full" variant="ghost">
                           {instrumentationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Palette className="mr-2 h-4 w-4" />} Suggest Instruments
                       </Button>
                       <div className="output-display-area" id="instrumentationResultOutput">{instrumentationResult}</div>
                       {instrumentationResult !== "Instrumentation ideas will appear here..." && !instrumentationResult.startsWith("Error") && (
-                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('ideaCatcherTextArea', instrumentationResult)} className="btn-send-canvas">Send to Canvas Notes</Button></div>
+                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('ideaCatcherTextArea', instrumentationResult)} variant="outline">Send to Canvas Notes</Button></div>
                       )}
                   </CardContent>
               </Card>
@@ -1341,7 +1341,7 @@ const AppClientPage: FC = () => {
             <h2 className="song-generator-title main-section-title">AI Song Draft Generator</h2>
           </AccordionTrigger>
           <AccordionContent className="space-y-6 pt-4">
-            <p className="text-gray-700 mb-4 dylan-quote text-sm">"A song is anything that can walk by itself." - Let's get a first draft walking.</p>
+            <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself." - Let's get a first draft walking.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="space-y-2"><Label htmlFor="fullSongThemeInput">Theme/Topic of Your Song:</Label><Input id="fullSongThemeInput" value={fullSongTheme} onChange={e => setFullSongTheme(e.target.value)} placeholder="e.g., A train journey at dusk" /></div>
               <div className="space-y-2"><Label htmlFor="fullSongStyleInput">Musical Style/Mood:</Label><Input id="fullSongStyleInput" value={fullSongStyle} onChange={e => setFullSongStyle(e.target.value)} placeholder="e.g., Mellow Folk Ballad, Uptempo Alt-Country" /></div>
@@ -1353,7 +1353,7 @@ const AppClientPage: FC = () => {
               <div className="space-y-2"><Label htmlFor="fullSongKeywordsInput">Key Lyrical Phrases/Keywords (Optional):</Label><Input id="fullSongKeywordsInput" value={fullSongKeywords} onChange={e => setFullSongKeywords(e.target.value)} placeholder="e.g., lonely road, setting sun" /></div>
               <div className="space-y-2 md:col-span-2"><Label htmlFor="fullSongVerseCountInput">Approximate Number of Verses (e.g., 2-3):</Label><Input type="number" id="fullSongVerseCountInput" value={fullSongVerseCount} onChange={e => setFullSongVerseCount(parseInt(e.target.value))} min="1" max="5" className="w-full md:w-1/4" /></div>
             </div>
-            <Button onClick={() => handleToolAction(() => ai.generateFullSong({ theme: fullSongTheme, songStyle: fullSongStyle, structure: fullSongStructure, keywords: fullSongKeywords, verseCount: fullSongVerseCount }), setFullSongDraft, setFullSongLoaderState, "Your AI-generated song draft...")} disabled={fullSongLoaderState || !fullSongTheme || !fullSongStyle} className="w-full btn-primary">
+            <Button onClick={() => handleToolAction(() => ai.generateFullSong({ theme: fullSongTheme, songStyle: fullSongStyle, structure: fullSongStructure, keywords: fullSongKeywords, verseCount: fullSongVerseCount }), setFullSongDraft, setFullSongLoaderState, "Your AI-generated song draft...")} disabled={fullSongLoaderState || !fullSongTheme || !fullSongStyle} className="w-full" variant="default">
               {fullSongLoaderState ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <FileText className="mr-2 h-4 w-4" />} Compose Full Song Draft
             </Button>
             <div className="space-y-2 mt-4">
@@ -1362,7 +1362,7 @@ const AppClientPage: FC = () => {
             </div>
              {fullSongDraft !== "Your AI-generated song draft will appear here..." && !fullSongDraft.startsWith("Error") && (
               <div className="send-buttons-container">
-                <Button onClick={() => { setSongCanvasText(fullSongDraft); toast({title: "Draft Copied!", description: "Full song draft copied to main canvas."}) }} className="btn-send-canvas">Copy to Main Song Canvas</Button>
+                <Button onClick={() => { appendToTextarea('songCanvasTextArea', fullSongDraft); toast({title: "Draft Copied!", description: "Full song draft copied to main canvas."}) }} variant="outline">Copy to Main Song Canvas</Button>
               </div>
             )}
           </AccordionContent>
@@ -1374,8 +1374,8 @@ const AppClientPage: FC = () => {
             <h2 className="canvas-title main-section-title">The Songwriter's Canvas</h2>
           </AccordionTrigger>
           <AccordionContent className="pt-4">
-            <p className="text-gray-700 mb-6 dylan-quote">"Take what you have gathered from coincidence." - Assemble your masterpiece here.</p>
-            <Card className="mb-6 bg-muted/50">
+            <p className="text-muted-foreground mb-6 dylan-quote">"Take what you have gathered from coincidence." - Assemble your masterpiece here.</p>
+            <Card className="mb-6 bg-muted/50 border-2 border-dashed">
               <CardHeader><CardTitle className="song-structure-title subsection-title">Song Structure Helper</CardTitle></CardHeader>
               <CardContent className="space-y-4">
                 <div className="space-y-2"><Label htmlFor="songStructureSelectCanvasInput">Choose a Common Structure Template:</Label>
@@ -1389,7 +1389,7 @@ const AppClientPage: FC = () => {
                   </Select>
                 </div>
                 <div className="space-y-2"><Label htmlFor="structureContextCanvasInput">Song Idea/Theme (Optional context):</Label><Input id="structureContextCanvasInput" value={structureContextCanvas} onChange={e => setStructureContextCanvas(e.target.value)} placeholder="e.g., journey of self-discovery" /></div>
-                <Button onClick={handleGenerateStructureCanvas} disabled={structureLoaderCanvas || !selectedStructureCanvas} className="btn-primary">
+                <Button onClick={handleGenerateStructureCanvas} disabled={structureLoaderCanvas || !selectedStructureCanvas} variant="default">
                   {structureLoaderCanvas ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} Generate & Add Structure to Draft
                 </Button>
                 <div className="space-y-2 mt-3"><Label>Or, Add Individual Blocks:</Label>
@@ -1414,16 +1414,16 @@ const AppClientPage: FC = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="space-y-2"><Label htmlFor="ideaCatcherTextAreaInput">Quick Notes / Scratchpad:</Label><Textarea id="ideaCatcherTextAreaInput" value={ideaCatcherText} onChange={e => setIdeaCatcherText(e.target.value)} rows={4} placeholder="Fleeting thoughts, images, random lines..." className="font-special-elite bg-[hsl(30,100%,99%)] border-[hsl(30,33%,93%)]" /></div>
-              <div className="space-y-2"><Label htmlFor="melodicIdeasTextAreaInput">Melodic Ideas / Contour Notes:</Label><Textarea id="melodicIdeasTextAreaInput" value={melodicIdeasText} onChange={e => setMelodicIdeasText(e.target.value)} rows={4} placeholder="e.g., Verse melody rises slowly..." className="font-special-elite bg-[hsl(210,100%,99%)] border-[hsl(210,43%,94%)]" /></div>
+              <div className="space-y-2"><Label htmlFor="ideaCatcherTextAreaInput">Quick Notes / Scratchpad:</Label><Textarea id="ideaCatcherTextAreaInput" value={ideaCatcherText} onChange={e => setIdeaCatcherText(e.target.value)} rows={4} placeholder="Fleeting thoughts, images, random lines..." className="bg-white/80 border-dashed" /></div>
+              <div className="space-y-2"><Label htmlFor="melodicIdeasTextAreaInput">Melodic Ideas / Contour Notes:</Label><Textarea id="melodicIdeasTextAreaInput" value={melodicIdeasText} onChange={e => setMelodicIdeasText(e.target.value)} rows={4} placeholder="e.g., Verse melody rises slowly..." className="bg-white/80 border-dashed" /></div>
             </div>
             <div className="space-y-2">
               <Label htmlFor="songCanvasTextArea">Song Draft & Lyrics:</Label>
-              <Textarea id="songCanvasTextArea" value={songCanvasText} onChange={e => setSongCanvasText(e.target.value)} rows={18} placeholder="Lay down your tracks here..." className="p-3 bg-[hsl(40,100%,99%)] border-[hsl(40,43%,91%)]" style={{ fontFamily: songCanvasFont }} />
+              <Textarea id="songCanvasTextArea" value={songCanvasText} onChange={e => setSongCanvasText(e.target.value)} rows={18} placeholder="Lay down your tracks here..." className="p-3 bg-white border-2 border-foreground/30" style={{ fontFamily: songCanvasFont, lineHeight: 1.7 }} />
             </div>
             <div className="mt-4 flex flex-wrap gap-2">
-              <Button onClick={saveProject} className="btn-primary"><Save className="mr-2 h-4 w-4" />Save Project</Button>
-              <Button onClick={loadProject} className="btn-secondary"><FolderOpen className="mr-2 h-4 w-4" />Load Project</Button>
+              <Button onClick={saveProject} variant="default"><Save className="mr-2 h-4 w-4" />Save Project</Button>
+              <Button onClick={loadProject} variant="secondary"><FolderOpen className="mr-2 h-4 w-4" />Load Project</Button>
               <AlertDialog open={confirmClearOpen} onOpenChange={setConfirmClearOpen}>
                   <AlertDialogTrigger asChild><Button variant="destructive"><Trash2 className="mr-2 h-4 w-4" />Clear Saved Project</Button></AlertDialogTrigger>
                   <AlertDialogContent>
@@ -1431,18 +1431,18 @@ const AppClientPage: FC = () => {
                       <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={clearProject}>Yes, Clear</AlertDialogAction></AlertDialogFooter>
                   </AlertDialogContent>
               </AlertDialog>
-              <Button onClick={exportSongDraft} className="btn-tertiary"><FileText className="mr-2 h-4 w-4" />Export Song Draft</Button>
+              <Button onClick={exportSongDraft} variant="ghost"><FileText className="mr-2 h-4 w-4" />Export Song Draft</Button>
             </div>
-            {projectStatusMessage && <p className="text-sm typewriter-font mt-2 text-muted-foreground">{projectStatusMessage}</p>}
+            {projectStatusMessage && <p className="text-sm mt-2 text-muted-foreground">{projectStatusMessage}</p>}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
 
       {/* Gemini Modal for Phrase Spark AI actions */}
       <Dialog open={geminiModalOpen} onOpenChange={setGeminiModalOpen}>
-        <DialogContent className="font-special-elite bg-[hsl(39,71%,98%)] text-[hsl(26,26%,23%)] max-w-lg">
+        <DialogContent className="bg-background text-foreground max-w-lg border-2 border-dashed border-primary">
           <DialogHeader>
-            <DialogTitle className="page-title-font text-2xl text-red-700 mb-3">{geminiModalTitle}</DialogTitle>
+            <DialogTitle className="page-title-font text-2xl text-primary mb-3">{geminiModalTitle}</DialogTitle>
              <Button variant="ghost" size="icon" className="absolute right-4 top-4" onClick={() => setGeminiModalOpen(false)}><X className="h-4 w-4" /></Button>
           </DialogHeader>
           <div className="py-4">
@@ -1450,7 +1450,7 @@ const AppClientPage: FC = () => {
             <p className="mt-2 whitespace-pre-wrap text-sm" id="geminiModalContentOutput">{geminiModalContent}</p>
             {geminiModalContent && !geminiModalLoader && !geminiModalContent.startsWith("Error:") && (
               <div className="send-buttons-container mt-4">
-                <Button onClick={handleSendFromModalToCanvas} className="btn-send-canvas">Add to Song Draft</Button>
+                <Button onClick={handleSendFromModalToCanvas} variant="outline">Add to Song Draft</Button>
               </div>
             )}
           </div>
