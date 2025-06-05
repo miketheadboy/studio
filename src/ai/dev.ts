@@ -1,1 +1,23 @@
-// Flows will be imported for their side effects in this file.
+import { config } from 'dotenv';
+config();
+
+import '@/ai/flows/rhythm-architect-flow.ts';
+import '@/ai/flows/generate-full-song.ts';
+import '@/ai/flows/lyrical-lab.ts';
+import '@/ai/flows/rhyme-tennis-flow.ts';
+import '@/ai/flows/muse-whisper.ts';
+import '@/ai/flows/lyrical-mood-ring.ts';
+import '@/ai/flows/artist-inspiration.ts';
+import '@/ai/flows/ai-chord-generator.ts';
+import '@/ai/flows/melody-maker-memo.ts';
+import '@/ai/flows/bridge-builder.ts';
+import '@/ai/flows/ai-phrases-flow.ts';
+import '@/ai/flows/chord-voicing-suggester.ts';
+import '@/ai/flows/suggest-instruments.ts';
+import '@/ai/flows/reharmonize-chords-flow.ts';
+import '@/ai/flows/generate-structure.ts';
+import '@/ai/flows/album-title-generator.ts';
+import '@/ai/flows/rhyme-scheme-generator.ts';
+import '@/ai/flows/study-song-flow.ts';
+import '@/ai/flows/section-expander-flow.ts';
+import '@/ai/flows/metaphor-builder-flow.ts';

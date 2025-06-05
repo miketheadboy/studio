@@ -8,10 +8,24 @@ export default {
     './src/app/**/*.{js,ts,jsx,tsx,mdx}',
   ],
   theme: {
+    container: {
+      center: true,
+      padding: "2rem",
+      screens: {
+        "2xl": "1400px",
+      },
+    },
     extend: {
       fontFamily: {
         body: ['Inter', 'sans-serif'],
-        headline: ['Inter', 'sans-serif'],
+        headline: ['Rock Salt', 'cursive'],
+        'homemade-apple': ['Homemade Apple', 'cursive'],
+        'architects-daughter': ['Architects Daughter', 'cursive'],
+        'special-elite': ['Special Elite', 'cursive'],
+        'bangers': ['Bangers', 'cursive'],
+        'nothing-you-could-do': ['Nothing You Could Do', 'cursive'],
+        'covered-by-your-grace': ['Covered By Your Grace', 'cursive'],
+        'caveat': ['Caveat', 'cursive'],
         code: ['monospace'],
       },
       colors: {
@@ -55,16 +69,6 @@ export default {
           '4': 'hsl(var(--chart-4))',
           '5': 'hsl(var(--chart-5))',
         },
-        sidebar: {
-          DEFAULT: 'hsl(var(--sidebar-background))',
-          foreground: 'hsl(var(--sidebar-foreground))',
-          primary: 'hsl(var(--sidebar-primary))',
-          'primary-foreground': 'hsl(var(--sidebar-primary-foreground))',
-          accent: 'hsl(var(--sidebar-accent))',
-          'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
-          border: 'hsl(var(--sidebar-border))',
-          ring: 'hsl(var(--sidebar-ring))',
-        },
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -88,10 +92,15 @@ export default {
             height: '0',
           },
         },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
+        spin: 'spin 1s linear infinite',
       },
     },
   },
