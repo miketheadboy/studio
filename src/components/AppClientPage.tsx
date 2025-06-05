@@ -1144,7 +1144,6 @@ const AppClientPage: FC = () => {
                     }}>
                       <SelectTrigger id="moodSelectorChordCorner"><SelectValue placeholder="-- Choose a Vibe --" /></SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="">-- Choose a Vibe --</SelectItem>
                         {Object.entries(CHORD_PROGRESSIONS).map(([key, mood]) => (
                           <SelectItem key={key} value={key}>{mood.name}</SelectItem>
                         ))}
@@ -1308,7 +1307,6 @@ const AppClientPage: FC = () => {
                 <div className="space-y-2"><Label htmlFor="songStructureSelectCanvasInput">Choose a Common Structure Template:</Label>
                   <Select value={selectedStructureCanvas} onValueChange={setSelectedStructureCanvas}><SelectTrigger id="songStructureSelectCanvasInput"><SelectValue placeholder="-- Select a Structure --" /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="">-- Select a Structure --</SelectItem>
                       {songStructureOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}
                       <SelectItem value="Blues Form (12-bar)">Blues Form (12-bar)</SelectItem>
                       <SelectItem value="Folk Ballad (Strophic with refrain)">Folk Ballad (Strophic with refrain)</SelectItem>
