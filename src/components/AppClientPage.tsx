@@ -3,6 +3,7 @@
 
 import type { FC } from 'react';
 import { useState, useEffect, useCallback, useMemo } from 'react';
+import Image from 'next/image';
 import { 
   Accordion, 
   AccordionContent, 
@@ -21,14 +22,19 @@ import {
   SelectValue 
 } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger, DialogClose } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogClose } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { useToast } from "@/hooks/use-toast";
-import { Lightbulb, Wand2, BookOpen, Music, Shuffle, ListFilter, Star, Copy, Trash2, MessageSquare, Settings2, Rows, Columns, Music2, Guitar, SlidersHorizontal, Users, Library, Brain, Search, RefreshCw, Mic2, Edit3, Palette, FileText, Save, FolderOpen, X, ChevronDown, Plus, ChevronsUpDown, Settings, Sparkles, Loader2, Send, FilePlus2 } from 'lucide-react';
+import { Lightbulb, Wand2, BookOpen, Music, Shuffle, ListFilter, Star, Copy, Trash2, MessageSquare, Settings2, Rows, Columns, Music2, Guitar, SlidersHorizontal, Users, Library, Brain, Search, RefreshCw, Mic2, Edit3, Palette, FileText, Save, FolderOpen, X, ChevronDown, Plus, ChevronsUpDown, Settings, Sparkles, Loader2, Send, FilePlus2, Film, Feather, ImageIcon } from 'lucide-react';
 
 import * as ai from '@/app/actions/ai';
 import type { MelodyIdeaOutput } from '@/ai/flows/melody-maker-memo';
+import { INSPIRATION_SOURCES, type InspirationItem } from '@/lib/inspiration-data';
+import { DYLAN_QUOTES } from '@/lib/dylan-quotes';
+import { SONGWRITING_TIPS } from '@/lib/songwriting-tips';
+import { CHORD_PROGRESSIONS_DATA, type ChordProgressionCategory } from '@/lib/chord-progressions-data';
+import { INITIAL_RAW_PHRASES } from '@/lib/initial-phrases';
 
 
 // Helper types and interfaces
@@ -144,7 +150,7 @@ const AppClientPage: FC = () => {
   const [ideaCatcherText, setIdeaCatcherText] = useState("");
   const [melodicIdeasText, setMelodicIdeasText] = useState("");
   const [songCanvasText, setSongCanvasText] = useState("");
-  const [songCanvasFont, setSongCanvasFont] = useState("var(--font-special-elite), cursive"); // Default to typewriter
+  const [songCanvasFont, setSongCanvasFont] = useState("var(--font-special-elite), cursive"); 
   const [projectStatusMessage, setProjectStatusMessage] = useState("");
   
   const [tipBoxText, setTipBoxText] = useState("");
@@ -156,6 +162,8 @@ const AppClientPage: FC = () => {
   const [geminiModalLoader, setGeminiModalLoader] = useState(false);
   const [geminiModalSourceElementId, setGeminiModalSourceElementId] = useState<string | null>(null);
 
+  const [currentInspiration, setCurrentInspiration] = useState<InspirationItem | null>(null);
+  const [inspirationLoader, setInspirationLoader] = useState(false);
 
   const [showPhraseList, setShowPhraseList] = useState(false);
   const [rawPhrases, setRawPhrases] = useState<Phrase[]>([]); 
@@ -172,26 +180,6 @@ const AppClientPage: FC = () => {
   const [randomlySelectedPhrase, setRandomlySelectedPhrase] = useState("");
 
 
-  // Constants from user's JS
-  const DYLAN_QUOTES = [
-    "You don't need a weatherman to know which way the wind blows.", "A man is a success if he gets up in the morning and gets to bed at night, and in between he does what he wants to do.", "All I can do is be me, whoever that is.", "Behind every beautiful thing, there's some kind of pain.", "I was born a long way from where I belong and I am on my way home.", "Sometimes it's not enough to know what things mean, sometimes you have to know what things don't mean.", "To live outside the law, you must be honest.", "I define nothing. Not beauty, not patriotism. I take each thing as it is, without prior rules about what it should be.", "People seldom do what they believe in. They do what is convenient, then repent.", "Yesterday's just a memory, tomorrow is never what it's supposed to be.", "May your heart always be joyful, may your song always be sung.", "He not busy being born is busy dying.", "The answer, my friend, is blowin' in the wind.", "I'll let you be in my dreams if I can be in yours.", "Take me on a trip upon your magic swirlin' ship.", "Money doesn't talk, it swears.", "All the truth in the world adds up to one big lie.", "I was so much older then, I'm younger than that now.", "Chaos is a friend of mine.", "I accept chaos, I'm not sure whether it accepts me.", "A song is anything that can walk by itself.", "I consider myself a poet first and a musician second.", "You can't be wise and in love at the same time.", "Inspiration is hard to come by. You have to take it where you find it.", "I think a hero is any person really intent on making this a better place for all people.", "What's money? A man is a success if he gets up in the morning and goes to bed at night and in between does what he wants to do.", "All this talk about equality. The only thing people really have in common is that they are all going to die.", "I say there're no depressed words just depressed minds."
-  ];
-  const SONGWRITING_TIPS = [
-    "Try the Phrase Spark for a new line. Or hit 'Random Phrase' for unexpected inspiration.", "Need a title? The Album Title Generator can spark an idea.", "Draw from the Poet's Corner for a dose of Dylan.", "Experiment with a mood in the Chord Corner for progressions.", "Generate a progression in The Chord Forge, standard or random.", "Twist chords with The Chord Alchemist.", "Feeling blocked? Thematic Prompts can offer a new direction.", "Start writing in The Songwriter's Canvas, even if it's rough. Refine later.", "Use the Song Structure tools to outline in the Canvas.", "Search for keywords in the Phrase Spark.", "Listen to a song in your target style, then return fresh.", "Need bridge ideas? Try Bridge Builder Prompts.", "Explore your song's core emotion with the Lyrical Mood Ring.", "Contemplating melody? Check Melody Maker's Memo.", "Need a beat? The Rhythm Architect offers ideas.", "Stuck on a line? Use the Word Lab to rephrase it.", "Build imagery with The Metaphor Builder.", "Get Sound Palette ideas for instrumentation.", "Find inspiration from artists in Mentor's Corner.", "Study a song with Mentor's Discography.", "For a complete start, try the AI Song Draft Generator."
-  ];
-  const CHORD_PROGRESSIONS: Record<string, { name: string; progressions: string[] }> = {
-    bluesySwagger: { name: "Blues/Roots Rock", progressions: ["I - IV - V (e.g. A - D - E)", "I - I - I - I <br>IV - IV - I - I <br>V - IV - I - V (12-bar)", "I - vi - ii - V (e.g. C - Am - Dm - G)"] },
-    altRockEdge: { name: "Alt-Rock/Indie", progressions: ["I - IV - V (Loud & Fast!)", "I - V - vi - IV (e.g. G - D - Em - C)", "vi - IV - I - V (e.g. Am - F - C - G)"] },
-    folkBallad: { name: "Folk/Americana Ballad", progressions: ["Am - G - C - F", "C - G/B - Am - F", "Em - C - G - D", "G - D/F# - Em - C"] },
-    folkStoryteller: { name: "Folk Storyteller", progressions: ["G - C - D - G", "Am - G - C - G", "C - F - G - C", "D - G - A - D"] },
-    indieFolkDream: { name: "Indie Folk/Dream Pop", progressions: ["Imaj7 - IVmaj7 - ii7 - V7", "vi7 - IVmaj7 - Imaj7 - V7sus", "Cmaj7 - Fmaj7 - Gsus - G"] },
-    rootsRockGroove: { name: "Roots Rock/Soul Groove", progressions: ["Em7 - A7 (loop)", "i7 - IV7 (loop, e.g. Am7 - D7)", "Am - Dm - G - C"] },
-    wistfulAcoustic: { name: "Wistful Acoustic", progressions: ["C - G/B - Am - Em/G - F - C/E - Dm7 - Gsus - G", "G - D/F# - Em - C", "D - A/C# - Bm - G"] },
-    dustBowlBallad: { name: "Minor Key Ballad (Dust Bowl)", progressions: ["Am - Dm - Am - E7", "i - iv - V7 - i (e.g. Em - Am - B7 - Em)", "Cm - Gm - Ab - Eb"] },
-    appalachianFolk: { name: "Traditional/Appalachian Folk", progressions: ["I - V - I (e.g. G - D - G)", "I - IV - I - V - I (e.g. D - G - D - A - D)", "Modal: D - C - G - D (Mixolydian)"] },
-    roadhouseRocker: { name: "Classic Rock/Roadhouse", progressions: ["E - A - B7", "I - bVII - IV - I (e.g. A - G - D - A)", "G - C - G - D"] }
-  };
-
   const countSyllables = (word: string): number => {
     if (!word) return 0;
     word = word.toLowerCase().trim();
@@ -204,35 +192,7 @@ const AppClientPage: FC = () => {
   };
 
   const processRawPhrases = useCallback(() => {
-    const initialRawPhrases = [ 
-      "Absolute chaos", "Velvet rain", "Dusty road", "Midnight train", "Golden tear",
-      "Autumn wind", "Bitter truth", "Canyon echo", "Desert bloom", "Endless road",
-      "Fading light", "Frozen tear", "Gentle hum", "Ghostly sigh", "Haunted mile",
-      "Hollow sound", "Iron will", "Jagged edge", "Lost cause", "Lucid dream",
-      "Magic hour", "Neon glow", "Noble heart", "Open sky", "Quiet night",
-      "Raging fire", "Sacred ground", "Shattered glass", "Silent scream", "Silver moon",
-      "Steel resolve", "Stolen kiss", "Sudden chill", "Sweet despair", "Tender touch",
-      "Twilight zone", "Twisted vine", "Velvet fog", "Violent storm", "Wandering soul",
-      "Whispered word", "Wild desire", "Worn-out shoes", "Amber glow", "Ashen sky",
-      "Barren field", "Borrowed time", "Broken vow", "Burning bridge", "Changing tide",
-      "Crooked smile", "Crystal stream", "Dancing flame", "Distant shore", "Empty room",
-      "Fallen star", "Fatal flaw", "Final bow", "Forgotten song", "Frozen heart",
-      "Guiding light", "Hidden scar", "Humble prayer", "Inner voice", "Last goodbye",
-      "Lonely hour", "Misty dawn", "Narrow path", "New beginning", "Old guitar",
-      "Pale moonlight", "Perfect crime", "Phantom limb", "Quiet town", "Rebel yell",
-      "Restless heart", "Rising sun", "Rocky ground", "Sacred oath", "Sad cafe",
-      "Secret wish", "Shadow play", "Shining armor", "Silver lining", "Simple truth",
-      "Sleeping giant", "Slow burn", "Smoking gun", "Sole survivor", "Somber mood",
-      "Southern drawl", "Steel guitar", "Stone cold", "Stormy weather", "Strange brew",
-      "Streetlight halo", "Sudden fear", "Summer rain", "Sweet surrender", "Tangled web",
-      "Tattered flag", "Temple bell", "Thin disguise", "Thousand lies", "Thunder road",
-      "Timeless tale", "Troubled mind", "True north", "Twilight years", "Twisted fate",
-      "Unbroken chain", "Uncommon man", "Unknown soldier", "Unseen hand", "Untold story",
-      "Velvet glove", "Victory lap", "Vintage wine", "Wasted youth", "Weathered face",
-      "Whiskey neat", "White knuckle", "Wild frontier", "Winter chill", "Wooden spoon",
-      "Wounded knee", "Yellow moon", "Yesterday's news", "Young blood", "Zero hour", "Zigzag Trail", "Zillion Stars"
-    ];
-    const processed = initialRawPhrases.map(phrase => {
+    const processed = INITIAL_RAW_PHRASES.map(phrase => {
         const parts = phrase.split(' ');
         const noun = parts.pop() || "";
         const adjective = parts.join(' ');
@@ -297,7 +257,7 @@ const AppClientPage: FC = () => {
         case 'alpha-desc': tempFilteredPhrases.sort((a, b) => b.text.localeCompare(a.text)); break;
         case 'commonality-desc': tempFilteredPhrases.sort((a, b) => b.commonality - a.commonality || a.text.localeCompare(b.text)); break;
         case 'commonality-asc': tempFilteredPhrases.sort((a, b) => a.commonality - b.commonality || a.text.localeCompare(b.text)); break;
-        case 'syllables-asc': tempFilteredPhrases.sort((a, b) => a.totalSyllables - b.totalSyllables || a.text.localeCompare(b.text)); break;
+        case 'syllables-asc': tempFilteredPhrases.sort((a, b) => a.totalSyllables - a.totalSyllables || a.text.localeCompare(b.text)); break;
         case 'syllables-desc': tempFilteredPhrases.sort((a, b) => b.totalSyllables - a.totalSyllables || a.text.localeCompare(b.text)); break;
     }
     setFilteredPhrases(tempFilteredPhrases);
@@ -336,7 +296,7 @@ const AppClientPage: FC = () => {
                     totalSyllables: syllablesAdjective + syllablesNoun,
                 };
             });
-            setRawPhrases(prev => [...newPhrasesToAdd, ...prev]); // Add new phrases to the top
+            setRawPhrases(prev => [...newPhrasesToAdd, ...prev]); 
             toast({ title: "AI Phrases Generated!", description: `${newPhrasesToAdd.length} new phrases added.` });
         } else {
             toast({ title: "Error", description: result.error || "Failed to generate AI phrases.", variant: "destructive" });
@@ -431,17 +391,16 @@ const AppClientPage: FC = () => {
     initialText: string 
   ) => {
     loaderSetter(true);
-    setter("Thinking..."); // Universal "thinking" message
+    setter("Thinking..."); 
     const result = await action();
     if (result.success && result.data) {
       let content: any;
-      // Specific handling for different data structures
       if (typeof result.data === 'string') content = result.data;
-      else if (result.data.overallConcept && typeof result.data.overallConcept === 'string') content = result.data; // MelodyIdeaOutput
-      else if (result.data.prompt && typeof result.data.prompt === 'string') content = result.data.prompt; // Muse, Bridge
-      else if (result.data.title && typeof result.data.title === 'string') content = result.data.title; // Album title
+      else if (result.data.overallConcept && typeof result.data.overallConcept === 'string') content = result.data; 
+      else if (result.data.prompt && typeof result.data.prompt === 'string') content = result.data.prompt; 
+      else if (result.data.title && typeof result.data.title === 'string') content = result.data.title; 
       else if (result.data.artistExamples && typeof result.data.artistExamples === 'string') content = result.data.artistExamples;
-      else if (result.data.songSuggestion && typeof result.data.songSuggestion === 'string') { // Study song
+      else if (result.data.songSuggestion && typeof result.data.songSuggestion === 'string') { 
          content = `Song Suggestion: ${result.data.songSuggestion}\n\nHow to Study It:\n${result.data.studyPlan}\n\nKey Takeaways:\n${result.data.keyTakeaways}`;
       }
       else if (result.data.rephrasedLine && typeof result.data.rephrasedLine === 'string') content = result.data.rephrasedLine;
@@ -451,11 +410,11 @@ const AppClientPage: FC = () => {
       else if (result.data.expandedSection && typeof result.data.expandedSection === 'string') content = result.data.expandedSection;
       else if (result.data.chordProgression && typeof result.data.chordProgression === 'string') content = result.data.chordProgression;
       else if (result.data.reharmonizedChords && typeof result.data.reharmonizedChords === 'string') content = result.data.reharmonizedChords;
-      else if (result.data.suggestions && typeof result.data.suggestions === 'string') content = result.data.suggestions; // Voicing
-      else if (result.data.instruments && typeof result.data.instruments === 'string') content = result.data.instruments; // Instrumentation
-      else if (result.data.structure && typeof result.data.structure === 'string') content = result.data.structure; // Song structure
+      else if (result.data.suggestions && typeof result.data.suggestions === 'string') content = result.data.suggestions; 
+      else if (result.data.instruments && typeof result.data.instruments === 'string') content = result.data.instruments; 
+      else if (result.data.structure && typeof result.data.structure === 'string') content = result.data.structure; 
       else if (result.data.rhythmIdea && typeof result.data.rhythmIdea === 'string') content = result.data.rhythmIdea;
-      else content = JSON.stringify(result.data, null, 2); // Fallback
+      else content = JSON.stringify(result.data, null, 2); 
       setter(content);
     } else {
       setter(`Error: ${result.error || "Failed to get suggestion."}`);
@@ -695,6 +654,16 @@ const AppClientPage: FC = () => {
       toast({ title: "No Phrases", description: "Phrase list is empty.", variant: "destructive"});
     }
   };
+  
+  const handleDrawFromInspirationWell = () => {
+    setInspirationLoader(true);
+    // Simulate a brief delay for a "loading" feel if needed, or just select
+    setTimeout(() => {
+      const randomIndex = Math.floor(Math.random() * INSPIRATION_SOURCES.length);
+      setCurrentInspiration(INSPIRATION_SOURCES[randomIndex]);
+      setInspirationLoader(false);
+    }, 300); // Short delay
+  };
 
 
   return (
@@ -702,7 +671,7 @@ const AppClientPage: FC = () => {
     <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
       <header className="text-center mb-10">
         <h1 className="page-title-font text-5xl sm:text-6xl font-bold mb-2">The Songsmith's Den</h1>
-        <p className="text-lg text-muted-foreground mt-2 dylan-quote">"He not busy being born is busy dying." &mdash; B. Dylan</p>
+        <p className="text-lg text-muted-foreground mt-2 dylan-quote">"I was born a long way from where I belong and I am on my way home." &mdash; B. Dylan</p>
       </header>
 
       <Accordion type="multiple" defaultValue={['item-intro', 'item-canvas']} className="w-full space-y-6">
@@ -713,25 +682,25 @@ const AppClientPage: FC = () => {
           </AccordionTrigger>
           <AccordionContent className="pt-4">
             <p className="text-foreground leading-relaxed text-base">
-              This is your workshop, your quiet corner for crafting songs. A space for words to find their meter, for melodies to emerge, for entire pieces to take shape.
-              Here, you'll find tools for lyrical inspiration, AI partners for rhyme and development, chord exploration utilities, and echoes of songwriting wisdom.
-              It's designed to be a focused aid through creative moments, helping your ideas develop from a spark to a finished draft.
+             This space is for crafting songs. For words to find meter, melodies to emerge, and pieces to take shape.
+             Tools for lyrical sparks, AI for development, chord utilities, and echoes of songwriting wisdom await.
+             A focused aid through creative moments, from spark to draft.
             </p>
             <div className="mt-4 text-sm text-muted-foreground">
               <h4 className="font-semibold scrapbook-note-font text-lg">Notes on the Craft: A Songwriting Flow</h4>
               <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
-                <li><strong>Start Anywhere:</strong> A title, a chord, an emotion, a single line. Don't wait for a grand vision.</li>
-                <li><strong>Collect Ideas:</strong> Use the tools, jot notes in the "Quick Notes" or "Song Canvas." Capture everything.</li>
-                <li><strong>Structure Can Emerge:</strong> Try a common structure, or let the song dictate its form. The "Structure Blocks" can guide.
+                <li><strong>Start Anywhere:</strong> A title, a chord, an emotion, a single line. Don't wait.</li>
+                <li><strong>Collect Ideas:</strong> Use the tools, jot in "Quick Notes" or "Song Canvas." Capture everything.</li>
+                <li><strong>Structure Emerges:</strong> Try a common structure, or let the song dictate. "Structure Blocks" can guide.
                 <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="link" size="sm" className="text-primary p-0 h-auto ml-1 hover:text-accent" onClick={() => document.getElementById('songCanvasSectionAccordionTrigger')?.click()}>Learn more.</Button>
+                      <Button variant="link" size="sm" className="text-primary p-0 h-auto ml-1 hover:text-accent" onClick={() => document.getElementById('songCanvasSectionAccordionTrigger')?.click()}>Details.</Button>
                     </TooltipTrigger>
                     <TooltipContent><p>Use the Song Structure Helper in The Songwriter's Canvas.</p></TooltipContent>
                   </Tooltip>
                 </li>
-                <li><strong>Rewrite & Refine:</strong> The first draft is a starting point. The "Word Lab" and "Chord Alchemist" offer fresh perspectives.</li>
-                <li><strong>Listen Deeply:</strong> To your surroundings, to other artists ("Mentor's Corner"), and to the song forming within.</li>
+                <li><strong>Rewrite & Refine:</strong> First draft is a start. "Word Lab" & "Chord Alchemist" offer perspectives.</li>
+                <li><strong>Listen Deeply:</strong> To surroundings, artists ("Mentor's Corner"), the song forming within.</li>
               </ul>
             </div>
           </AccordionContent>
@@ -751,20 +720,21 @@ const AppClientPage: FC = () => {
                 <h2 className="handwritten-section-title-font">A Suggested Workflow</h2>
             </AccordionTrigger>
             <AccordionContent className="pt-4">
-                 <p className="text-foreground space-y-4 mt-4">This workspace offers a suite of tools. Here’s one way to approach songwriting with them:</p>
+                 <p className="text-foreground space-y-4 mt-4">This workspace offers a suite of tools. Here’s one path:</p>
                  <ol className="list-decimal list-inside ml-4 space-y-3 mt-2">
                      <li>
                          <strong>Find Your Spark (Sparks & Muses Section):</strong>
                          <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
                              <li>Generate <strong className="text-[hsl(var(--secondary))]">Thematic Prompts</strong>.</li>
-                             <li>Get ideas for your song's <strong className="text-[hsl(var(--accent))]">Bridge Builder</strong>.</li>
-                             <li>Seek wisdom in the <strong className="text-[hsl(var(--primary))]">Poet's Corner</strong> (Dylan quotes).</li>
+                             <li>Get ideas for your song's <strong className="text-[hsl(var(--accent))]">Bridge</strong>.</li>
+                             <li>Seek wisdom in the <strong className="text-[hsl(var(--primary))]">Poet's Corner</strong>.</li>
                              <li>Find a name with the <strong className="text-[hsl(var(--secondary))]">Album Title Generator</strong>.</li>
-                             <li>Get a <strong className="text-[hsl(var(--accent))]">Melody Spark</strong> from the Memo.</li>
+                             <li>Get a <strong className="text-[hsl(var(--accent))]">Melody Spark</strong>.</li>
                              <li>Consult the <strong className="text-[hsl(var(--primary))]">Rhythm Architect</strong>.</li>
                              <li>Find <strong className="text-[hsl(var(--secondary))]">Artist Inspiration</strong>.</li>
                               <li><strong className="text-[hsl(var(--accent))]">Study a Song</strong>.</li>
-                             <li>Any spark? Use "Add to..." buttons to send it to your Song Canvas or notes.</li>
+                              <li>Draw from <strong className="text-[hsl(var(--primary))]">The Inspiration Well</strong>.</li>
+                             <li>Use "Add to..." buttons for Song Canvas or notes.</li>
                          </ul>
                      </li>
                      <li>
@@ -791,7 +761,7 @@ const AppClientPage: FC = () => {
                         </ul>
                     </li>
                     <li>
-                        <strong>Full Song Draft (AI Song Generator):</strong> For a comprehensive starting point.
+                        <strong>Full Song Draft (AI Song Generator):</strong> For a comprehensive start.
                     </li>
                     <li>
                         <strong>The Songwriter's Canvas:</strong> Your central hub.
@@ -804,9 +774,70 @@ const AppClientPage: FC = () => {
                         </ul>
                     </li>
                  </ol>
-                  <p><strong className="text-[hsl(var(--foreground))]">The Backstage Pass (Modal):</strong> AI suggestions for rhymes and expanded phrases appear here.</p>
+                  <p><strong className="text-[hsl(var(--foreground))]">The Modal Window:</strong> AI suggestions for rhymes and expanded phrases appear here when triggered from Phrase Spark.</p>
             </AccordionContent>
         </AccordionItem>
+        
+        {/* The Inspiration Well Section */}
+        <AccordionItem value="item-inspiration-well" className="main-section-box" id="inspirationWellSection">
+          <AccordionTrigger className="collapsible-header-style hover:no-underline">
+            <h2 className="lyrical-toolkit-title main-section-title">The Inspiration Well</h2>
+          </AccordionTrigger>
+          <AccordionContent className="pt-4">
+            <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I accept chaos, I'm not sure whether it accepts me." - Find a muse in unexpected places.</p>
+            <div className="text-center mb-6">
+              <Button onClick={handleDrawFromInspirationWell} disabled={inspirationLoader} className="btn-suggestion">
+                {inspirationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+                Draw from the Well
+              </Button>
+            </div>
+
+            {inspirationLoader && <div className="loader"></div>}
+
+            {currentInspiration && !inspirationLoader && (
+              <Card className="tool-card inspiration-card bg-card/80 border-dashed border-primary/50">
+                <CardHeader>
+                  <CardTitle className="subsection-title flex items-center" style={{ color: `hsl(var(--${currentInspiration.type === 'Art' ? 'primary' : currentInspiration.type === 'Film' ? 'secondary' : 'accent'}))`}}>
+                    {currentInspiration.type === 'Art' && <ImageIcon className="mr-3 h-6 w-6" />}
+                    {currentInspiration.type === 'Film' && <Film className="mr-3 h-6 w-6" />}
+                    {currentInspiration.type === 'Literature' && <Feather className="mr-3 h-6 w-6" />}
+                    {currentInspiration.title}
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="space-y-3">
+                  <p className="text-sm text-muted-foreground">
+                    <strong>{currentInspiration.type === 'Art' ? 'Artist' : currentInspiration.type === 'Film' ? 'Director' : 'Author'}:</strong> {currentInspiration.creator} ({currentInspiration.year})
+                  </p>
+                  {currentInspiration.type === 'Art' && currentInspiration.imageUrl && (
+                    <div className="my-4 rounded-md overflow-hidden border-2 border-border shadow-lg aspect-video relative">
+                       <Image src={currentInspiration.imageUrl} alt={`Artwork: ${currentInspiration.title}`} layout="fill" objectFit="cover" data-ai-hint={currentInspiration.imageHint || "abstract painting"} />
+                    </div>
+                  )}
+                  {currentInspiration.description && <p className="text-foreground text-base leading-relaxed">{currentInspiration.description}</p>}
+                  {currentInspiration.passage && <blockquote className="dylan-quote text-base my-3 p-3 border-l-4" style={{borderColor: "hsl(var(--accent))"}}>{currentInspiration.passage}</blockquote>}
+                  <div className="flex flex-wrap gap-3 mt-4">
+                    {currentInspiration.infoLink && (
+                      <Button variant="outline" asChild className="btn-send-lyrics">
+                        <a href={currentInspiration.infoLink} target="_blank" rel="noopener noreferrer">Learn More</a>
+                      </Button>
+                    )}
+                    {currentInspiration.youtubeLink && (
+                      <Button variant="destructive" asChild className="btn-send-canvas">
+                        <a href={currentInspiration.youtubeLink} target="_blank" rel="noopener noreferrer">Watch/Listen (YouTube)</a>
+                      </Button>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+             {currentInspiration && !inspirationLoader && (
+              <div className="send-buttons-container">
+                <Button onClick={() => appendToTextarea('ideaCatcherTextAreaInput', `${currentInspiration.title} by ${currentInspiration.creator}`)} variant="outline">Add Title/Creator to Notes</Button>
+              </div>
+            )}
+          </AccordionContent>
+        </AccordionItem>
+
 
         {/* Sparks & Muses Section */}
         <AccordionItem value="item-sparks" className="main-section-box" id="sparksMusesSection">
@@ -1246,8 +1277,8 @@ const AppClientPage: FC = () => {
                     <Label htmlFor="moodSelectorChordCorner">Select a Mood:</Label>
                     <Select value={selectedMood} onValueChange={(value) => {
                         setSelectedMood(value);
-                        if (value && CHORD_PROGRESSIONS[value]) {
-                            const mood = CHORD_PROGRESSIONS[value];
+                        if (value && CHORD_PROGRESSIONS_DATA[value]) {
+                            const mood = CHORD_PROGRESSIONS_DATA[value];
                             setChordProgression(`<h4 class="text-lg font-semibold mb-2" style="color:hsl(var(--secondary)); font-family: var(--font-architects-daughter);">${mood.name} Progressions:</h4>` + mood.progressions.map(p => `<div class="mb-1">${p}</div>`).join(''));
                         } else {
                             setChordProgression('Select a mood for chord progressions.');
@@ -1255,7 +1286,7 @@ const AppClientPage: FC = () => {
                     }}>
                       <SelectTrigger id="moodSelectorChordCorner"><SelectValue placeholder="-- Choose a Vibe --" /></SelectTrigger>
                       <SelectContent>
-                        {Object.entries(CHORD_PROGRESSIONS).map(([key, mood]) => (
+                        {Object.entries(CHORD_PROGRESSIONS_DATA).map(([key, mood]) => (
                           <SelectItem key={key} value={key}>{mood.name}</SelectItem>
                         ))}
                       </SelectContent>
@@ -1304,7 +1335,6 @@ const AppClientPage: FC = () => {
                     <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Play it loud!"</p>
                     <div className="mb-6 p-4 bg-muted/50 rounded-lg border-2 border-dashed">
                         <h4 className="text-xl font-semibold mb-3" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Standard Progression Generator</h4>
-                        {/* Standard Progression Generator Inputs: Key, Scale, NumChords, Complexity */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
                             <div className="space-y-1"> <Label htmlFor="stdProgKey">Key</Label> <Select value={stdProgKey} onValueChange={setStdProgKey}><SelectTrigger id="stdProgKey"><SelectValue/></SelectTrigger><SelectContent>{["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"].map(k => <SelectItem key={k} value={k}>{k}</SelectItem>)}</SelectContent></Select></div>
                             <div className="space-y-1"> <Label htmlFor="stdProgScale">Scale/Mood</Label> <Select value={stdProgScale} onValueChange={setStdProgScale}><SelectTrigger id="stdProgScale"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="Major">Major</SelectItem><SelectItem value="Minor">Minor</SelectItem><SelectItem value="Bluesy">Bluesy</SelectItem><SelectItem value="Jazzy">Jazzy</SelectItem><SelectItem value="Folk">Folk</SelectItem></SelectContent></Select></div>
@@ -1485,7 +1515,7 @@ const AppClientPage: FC = () => {
         <DialogContent className="bg-background text-foreground max-w-lg border-2 border-dashed border-primary">
           <DialogHeader>
             <DialogTitle className="page-title-font text-2xl text-primary mb-3">{geminiModalTitle}</DialogTitle>
-             <Button variant="ghost" size="icon" className="absolute right-4 top-4" onClick={() => setGeminiModalOpen(false)}><X className="h-4 w-4" /></Button>
+             <DialogClose asChild><Button variant="ghost" size="icon" className="absolute right-4 top-4"><X className="h-4 w-4" /></Button></DialogClose>
           </DialogHeader>
           <div className="py-4">
             {geminiModalLoader && <div className="loader"></div>}
