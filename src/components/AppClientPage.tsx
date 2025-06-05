@@ -1,3 +1,4 @@
+
 "use client";
 
 import type { FC } from 'react';
@@ -27,6 +28,8 @@ import { useToast } from "@/hooks/use-toast";
 import { Lightbulb, Wand2, BookOpen, Music, Shuffle, ListFilter, Star, Copy, Trash2, MessageSquare, Settings2, Rows, Columns, Music2, Guitar, SlidersHorizontal, Users, Library, Brain, Search, RefreshCw, Mic2, Edit3, Palette, FileText, Save, FolderOpen, X, ChevronDown, Plus, ChevronsUpDown, Settings, Sparkles, Loader2 } from 'lucide-react';
 
 import * as ai from '@/app/actions/ai';
+import type { MelodyIdeaOutput } from '@/ai/flows/melody-maker-memo';
+
 
 // Helper types and interfaces
 interface Phrase {
@@ -60,7 +63,7 @@ const AppClientPage: FC = () => {
   const [bridgeContext, setBridgeContext] = useState("");
   const [bridgePrompt, setBridgePrompt] = useState("Ideas for your bridge...");
   const [bridgeLoader, setBridgeLoader] = useState(false);
-  const [melodyIdea, setMelodyIdea] = useState("Melodic thoughts await...");
+  const [melodyIdeaOutput, setMelodyIdeaOutput] = useState<MelodyIdeaOutput | string>("Melodic thoughts await...");
   const [melodyIdeaLoader, setMelodyIdeaLoader] = useState(false);
   const [rhythmIdea, setRhythmIdea] = useState("Rhythmic inspiration awaits...");
   const [rhythmIdeaLoader, setRhythmIdeaLoader] = useState(false);
@@ -142,7 +145,7 @@ const AppClientPage: FC = () => {
   const [ideaCatcherText, setIdeaCatcherText] = useState("");
   const [melodicIdeasText, setMelodicIdeasText] = useState("");
   const [songCanvasText, setSongCanvasText] = useState("");
-  const [songCanvasFont, setSongCanvasFont] = useState("'Special Elite', cursive");
+  const [songCanvasFont, setSongCanvasFont] = useState("var(--font-special-elite), cursive");
   const [projectStatusMessage, setProjectStatusMessage] = useState("");
   
   const [tipBoxText, setTipBoxText] = useState("");
@@ -203,8 +206,30 @@ const AppClientPage: FC = () => {
     const initialRawPhrases = [ 
       "Absolute chaos", "Velvet rain", "Dusty road", "Midnight train", "Golden tear",
       "Autumn wind", "Bitter truth", "Canyon echo", "Desert bloom", "Endless road",
-      // ... (include all phrases from user's HTML)
-      "Zigzag Trail", "Zillion Stars"
+      "Fading light", "Frozen tear", "Gentle hum", "Ghostly sigh", "Haunted mile",
+      "Hollow sound", "Iron will", "Jagged edge", "Lost cause", "Lucid dream",
+      "Magic hour", "Neon glow", "Noble heart", "Open sky", "Quiet night",
+      "Raging fire", "Sacred ground", "Shattered glass", "Silent scream", "Silver moon",
+      "Steel resolve", "Stolen kiss", "Sudden chill", "Sweet despair", "Tender touch",
+      "Twilight zone", "Twisted vine", "Velvet fog", "Violent storm", "Wandering soul",
+      "Whispered word", "Wild desire", "Worn-out shoes", "Amber glow", "Ashen sky",
+      "Barren field", "Borrowed time", "Broken vow", "Burning bridge", "Changing tide",
+      "Crooked smile", "Crystal stream", "Dancing flame", "Distant shore", "Empty room",
+      "Fallen star", "Fatal flaw", "Final bow", "Forgotten song", "Frozen heart",
+      "Guiding light", "Hidden scar", "Humble prayer", "Inner voice", "Last goodbye",
+      "Lonely hour", "Misty dawn", "Narrow path", "New beginning", "Old guitar",
+      "Pale moonlight", "Perfect crime", "Phantom limb", "Quiet town", "Rebel yell",
+      "Restless heart", "Rising sun", "Rocky ground", "Sacred oath", "Sad cafe",
+      "Secret wish", "Shadow play", "Shining armor", "Silver lining", "Simple truth",
+      "Sleeping giant", "Slow burn", "Smoking gun", "Sole survivor", "Somber mood",
+      "Southern drawl", "Steel guitar", "Stone cold", "Stormy weather", "Strange brew",
+      "Streetlight halo", "Sudden fear", "Summer rain", "Sweet surrender", "Tangled web",
+      "Tattered flag", "Temple bell", "Thin disguise", "Thousand lies", "Thunder road",
+      "Timeless tale", "Troubled mind", "True north", "Twilight years", "Twisted fate",
+      "Unbroken chain", "Uncommon man", "Unknown soldier", "Unseen hand", "Untold story",
+      "Velvet glove", "Victory lap", "Vintage wine", "Wasted youth", "Weathered face",
+      "Whiskey neat", "White knuckle", "Wild frontier", "Winter chill", "Wooden spoon",
+      "Wounded knee", "Yellow moon", "Yesterday's news", "Young blood", "Zero hour", "Zigzag Trail", "Zillion Stars"
     ];
     const processed = initialRawPhrases.map(phrase => {
         const parts = phrase.split(' ');
@@ -405,7 +430,7 @@ const AppClientPage: FC = () => {
 
   const handleToolAction = async (
     action: () => Promise<{success: boolean, data?: any, error?: string}>, 
-    setter: (value: string) => void, 
+    setter: (value: any) => void, // Changed to 'any' to accommodate complex objects
     loaderSetter: (value: boolean) => void,
     initialText: string
   ) => {
@@ -413,8 +438,11 @@ const AppClientPage: FC = () => {
     setter("Thinking...");
     const result = await action();
     if (result.success && result.data) {
-      let content = "";
+      let content: any;
       if (typeof result.data === 'string') content = result.data;
+      else if (result.data.overallConcept) { // Handle MelodyIdeaOutput
+        content = result.data; // Store the whole object
+      }
       else if (result.data.rhymeIdea) content = result.data.rhythmIdea; // example for rhythm
       else if (result.data.prompt) content = result.data.prompt; // example for muse
       else if (result.data.title) content = result.data.title; // example for album title
@@ -601,6 +629,50 @@ const AppClientPage: FC = () => {
     }
     setWordAssociationInput("");
     setWordAssociationLoader(false);
+  };
+
+  const formatMelodyIdeaOutput = (output: MelodyIdeaOutput | string): string | JSX.Element => {
+    if (typeof output === 'string') {
+      return output;
+    }
+    if (output && typeof output === 'object' && output.overallConcept) {
+      let content = [];
+      content.push(<strong key="ocH">Overall Concept:</strong>);
+      content.push(<span key="ocC" style={{ whiteSpace: 'pre-wrap'}}>{`\n${output.overallConcept}\n\n`}</span>);
+      
+      content.push(<strong key="saH">Suggested Approach:</strong>);
+      content.push(<span key="saC" style={{ whiteSpace: 'pre-wrap'}}>{`\n${output.suggestedApproach}\n\n`}</span>);
+
+      if (output.moodAndScales) {
+        content.push(<strong key="msH">Mood & Scales:</strong>);
+        content.push(<span key="msC" style={{ whiteSpace: 'pre-wrap'}}>{`\n${output.moodAndScales}\n\n`}</span>);
+      }
+      if (output.rhythmicIdeas) {
+        content.push(<strong key="riH">Rhythmic Ideas:</strong>);
+        content.push(<span key="riC" style={{ whiteSpace: 'pre-wrap'}}>{`\n${output.rhythmicIdeas}\n\n`}</span>);
+      }
+      if (output.keyConsiderations) {
+        content.push(<strong key="kcH">Key Considerations:</strong>);
+        content.push(<span key="kcC" style={{ whiteSpace: 'pre-wrap'}}>{`\n${output.keyConsiderations}`}</span>);
+      }
+      return <>{content}</>;
+    }
+    return "Melodic thoughts await...";
+  };
+  
+  const getMelodyIdeaTextForCanvas = (output: MelodyIdeaOutput | string): string => {
+    if (typeof output === 'string') {
+      return output.startsWith("Error:") || output === "Melodic thoughts await..." || output === "Thinking..." ? "" : output;
+    }
+    if (output && typeof output === 'object' && output.overallConcept) {
+      let text = `Overall Concept:\n${output.overallConcept}\n\n`;
+      text += `Suggested Approach:\n${output.suggestedApproach}\n\n`;
+      if (output.moodAndScales) text += `Mood & Scales:\n${output.moodAndScales}\n\n`;
+      if (output.rhythmicIdeas) text += `Rhythmic Ideas:\n${output.rhythmicIdeas}\n\n`;
+      if (output.keyConsiderations) text += `Key Considerations:\n${output.keyConsiderations}\n`;
+      return text.trim();
+    }
+    return "";
   };
 
 
@@ -799,13 +871,15 @@ const AppClientPage: FC = () => {
                 <CardHeader><CardTitle className="melody-spark-title subsection-title">Melody Maker's Memo</CardTitle></CardHeader>
                 <CardContent>
                     <p className="text-gray-700 mb-4 dylan-quote text-sm">"May your song always be sung."</p>
-                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdea, setMelodyIdeaLoader, "Melodic thoughts await...")} disabled={melodyIdeaLoader} className="w-full btn-tertiary">
+                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdeaOutput, setMelodyIdeaLoader, "Melodic thoughts await...")} disabled={melodyIdeaLoader} className="w-full btn-tertiary">
                         {melodyIdeaLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Music2 className="mr-2 h-4 w-4" />} Get Melodic Idea!
                     </Button>
-                    <div className="output-display-area" id="melodyIdeaDisplayOutput">{melodyIdea}</div>
-                    {melodyIdea !== "Melodic thoughts await..." && !melodyIdea.startsWith("Error") && (
+                    <div className="output-display-area" id="melodyIdeaDisplayOutput">
+                      {formatMelodyIdeaOutput(melodyIdeaOutput)}
+                    </div>
+                    {getMelodyIdeaTextForCanvas(melodyIdeaOutput) && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', melodyIdea)} className="btn-send-canvas">Add to Melodic Ideas</Button>
+                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', getMelodyIdeaTextForCanvas(melodyIdeaOutput))} className="btn-send-canvas">Add to Melodic Ideas</Button>
                         </div>
                     )}
                 </CardContent>
