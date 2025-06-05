@@ -9,42 +9,42 @@ body {
 
 @layer base {
   :root {
-    /* New Palette: Stippling Flowers Graffiti Abandoned Building */
-    --background: 210 15% 96%; /* Pale, slightly cool off-white - like a primed wall or old paper */
-    --foreground: 210 10% 25%; /* Dark, slightly desaturated blue-grey - for text */
+    /* New Palette: Stippling Flowers Graffiti Abandoned Building - No Pink/Neon, Textured BG feel */
+    --background: 40 30% 96%; /* Very pale, warm off-white - like aged paper/primed wall */
+    --foreground: 40 10% 25%; /* Dark, slightly warm desaturated brown-grey - for text */
     
-    --card: 210 10% 90%; /* Light grey - concrete slab feel or aged paper */
-    --card-foreground: 210 10% 25%;
+    --card: 40 25% 92%; /* Slightly darker aged paper/light concrete */
+    --card-foreground: 40 10% 25%;
     
-    --popover: 210 10% 92%; /* Slightly lighter popover */
-    --popover-foreground: 210 10% 25%;
+    --popover: 40 25% 94%; /* Slightly lighter popover on aged paper */
+    --popover-foreground: 40 10% 25%;
     
-    --primary: 330 60% 60%; /* Muted Magenta - graffiti accent */
+    --primary: 220 50% 55%; /* Deep, fairly saturated blue - graffiti accent (replaces magenta) */
     --primary-foreground: 0 0% 100%; /* White */
     
-    --secondary: 25 80% 60%; /* Dusty Orange - graffiti accent */
-    --secondary-foreground: 210 10% 15%; /* Very dark grey/black for contrast on orange */
+    --secondary: 25 70% 58%; /* Dusty Orange, less saturated - graffiti accent */
+    --secondary-foreground: 25 10% 15%; /* Very dark brown for contrast on orange */
     
-    --muted: 30 15% 88%; /* Desaturated light beige/grey - weathered look, like old concrete */
-    --muted-foreground: 210 10% 45%; /* Medium desaturated blue-grey */
+    --muted: 40 20% 88%; /* Desaturated light beige/grey - weathered concrete */
+    --muted-foreground: 40 10% 45%; /* Medium desaturated brown-grey */
     
-    --accent: 180 40% 55%; /* Faded Teal/Cyan - graffiti accent or "oxidized metal" */
+    --accent: 170 40% 50%; /* Faded Teal/Green - graffiti accent or "oxidized metal" */
     --accent-foreground: 0 0% 100%; /* White */
     
     --destructive: 0 60% 50%; /* Slightly desaturated red - like faded warning paint */
     --destructive-foreground: 0 0% 100%;
     
-    --border: 210 10% 65%; /* Medium grey - for general borders, like cracks or outlines */
-    --input: 210 15% 98%; /* Very light, clean input area, like a fresh page in a found journal */
-    --ring: 330 60% 60%; /* Primary magenta for focus rings - graffiti highlight */
+    --border: 40 15% 70%; /* Medium warm grey - for general borders, like cracks or outlines */
+    --input: 40 30% 98%; /* Very light, clean input area, like a fresh page in a found journal */
+    --ring: 220 50% 55%; /* Primary blue for focus rings - graffiti highlight */
     
     --radius: 0.3rem; /* Slightly sharper radius for a more "industrial" or cut-out feel */
 
-    /* Chart colors - graffiti inspired */
-    --chart-1: 330 60% 70%; /* Lighter Magenta */
-    --chart-2: 25 80% 70%;   /* Lighter Orange */
-    --chart-3: 180 40% 65%; /* Lighter Teal */
-    --chart-4: 210 10% 40%; /* Dark Grey */
+    /* Chart colors - graffiti inspired, adjusted for new palette */
+    --chart-1: 220 50% 65%; /* Lighter Blue */
+    --chart-2: 25 70% 68%;   /* Lighter Orange */
+    --chart-3: 170 40% 60%; /* Lighter Teal/Green */
+    --chart-4: 40 10% 40%;  /* Dark Warm Grey */
     --chart-5: 35 40% 50%;  /* Ochre/Brown - like rust or earth */
 
     /* Custom font variables (existing) */
@@ -60,34 +60,34 @@ body {
   }
 
   .dark {
-    /* Dark Mode - Abandoned building at night, lit by stray light */
-    --background: 210 10% 12%; /* Very dark, slightly desaturated blue-grey */
-    --foreground: 210 15% 85%; /* Light grey/off-white text - chalk marks */
+    /* Dark Mode - Abandoned building at night, lit by stray light - No Pink/Neon */
+    --background: 220 10% 12%; /* Very dark, slightly desaturated blue-grey */
+    --foreground: 220 15% 85%; /* Light grey/off-white text - chalk marks */
     
-    --card: 210 10% 18%; /* Darker grey slab */
-    --card-foreground: 210 15% 85%;
+    --card: 220 10% 18%; /* Darker grey slab */
+    --card-foreground: 220 15% 85%;
     
-    --popover: 210 10% 15%;
-    --popover-foreground: 210 15% 85%;
+    --popover: 220 10% 15%;
+    --popover-foreground: 220 15% 85%;
     
-    --primary: 330 70% 70%; /* Brighter Magenta for dark mode */
-    --primary-foreground: 210 10% 10%; 
+    --primary: 220 60% 70%; /* Brighter Blue for dark mode (replaces magenta) */
+    --primary-foreground: 220 10% 10%; 
     
-    --secondary: 25 90% 70%; /* Brighter Orange for dark mode */
-    --secondary-foreground: 210 10% 10%; 
+    --secondary: 25 80% 70%; /* Brighter Dusty Orange for dark mode, less saturated */
+    --secondary-foreground: 25 10% 10%; 
     
-    --muted: 210 10% 25%; /* Dark muted grey */
-    --muted-foreground: 210 15% 70%; 
+    --muted: 220 10% 25%; /* Dark muted grey */
+    --muted-foreground: 220 15% 70%; 
     
-    --accent: 180 50% 65%; /* Brighter Teal for dark mode */
-    --accent-foreground: 180 100% 15%; 
+    --accent: 170 50% 65%; /* Brighter Faded Teal/Green for dark mode */
+    --accent-foreground: 170 100% 15%; 
     
     --destructive: 0 70% 60%; 
     --destructive-foreground: 0 0% 10%;
     
-    --border: 210 10% 40%; 
-    --input: 210 10% 22%; 
-    --ring: 330 70% 70%;
+    --border: 220 10% 40%; 
+    --input: 220 10% 22%; 
+    --ring: 220 60% 70%; /* Primary blue for dark mode focus rings */
   }
 }
 
@@ -102,7 +102,7 @@ body {
   
   .page-title-font {
     font-family: var(--font-rock-salt); /* Graffiti-esque */
-    color: hsl(var(--primary)); /* Magenta */
+    color: hsl(var(--primary)); /* Use new primary blue */
     overflow-wrap: break-word;
     word-break: break-word;
   }
@@ -121,7 +121,7 @@ body {
   .handwritten-section-title-font { 
     font-family: var(--font-architects-daughter); 
     font-size: 1.85rem; 
-    color: hsl(var(--accent)); /* Faded Teal */
+    color: hsl(var(--accent)); /* Faded Teal/Green */
     overflow-wrap: break-word;
     word-break: break-word;
   }
@@ -148,7 +148,7 @@ body {
     color: hsl(var(--foreground) / 0.9); 
     border-left-width: 3px;
     border-left-style: solid;
-    border-left-color: hsl(var(--accent)); /* Teal accent line */
+    border-left-color: hsl(var(--accent)); /* Teal/Green accent line */
     @apply pl-4 pr-3 py-3 mt-2 bg-card/70 rounded-sm italic; 
     overflow-wrap: break-word;
     word-break: break-word;
@@ -156,7 +156,7 @@ body {
 
   .main-section-title {
     font-family: var(--font-rock-salt); /* Graffiti style */
-    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-dashed border-border; /* Dashed like a chalk line or stencil break */
+    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-solid border-border; /* Solid border for page edge */
     overflow-wrap: break-word;
     word-break: break-word;
   }
@@ -168,11 +168,11 @@ body {
   }
   
   /* Theme colors for main section titles - graffiti accents */
-  .canvas-title { color: hsl(var(--primary)); } /* Magenta */
-  .sparks-muses-title { color: hsl(var(--accent)); } /* Teal */
+  .canvas-title { color: hsl(var(--primary)); } /* New Primary Blue */
+  .sparks-muses-title { color: hsl(var(--accent)); } /* Teal/Green */
   .lyrical-toolkit-title { color: hsl(var(--secondary)); } /* Dusty Orange */
-  .musical-toolkit-title { color: hsl(var(--primary) / 0.8); } /* Slightly faded Magenta */
-  .song-generator-title { color: hsl(var(--accent) / 0.8); } /* Slightly faded Teal */
+  .musical-toolkit-title { color: hsl(var(--primary)); } /* New Primary Blue */
+  .song-generator-title { color: hsl(var(--accent)); } /* Teal/Green */
 
   /* Sub-section title colors - graffiti accents */
   .phrase-spark-title { color: hsl(var(--secondary)); } 
@@ -210,29 +210,29 @@ body {
   }
   .loader {
     border: 4px solid hsl(var(--muted)); 
-    border-top: 4px solid hsl(var(--primary)); /* Magenta spinner */
+    border-top: 4px solid hsl(var(--primary)); /* New Primary blue spinner */
     @apply rounded-full w-8 h-8 animate-spin mx-auto my-5;
   }
   .main-section-box {
-    background-color: hsl(var(--card)); /* Concrete/aged paper */
-    @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-4 sm:p-6 mb-8 shadow-lg relative; /* Solid, worn border */
+    background-color: hsl(var(--card)); /* Aged paper/concrete */
+    @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-4 sm:p-6 mb-8 shadow-lg relative; /* Solid, worn border for page edge */
     overflow-wrap: break-word;
     word-break: break-word;
   }
 
   /* Specific background colors for sections for collage/journal page effect */
-  #introSection { background-color: hsl(var(--muted)); border-left: 4px solid hsl(var(--accent)); } /* Weathered concrete with teal graf mark */
+  #introSection { background-color: hsl(var(--muted)); border-left: 4px solid hsl(var(--accent)); } /* Weathered concrete with teal/green graf mark */
   #howToSection { background-color: hsl(var(--card) / 0.9); border-left: 4px solid hsl(var(--secondary)); } /* Slightly different paper with orange mark */
-  #songCanvasSection { background-color: hsl(var(--background)); border-top: 2px dashed hsl(var(--primary)); } /* Main paper with magenta dashed line */
-  #sparksMusesSection { background-color: hsl(var(--card) / 0.95); border-top: 2px dashed hsl(var(--accent)); } 
-  #lyricalToolkitSection { background-color: hsl(var(--card) / 0.9); border-top: 2px dashed hsl(var(--secondary)); } 
-  #musicalToolkitSection { background-color: hsl(var(--card) / 0.95); border-top: 2px dashed hsl(var(--primary)); } 
-  #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.9); border-top: 2px dashed hsl(var(--accent)); }
+  #songCanvasSection { background-color: hsl(var(--background)); border-top: 2px solid hsl(var(--primary)); } /* Main paper with blue solid line */
+  #sparksMusesSection { background-color: hsl(var(--card) / 0.95); border-top: 2px solid hsl(var(--accent)); } 
+  #lyricalToolkitSection { background-color: hsl(var(--card) / 0.9); border-top: 2px solid hsl(var(--secondary)); } 
+  #musicalToolkitSection { background-color: hsl(var(--card) / 0.95); border-top: 2px solid hsl(var(--primary)); } 
+  #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.9); border-top: 2px solid hsl(var(--accent)); }
 
   .tool-card {
     background-color: hsl(var(--background)); /* Main paper, like cutouts */
     @apply border border-dashed border-[hsl(var(--foreground)/0.4)] rounded-sm p-4 sm:p-6 shadow-md relative; /* Dashed like chalk or tape */
-    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 1deg )); /* Subtle rotation */
+    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 0.5deg )); /* Even more subtle rotation */
     overflow: hidden; 
     overflow-wrap: break-word;
     word-break: break-word;
@@ -241,7 +241,7 @@ body {
   .tool-card:nth-child(even) { --random-rotate: 0.45; }
 
   #tipBox { 
-    background-color: hsl(var(--accent)/0.15); /* Very subtle teal wash */
+    background-color: hsl(var(--accent)/0.15); /* Very subtle teal/green wash */
     border: 1px solid hsl(var(--accent)); 
     font-family: var(--font-covered-by-your-grace); /* Scribbled tip */
     color: hsl(var(--accent-foreground)); 
@@ -256,7 +256,7 @@ body {
   font-family: var(--font-bangers); /* Stencil/Graffiti style */
   font-size: 1.5rem;
   letter-spacing: 0.05em;
-  color: hsl(var(--primary)); /* Magenta */
+  color: hsl(var(--primary)); /* New primary blue */
   overflow-wrap: break-word; 
   word-break: break-word;
 }
@@ -264,7 +264,7 @@ body {
   color: hsl(var(--primary) / 0.8);
 }
 .collapsible-trigger-style > svg {
-  @apply h-6 w-6 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; 
+  @apply h-6 w-6 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; /* New primary blue */
 }
 .collapsible-trigger-style[data-state=open] > svg {
   transform: rotate(90deg); 
@@ -277,10 +277,10 @@ body {
     word-break: break-word;
 }
 .word-association-message-user {
-    @apply text-[hsl(var(--primary))] text-right mb-2; /* Magenta for user */
+    @apply text-[hsl(var(--primary))] text-right mb-2; /* New primary blue for user */
 }
 .word-association-message-ai {
-    @apply text-[hsl(var(--accent))] text-left mb-2; /* Teal for AI */
+    @apply text-[hsl(var(--accent))] text-left mb-2; /* Teal/Green for AI */
 }
 .word-association-message-user::before {
     content: 'You: ';
