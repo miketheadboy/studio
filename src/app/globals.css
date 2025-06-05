@@ -215,13 +215,13 @@ body {
   }
   .main-section-box {
     background-color: hsl(var(--card)); /* Default background for sections, can be overridden by ID */
-    @apply border-2 border-dashed border-[hsl(var(--border))] rounded-lg p-4 sm:p-6 mb-8 shadow-xl relative; /* Responsive padding */
+    @apply border-2 border-solid border-[hsl(var(--border))] rounded-lg p-4 sm:p-6 mb-8 shadow-xl relative; /* Changed to solid border, responsive padding */
   }
 
   /* Specific background colors for sections for collage/journal page effect - now opaque */
   #introSection { background-color: hsl(var(--muted)); border-left: 5px solid hsl(var(--accent)); }
-  #howToSection { background-color: hsl(45 50% 92%); border-left: 5px solid hsl(var(--secondary)); } /* Slightly different paper */
-  #songCanvasSection { background-color: hsl(var(--card)); border-top: 5px dashed hsl(var(--primary)); } 
+  #howToSection { background-color: hsl(45 60% 90%); border-left: 5px solid hsl(var(--secondary)); } /* Made this slightly darker/more distinct beige */
+  #songCanvasSection { background-color: hsl(40 50% 94%); border-top: 5px dashed hsl(var(--primary)); } /* Made this a slightly more distinct off-white */
   #sparksMusesSection { background-color: hsl(50 100% 95%); border-top: 5px dashed hsl(var(--accent)); } /* Light yellow paper */
   #lyricalToolkitSection { background-color: hsl(200 70% 95%); border-top: 5px dashed hsl(200 70% 50%); } 
   #musicalToolkitSection { background-color: hsl(0 80% 95%); border-top: 5px dashed hsl(var(--secondary)); } 
@@ -350,5 +350,7 @@ body {
 .main-section-box .pb-4.pt-0 { /* Targeting AccordionContent inner div */
   overflow-x: hidden; /* Prevent horizontal overflow from accordion content */
 }
+
+    
 
     
