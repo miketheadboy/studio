@@ -9,43 +9,43 @@ body {
 
 @layer base {
   :root {
-    /* New Palette: Blues, Reds, Yellows, Sketchbook Paper */
-    --background: 45 50% 96%; /* #f9f7f2 - Sketchbook paper */
-    --foreground: 210 30% 25%; /* #2a3b4d - Dark blue/charcoal for text */
+    /* New Palette: Stippling Flowers Graffiti Abandoned Building */
+    --background: 210 15% 96%; /* Pale, slightly cool off-white - like a primed wall or old paper */
+    --foreground: 210 10% 25%; /* Dark, slightly desaturated blue-grey - for text */
     
-    --card: 40 60% 97%; /* #faf6f2 - Slightly warmer paper, like a pasted note */
-    --card-foreground: 210 30% 25%;
+    --card: 210 10% 90%; /* Light grey - concrete slab feel or aged paper */
+    --card-foreground: 210 10% 25%;
     
-    --popover: 40 60% 97%;
-    --popover-foreground: 210 30% 25%;
+    --popover: 210 10% 92%; /* Slightly lighter popover */
+    --popover-foreground: 210 10% 25%;
     
-    --primary: 210 70% 50%; /* #3377cc - Strong Blue */
-    --primary-foreground: 0 0% 100%; /* #ffffff - White */
+    --primary: 330 60% 60%; /* Muted Magenta - graffiti accent */
+    --primary-foreground: 0 0% 100%; /* White */
     
-    --secondary: 0 80% 60%; /* #ff4d4d - Bright Red */
-    --secondary-foreground: 0 0% 100%; /* #ffffff - White */
+    --secondary: 25 80% 60%; /* Dusty Orange - graffiti accent */
+    --secondary-foreground: 210 10% 15%; /* Very dark grey/black for contrast on orange */
     
-    --muted: 50 60% 90%; /* #f2e9c9 - Very light dull yellow */
-    --muted-foreground: 210 30% 45%; /* #4c6279 - Softer dark blue */
+    --muted: 30 15% 88%; /* Desaturated light beige/grey - weathered look, like old concrete */
+    --muted-foreground: 210 10% 45%; /* Medium desaturated blue-grey */
     
-    --accent: 50 100% 60%; /* #ffcc33 - Bright Yellow */
-    --accent-foreground: 210 30% 20%; /* #212f3c - Darker text for yellow accent */
+    --accent: 180 40% 55%; /* Faded Teal/Cyan - graffiti accent or "oxidized metal" */
+    --accent-foreground: 0 0% 100%; /* White */
     
-    --destructive: 0 70% 55%; /* #e04c4c - A clear but not overly harsh red */
+    --destructive: 0 60% 50%; /* Slightly desaturated red - like faded warning paint */
     --destructive-foreground: 0 0% 100%;
     
-    --border: 210 30% 70%; /* #9cb2c8 - Muted blue border */
-    --input: 45 50% 98%; /* #fcfaf5 - Lighter paper for input */
-    --ring: 210 70% 50%; /* Primary blue for rings */
+    --border: 210 10% 65%; /* Medium grey - for general borders, like cracks or outlines */
+    --input: 210 15% 98%; /* Very light, clean input area, like a fresh page in a found journal */
+    --ring: 330 60% 60%; /* Primary magenta for focus rings - graffiti highlight */
     
-    --radius: 0.5rem;
+    --radius: 0.3rem; /* Slightly sharper radius for a more "industrial" or cut-out feel */
 
-    /* Chart colors (can be adjusted if charts are used) */
-    --chart-1: 210 70% 60%; /* Lighter Blue */
-    --chart-2: 0 80% 70%;   /* Lighter Red */
-    --chart-3: 50 100% 70%; /* Lighter Yellow */
-    --chart-4: 220 50% 65%; /* Muted Indigo */
-    --chart-5: 30 90% 60%;  /* Orange-Yellow */
+    /* Chart colors - graffiti inspired */
+    --chart-1: 330 60% 70%; /* Lighter Magenta */
+    --chart-2: 25 80% 70%;   /* Lighter Orange */
+    --chart-3: 180 40% 65%; /* Lighter Teal */
+    --chart-4: 210 10% 40%; /* Dark Grey */
+    --chart-5: 35 40% 50%;  /* Ochre/Brown - like rust or earth */
 
     /* Custom font variables (existing) */
     --font-rock-salt: 'Rock Salt', cursive;
@@ -60,34 +60,34 @@ body {
   }
 
   .dark {
-    /* Dark Mode - Sketchbook at night! */
-    --background: 210 30% 15%; /* #1c2633 - Very dark blue */
-    --foreground: 45 50% 85%; /* #e1dccd - Light paper text */
+    /* Dark Mode - Abandoned building at night, lit by stray light */
+    --background: 210 10% 12%; /* Very dark, slightly desaturated blue-grey */
+    --foreground: 210 15% 85%; /* Light grey/off-white text - chalk marks */
     
-    --card: 210 30% 20%; /* #212f3c - Darker card */
-    --card-foreground: 45 50% 85%;
+    --card: 210 10% 18%; /* Darker grey slab */
+    --card-foreground: 210 15% 85%;
     
-    --popover: 210 30% 20%;
-    --popover-foreground: 45 50% 85%;
+    --popover: 210 10% 15%;
+    --popover-foreground: 210 15% 85%;
     
-    --primary: 210 80% 70%; /* #80b3ff - Brighter Blue for dark mode */
-    --primary-foreground: 210 30% 10%; /* #111a24 */
+    --primary: 330 70% 70%; /* Brighter Magenta for dark mode */
+    --primary-foreground: 210 10% 10%; 
     
-    --secondary: 0 90% 75%; /* #ff9999 - Brighter Red for dark mode */
-    --secondary-foreground: 0 0% 10%; /* #1a1a1a */
+    --secondary: 25 90% 70%; /* Brighter Orange for dark mode */
+    --secondary-foreground: 210 10% 10%; 
     
-    --muted: 210 30% 25%; /* #2a3b4d - Dark muted */
-    --muted-foreground: 210 30% 65%; /* #8ea4ba */
+    --muted: 210 10% 25%; /* Dark muted grey */
+    --muted-foreground: 210 15% 70%; 
     
-    --accent: 50 100% 70%; /* #ffdd66 - Brighter Yellow for dark mode */
-    --accent-foreground: 50 100% 20%; /* #664c00 */
+    --accent: 180 50% 65%; /* Brighter Teal for dark mode */
+    --accent-foreground: 180 100% 15%; 
     
-    --destructive: 0 80% 65%; /* #ff8080 */
+    --destructive: 0 70% 60%; 
     --destructive-foreground: 0 0% 10%;
     
-    --border: 210 30% 40%; /* #40556b */
-    --input: 210 30% 22%; /* #253442 */
-    --ring: 210 80% 70%;
+    --border: 210 10% 40%; 
+    --input: 210 10% 22%; 
+    --ring: 330 70% 70%;
   }
 }
 
@@ -97,191 +97,190 @@ body {
   }
   body {
     @apply bg-background text-foreground;
-    font-family: var(--font-special-elite), var(--font-inter), sans-serif; /* Applied default */
+    font-family: var(--font-special-elite), var(--font-inter), sans-serif;
   }
   
   .page-title-font {
-    font-family: var(--font-rock-salt);
-    color: hsl(var(--primary)); /* Use primary blue */
+    font-family: var(--font-rock-salt); /* Graffiti-esque */
+    color: hsl(var(--primary)); /* Magenta */
     overflow-wrap: break-word;
     word-break: break-word;
   }
   .handwritten-main-title-font { 
     font-family: var(--font-homemade-apple); 
     font-size: 2.5rem; 
-    color: hsl(var(--secondary-foreground) / 80%); 
-    background-color: hsl(var(--secondary)); 
+    color: hsl(var(--secondary-foreground)); 
+    background-color: hsl(var(--secondary)); /* Dusty Orange BG */
     padding: 0.2em 0.5em; 
     display: inline-block; 
-    transform: rotate(-2deg); 
-    box-shadow: 3px 3px 0px hsl(var(--foreground) / 0.2); 
+    transform: rotate(-1.5deg); 
+    box-shadow: 2px 2px 0px hsl(var(--foreground) / 0.3); 
     overflow-wrap: break-word;
     word-break: break-word;
   } 
   .handwritten-section-title-font { 
     font-family: var(--font-architects-daughter); 
     font-size: 1.85rem; 
-    color: hsl(var(--primary)); 
+    color: hsl(var(--accent)); /* Faded Teal */
     overflow-wrap: break-word;
     word-break: break-word;
   }
   .typewriter-font { 
     font-family: var(--font-special-elite); 
   } 
-  .alt-heading-font { 
+  .alt-heading-font { /* Could be for stenciled-look headers */
     font-family: var(--font-bangers); 
     letter-spacing: 0.05em; 
-    color: hsl(var(--secondary)); 
+    color: hsl(var(--secondary)); /* Dusty Orange */
     overflow-wrap: break-word;
     word-break: break-word;
   }
-  .scrapbook-note-font { 
+  .scrapbook-note-font { /* For smaller, scribbled notes */
     font-family: var(--font-covered-by-your-grace); 
     font-size: 1.1rem; 
-    color: hsl(var(--foreground) / 0.9); 
+    color: hsl(var(--muted-foreground)); 
     overflow-wrap: break-word;
     word-break: break-word;
   }
-  .dylan-quote {
+  .dylan-quote { /* Like graffiti or a found note */
     font-family: var(--font-nothing-you-could-do);
     font-size: 1.3rem;
-    color: hsl(var(--muted-foreground)); 
-    border-left-width: 4px;
-    border-left-style: dashed;
-    border-left-color: hsl(var(--accent)); /* Bright yellow */
-    @apply pl-4 pr-3 py-3 mt-2 italic bg-muted/30 rounded-sm; /* Increased padding */
+    color: hsl(var(--foreground) / 0.9); 
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: hsl(var(--accent)); /* Teal accent line */
+    @apply pl-4 pr-3 py-3 mt-2 bg-card/70 rounded-sm italic; 
     overflow-wrap: break-word;
     word-break: break-word;
   }
 
   .main-section-title {
-    font-family: var(--font-rock-salt);
-    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-dashed border-accent; /* Yellow dashed border */
+    font-family: var(--font-rock-salt); /* Graffiti style */
+    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-dashed border-border; /* Dashed like a chalk line or stencil break */
     overflow-wrap: break-word;
     word-break: break-word;
   }
   .subsection-title {
-    font-family: var(--font-architects-daughter);
+    font-family: var(--font-architects-daughter); /* Sketchy graffiti */
     @apply text-xl sm:text-2xl mb-3;
     overflow-wrap: break-word;
     word-break: break-word;
   }
   
-  /* Theme colors for main section titles */
-  .canvas-title { color: hsl(var(--primary)); } /* Blue */
-  .sparks-muses-title { color: hsl(var(--accent)); } /* Yellow */
-  .lyrical-toolkit-title { color: hsl(200 70% 50%); } /* Another Blue */
-  .musical-toolkit-title { color: hsl(var(--secondary)); } /* Red */
-  .song-generator-title { color: hsl(25 80% 55%); } /* Orange-ish for contrast */
+  /* Theme colors for main section titles - graffiti accents */
+  .canvas-title { color: hsl(var(--primary)); } /* Magenta */
+  .sparks-muses-title { color: hsl(var(--accent)); } /* Teal */
+  .lyrical-toolkit-title { color: hsl(var(--secondary)); } /* Dusty Orange */
+  .musical-toolkit-title { color: hsl(var(--primary) / 0.8); } /* Slightly faded Magenta */
+  .song-generator-title { color: hsl(var(--accent) / 0.8); } /* Slightly faded Teal */
 
-  /* Sub-section title colors - map to new palette */
-  .phrase-spark-title { color: hsl(30 90% 58%); } /* Orange/Yellow */
-  .sonic-lab-title { color: hsl(190 60% 50%); } /* Cyan/Blue */
-  .lyrical-mood-ring-title { color: hsl(220 60% 60%); } /* Indigo/Blue */
-  .song-structure-title { color: hsl(var(--accent)); } /* Yellow */
-  .metaphor-builder-title { color: hsl(240 50% 65%); } /* Purple/Blue */
-  .riff-altar-title { color: hsl(var(--secondary)); } /* Red */
-  .chord-forge-title { color: hsl(var(--accent)); } /* Yellow */
-  .chord-reharmonizer-title { color: hsl(260 50% 60%); } /* Purple */
-  .chord-voicing-title { color: hsl(120 40% 55%); } /* Greenish - for variety */
-  .instrumentation-title { color: hsl(240 50% 65%); } 
-  .artist-inspiration-title { color: hsl(240 50% 65%); } 
-  .muse-whisper-title { color: hsl(var(--primary));} /* Blue */
-  .name-that-noise-title { color: hsl(var(--accent)); } /* Yellow */
-  .poets-corner-title { color: hsl(var(--secondary)); } /* Red */
-  .bridge-builder-title { color: hsl(30 50% 64%); } 
-  .melody-spark-title { color: hsl(200 50% 60%); } /* Light Blue */
-  .study-song-title { color: hsl(200 50% 60%); } 
-  .rhythm-architect-title { color: hsl(280 50% 56%); } /* Purple */
+  /* Sub-section title colors - graffiti accents */
+  .phrase-spark-title { color: hsl(var(--secondary)); } 
+  .sonic-lab-title { color: hsl(var(--accent)); } 
+  .lyrical-mood-ring-title { color: hsl(var(--primary)); } 
+  .song-structure-title { color: hsl(var(--accent)); } 
+  .metaphor-builder-title { color: hsl(var(--primary)); } 
+  .riff-altar-title { color: hsl(var(--secondary)); } 
+  .chord-forge-title { color: hsl(var(--accent)); } 
+  .chord-reharmonizer-title { color: hsl(var(--primary)); } 
+  .chord-voicing-title { color: hsl(var(--secondary)); } 
+  .instrumentation-title { color: hsl(var(--accent)); } 
+  .artist-inspiration-title { color: hsl(var(--primary)); } 
+  .muse-whisper-title { color: hsl(var(--secondary));} 
+  .name-that-noise-title { color: hsl(var(--accent)); } 
+  .poets-corner-title { color: hsl(var(--primary)); } 
+  .bridge-builder-title { color: hsl(var(--secondary)); } 
+  .melody-spark-title { color: hsl(var(--accent)); } 
+  .study-song-title { color: hsl(var(--primary)); } 
+  .rhythm-architect-title { color: hsl(var(--secondary)); } 
   .word-association-title { color: hsl(var(--foreground) / 0.8); } 
-  .rhyme-scheme-title { color: hsl(300 70% 50%); } /* Magenta */
-  .section-expander-title { color: hsl(33 100% 50%); } /* Dark Orange */
+  .rhyme-scheme-title { color: hsl(var(--accent)); } 
+  .section-expander-title { color: hsl(var(--primary)); } 
 
   .output-display-area {
-    @apply mt-4 p-4 bg-white rounded border-2 border-dashed border-muted-foreground shadow-inner min-h-[80px] whitespace-pre-wrap; /* Increased min-height and padding */
-    font-family: var(--font-special-elite); /* Explicitly ensure typewriter font */
+    @apply mt-4 p-4 bg-input rounded border border-dashed border-border shadow-inner min-h-[80px] whitespace-pre-wrap; /* Like a taped-on piece of paper */
+    font-family: var(--font-special-elite); 
     color: hsl(var(--foreground));
-    line-height: 1.7; /* Slightly increased line-height */
-    overflow-wrap: break-word; /* Crucial for breaking long words */
-    word-break: break-word; /* Alternative, often interchangeable */
+    line-height: 1.7; 
+    overflow-wrap: break-word; 
+    word-break: break-word; 
   }
   .send-buttons-container {
     @apply mt-4 flex gap-3 flex-wrap;
   }
   .loader {
     border: 4px solid hsl(var(--muted)); 
-    border-top: 4px solid hsl(var(--primary)); /* Blue spinner */
+    border-top: 4px solid hsl(var(--primary)); /* Magenta spinner */
     @apply rounded-full w-8 h-8 animate-spin mx-auto my-5;
   }
   .main-section-box {
-    background-color: hsl(var(--card)); /* Default background for sections, can be overridden by ID */
-    @apply border-2 border-solid border-[hsl(var(--border))] rounded-lg p-4 sm:p-6 mb-8 shadow-xl relative; /* Changed to solid border, responsive padding */
+    background-color: hsl(var(--card)); /* Concrete/aged paper */
+    @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-4 sm:p-6 mb-8 shadow-lg relative; /* Solid, worn border */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
-  /* Specific background colors for sections for collage/journal page effect - now opaque */
-  #introSection { background-color: hsl(var(--muted)); border-left: 5px solid hsl(var(--accent)); }
-  #howToSection { background-color: hsl(45 60% 90%); border-left: 5px solid hsl(var(--secondary)); } /* Made this slightly darker/more distinct beige */
-  #songCanvasSection { background-color: hsl(40 50% 94%); border-top: 5px dashed hsl(var(--primary)); } /* Made this a slightly more distinct off-white */
-  #sparksMusesSection { background-color: hsl(50 100% 95%); border-top: 5px dashed hsl(var(--accent)); } /* Light yellow paper */
-  #lyricalToolkitSection { background-color: hsl(200 70% 95%); border-top: 5px dashed hsl(200 70% 50%); } 
-  #musicalToolkitSection { background-color: hsl(0 80% 95%); border-top: 5px dashed hsl(var(--secondary)); } 
-  #completeSongGeneratorSection { background-color: hsl(25 80% 95%); border-top: 5px dashed hsl(25 80% 55%); }
+  /* Specific background colors for sections for collage/journal page effect */
+  #introSection { background-color: hsl(var(--muted)); border-left: 4px solid hsl(var(--accent)); } /* Weathered concrete with teal graf mark */
+  #howToSection { background-color: hsl(var(--card) / 0.9); border-left: 4px solid hsl(var(--secondary)); } /* Slightly different paper with orange mark */
+  #songCanvasSection { background-color: hsl(var(--background)); border-top: 2px dashed hsl(var(--primary)); } /* Main paper with magenta dashed line */
+  #sparksMusesSection { background-color: hsl(var(--card) / 0.95); border-top: 2px dashed hsl(var(--accent)); } 
+  #lyricalToolkitSection { background-color: hsl(var(--card) / 0.9); border-top: 2px dashed hsl(var(--secondary)); } 
+  #musicalToolkitSection { background-color: hsl(var(--card) / 0.95); border-top: 2px dashed hsl(var(--primary)); } 
+  #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.9); border-top: 2px dashed hsl(var(--accent)); }
 
   .tool-card {
-    background-color: hsl(var(--background)); /* Use main background for cards to make them look like cutouts on the section */
-    @apply border-2 border-dotted border-[hsl(var(--foreground)/0.5)] rounded-md p-4 sm:p-6 shadow-lg relative; /* Responsive padding */
-    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 1.5deg )); /* Reduced Random small rotation for collage */
-    overflow: hidden; /* Helps contain children if absolutely necessary, but padding/wrapping is preferred */
+    background-color: hsl(var(--background)); /* Main paper, like cutouts */
+    @apply border border-dashed border-[hsl(var(--foreground)/0.4)] rounded-sm p-4 sm:p-6 shadow-md relative; /* Dashed like chalk or tape */
+    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 1deg )); /* Subtle rotation */
+    overflow: hidden; 
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
-  .tool-card:nth-child(odd) { --random-rotate: 0.6; }
-  .tool-card:nth-child(even) { --random-rotate: 0.4; }
-
-
-  .collapsible-content .tool-card {
-    background-color: hsl(var(--background)); 
-  }
+  .tool-card:nth-child(odd) { --random-rotate: 0.55; }
+  .tool-card:nth-child(even) { --random-rotate: 0.45; }
 
   #tipBox { 
-    background-color: hsl(var(--accent)/0.8); /* Slightly more opaque yellow */
-    border: 2px dashed hsl(var(--accent)); 
-    font-family: var(--font-covered-by-your-grace);
+    background-color: hsl(var(--accent)/0.15); /* Very subtle teal wash */
+    border: 1px solid hsl(var(--accent)); 
+    font-family: var(--font-covered-by-your-grace); /* Scribbled tip */
     color: hsl(var(--accent-foreground)); 
-    @apply p-4 mb-6 rounded-md text-center text-lg shadow-md;
+    @apply p-4 mb-6 rounded-sm text-center text-lg shadow-sm;
     overflow-wrap: break-word;
     word-break: break-word;
   }
 }
 
-/* Styles for Shadcn Accordion to match collapsible sections */
 .collapsible-header-style {
-  @apply flex flex-1 items-center justify-between py-4 font-medium transition-all text-left; /* Added text-left */
-  font-family: var(--font-bangers); /* Bangers for accordion headers */
+  @apply flex flex-1 items-center justify-between py-4 font-medium transition-all text-left;
+  font-family: var(--font-bangers); /* Stencil/Graffiti style */
   font-size: 1.5rem;
   letter-spacing: 0.05em;
-  overflow-wrap: break-word; /* For accordion headers */
+  color: hsl(var(--primary)); /* Magenta */
+  overflow-wrap: break-word; 
   word-break: break-word;
 }
 .collapsible-header-style:hover {
-  color: hsl(var(--primary));
+  color: hsl(var(--primary) / 0.8);
 }
 .collapsible-trigger-style > svg {
   @apply h-6 w-6 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; 
 }
 .collapsible-trigger-style[data-state=open] > svg {
-  transform: rotate(90deg); /* More typical accordion icon rotation */
+  transform: rotate(90deg); 
 }
 
 .word-association-chat {
-    @apply border-2 border-dashed border-[hsl(var(--border))] rounded p-3 max-h-[300px] overflow-y-auto bg-[hsl(var(--muted)/0.5)] text-sm mt-4;
+    @apply border border-dashed border-[hsl(var(--border))] rounded p-3 max-h-[300px] overflow-y-auto bg-[hsl(var(--muted)/0.3)] text-sm mt-4;
     font-family: var(--font-special-elite);
     overflow-wrap: break-word;
     word-break: break-word;
 }
 .word-association-message-user {
-    @apply text-[hsl(var(--primary))] text-right mb-2; /* Blue for user */
+    @apply text-[hsl(var(--primary))] text-right mb-2; /* Magenta for user */
 }
 .word-association-message-ai {
-    @apply text-[hsl(var(--secondary))] text-left mb-2; /* Red for AI */
+    @apply text-[hsl(var(--accent))] text-left mb-2; /* Teal for AI */
 }
 .word-association-message-user::before {
     content: 'You: ';
@@ -292,31 +291,31 @@ body {
     @apply font-bold;
 }
 
-/* Specific button styles for the new theme */
+/* Button styles to fit the theme */
 .btn-send-lyrics { 
-  @apply bg-primary text-primary-foreground hover:bg-primary/80 border-2 border-primary-foreground/50 shadow-md;
+  @apply bg-primary text-primary-foreground hover:bg-primary/80 border border-primary-foreground/30 shadow-sm;
   font-family: var(--font-caveat);
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  transform: rotate(-1deg);
+  border-radius: 0.2rem; /* Sharper edges */
+  transform: rotate(-0.5deg);
 }
 .btn-send-canvas { 
-  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border-2 border-secondary-foreground/50 shadow-lg;
+  @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-secondary-foreground/30 shadow-md;
   font-family: var(--font-caveat);
   font-size: 1.1rem;
   padding: 0.5rem 1rem;
-  border-radius: 0.3rem;
-  transform: rotate(1deg);
+  border-radius: 0.2rem;
+  transform: rotate(0.5deg);
 }
 .btn-suggestion {
-  @apply bg-accent text-accent-foreground border-2 border-accent-foreground/70 hover:bg-accent/80 shadow-xl;
+  @apply bg-accent text-accent-foreground border border-accent-foreground/50 hover:bg-accent/80 shadow-lg;
   font-family: var(--font-rock-salt);
-  @apply text-base px-6 py-3 rounded-md;
-  transform: rotate(1deg);
+  @apply text-base px-6 py-3 rounded-sm; /* Small radius */
+  transform: rotate(0.5deg);
 }
 .btn-toggle-phrases {
-  @apply bg-primary text-primary-foreground hover:bg-primary/80 border-2 border-primary-foreground/50;
+  @apply bg-primary text-primary-foreground hover:bg-primary/80 border border-primary-foreground/30;
   font-family: var(--font-bangers);
   letter-spacing: 0.05em;
 }
@@ -324,33 +323,30 @@ body {
     background-color: hsl(var(--muted)); 
     color: hsl(var(--muted-foreground));
     font-family: var(--font-architects-daughter);
-    @apply px-3 py-1.5 text-sm rounded-sm border-2 border-dashed border-[hsl(var(--border))] m-1 hover:bg-[hsl(var(--border))] hover:text-background shadow-sm;
+    @apply px-3 py-1.5 text-sm rounded-sm border border-dashed border-[hsl(var(--border))] m-1 hover:bg-[hsl(var(--border))] hover:text-background shadow-sm;
 }
 
-/* Ensure Card Content manages overflow */
-.tool-card > div[data-slot="card-content"], /* Targeting ShadCN CardContent slot if possible */
-.tool-card .p-6.pt-0 { /* Fallback if direct slot targeting isn't straightforward */
+.tool-card > div[data-slot="card-content"], 
+.tool-card .p-6.pt-0 { 
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
 .phrase-card {
-  @apply p-3 flex flex-col bg-background shadow-sm hover:shadow-lg transition-shadow border-muted-foreground;
-  overflow-wrap: break-word; /* ensure text within phrase cards wraps */
+  @apply p-3 flex flex-col bg-background shadow-sm hover:shadow-md transition-shadow border-border/70;
+  overflow-wrap: break-word; 
   word-break: break-word;
 }
 
-.phrase-card > span.font-semibold { /* Target the phrase text itself */
-  display: block; /* Ensure it respects width */
+.phrase-card > span.font-semibold {
+  display: block; 
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
-/* Add to existing AccordionItem to ensure content within doesn't break out due to padding */
-.main-section-box .pb-4.pt-0 { /* Targeting AccordionContent inner div */
-  overflow-x: hidden; /* Prevent horizontal overflow from accordion content */
+.main-section-box .pb-4.pt-0 { 
+  overflow-x: hidden; 
 }
-
     
 
     
