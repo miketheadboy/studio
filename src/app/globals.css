@@ -214,19 +214,18 @@ body {
     @apply rounded-full w-8 h-8 animate-spin mx-auto my-5;
   }
   .main-section-box {
-    background-color: hsl(var(--card) / 0.8); /* Slightly transparent card */
+    background-color: hsl(var(--card)); /* Default background for sections, can be overridden by ID */
     @apply border-2 border-dashed border-[hsl(var(--border))] rounded-lg p-4 sm:p-6 mb-8 shadow-xl relative; /* Responsive padding */
-     backdrop-filter: blur(2px); /* Frosted glass for collage */
   }
 
-  /* Specific background colors for sections for collage effect */
+  /* Specific background colors for sections for collage/journal page effect - now opaque */
   #introSection { background-color: hsl(var(--muted)); border-left: 5px solid hsl(var(--accent)); }
-  #howToSection { background-color: hsl(var(--muted)/0.7); border-left: 5px solid hsl(var(--secondary)); } /* Red accent */
-  #songCanvasSection { background-color: hsl(var(--card)); border-top: 5px dashed hsl(var(--primary)); } /* Blue dashed top */
-  #sparksMusesSection { background-color: hsl(var(--accent)/0.2); border-top: 5px dashed hsl(var(--accent)); } /* Yellow dashed top */
-  #lyricalToolkitSection { background-color: hsl(200 70% 95%); border-top: 5px dashed hsl(200 70% 50%); } /* Light blue section, blue dashed top */
-  #musicalToolkitSection { background-color: hsl(0 80% 95%); border-top: 5px dashed hsl(var(--secondary)); } /* Light red section, red dashed top */
-  #completeSongGeneratorSection { background-color: hsl(25 80% 95%); border-top: 5px dashed hsl(25 80% 55%); } /* Light orange section, orange dashed top */
+  #howToSection { background-color: hsl(45 50% 92%); border-left: 5px solid hsl(var(--secondary)); } /* Slightly different paper */
+  #songCanvasSection { background-color: hsl(var(--card)); border-top: 5px dashed hsl(var(--primary)); } 
+  #sparksMusesSection { background-color: hsl(50 100% 95%); border-top: 5px dashed hsl(var(--accent)); } /* Light yellow paper */
+  #lyricalToolkitSection { background-color: hsl(200 70% 95%); border-top: 5px dashed hsl(200 70% 50%); } 
+  #musicalToolkitSection { background-color: hsl(0 80% 95%); border-top: 5px dashed hsl(var(--secondary)); } 
+  #completeSongGeneratorSection { background-color: hsl(25 80% 95%); border-top: 5px dashed hsl(25 80% 55%); }
 
   .tool-card {
     background-color: hsl(var(--background)); /* Use main background for cards to make them look like cutouts on the section */
@@ -243,7 +242,7 @@ body {
   }
 
   #tipBox { 
-    background-color: hsl(var(--accent)/0.3); /* Light yellow, slightly transparent */
+    background-color: hsl(var(--accent)/0.8); /* Slightly more opaque yellow */
     border: 2px dashed hsl(var(--accent)); 
     font-family: var(--font-covered-by-your-grace);
     color: hsl(var(--accent-foreground)); 
@@ -352,3 +351,4 @@ body {
   overflow-x: hidden; /* Prevent horizontal overflow from accordion content */
 }
 
+    
