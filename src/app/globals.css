@@ -9,7 +9,7 @@ body {
 
 @layer base {
   :root {
-    /* New Palette: Stippling Flowers Graffiti Abandoned Building - No Pink/Neon, Textured BG feel */
+    /* Palette: Stippling Flowers Graffiti Abandoned Building - No Pink/Neon, Textured BG feel */
     --background: 40 30% 96%; /* Very pale, warm off-white - like aged paper/primed wall */
     --foreground: 40 10% 25%; /* Dark, slightly warm desaturated brown-grey - for text */
     
@@ -186,8 +186,8 @@ body {
   .chord-voicing-title { color: hsl(var(--secondary)); } 
   .instrumentation-title { color: hsl(var(--accent)); } 
   .artist-inspiration-title { color: hsl(var(--primary)); } 
-  .muse-whisper-title { color: hsl(var(--secondary));} 
-  .name-that-noise-title { color: hsl(var(--accent)); } 
+  .thematic-prompts-title { color: hsl(var(--secondary));} /* Changed from muse-whisper-title */
+  .album-title-generator-title { color: hsl(var(--accent)); }  /* Changed from name-that-noise-title */
   .poets-corner-title { color: hsl(var(--primary)); } 
   .bridge-builder-title { color: hsl(var(--secondary)); } 
   .melody-spark-title { color: hsl(var(--accent)); } 
@@ -218,16 +218,42 @@ body {
     @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-4 sm:p-6 mb-8 shadow-lg relative; /* Solid, worn border for page edge */
     overflow-wrap: break-word;
     word-break: break-word;
+    /* Corner bracket graphical elements */
+    position: relative; 
   }
 
+  .main-section-box::before,
+  .main-section-box::after {
+    content: '';
+    position: absolute;
+    width: 25px; /* Increased size */
+    height: 25px; /* Increased size */
+    border-color: hsl(var(--primary) / 0.6); /* Using primary graffiti color, slightly transparent */
+    border-style: solid;
+    pointer-events: none; /* So they don't interfere with clicks */
+  }
+  .main-section-box::before {
+    top: -6px; /* Adjusted for new size */
+    left: -6px; /* Adjusted for new size */
+    border-width: 4px 0 0 4px; /* Thicker border for top-left L-shape */
+    border-top-left-radius: 3px; /* Slight rounding to match card */
+  }
+  .main-section-box::after {
+    bottom: -6px; /* Adjusted for new size */
+    right: -6px; /* Adjusted for new size */
+    border-width: 0 4px 4px 0; /* Thicker border for bottom-right L-shape */
+    border-bottom-right-radius: 3px; /* Slight rounding to match card */
+  }
+
+
   /* Specific background colors for sections for collage/journal page effect */
-  #introSection { background-color: hsl(var(--muted)); border-left: 4px solid hsl(var(--accent)); } /* Weathered concrete with teal/green graf mark */
-  #howToSection { background-color: hsl(var(--card) / 0.9); border-left: 4px solid hsl(var(--secondary)); } /* Slightly different paper with orange mark */
+  #introSection { background-color: hsl(var(--muted)/0.8); border-left: 4px solid hsl(var(--accent)); } /* Weathered concrete with teal/green graf mark */
+  #howToSection { background-color: hsl(var(--card) / 0.95); border-left: 4px solid hsl(var(--secondary)); } /* Slightly different paper with orange mark */
   #songCanvasSection { background-color: hsl(var(--background)); border-top: 2px solid hsl(var(--primary)); } /* Main paper with blue solid line */
-  #sparksMusesSection { background-color: hsl(var(--card) / 0.95); border-top: 2px solid hsl(var(--accent)); } 
-  #lyricalToolkitSection { background-color: hsl(var(--card) / 0.9); border-top: 2px solid hsl(var(--secondary)); } 
-  #musicalToolkitSection { background-color: hsl(var(--card) / 0.95); border-top: 2px solid hsl(var(--primary)); } 
-  #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.9); border-top: 2px solid hsl(var(--accent)); }
+  #sparksMusesSection { background-color: hsl(var(--card) / 0.92); border-top: 2px solid hsl(var(--accent)); } 
+  #lyricalToolkitSection { background-color: hsl(var(--card) / 0.88); border-top: 2px solid hsl(var(--secondary)); } 
+  #musicalToolkitSection { background-color: hsl(var(--card) / 0.92); border-top: 2px solid hsl(var(--primary)); } 
+  #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.88); border-top: 2px solid hsl(var(--accent)); }
 
   .tool-card {
     background-color: hsl(var(--background)); /* Main paper, like cutouts */
@@ -236,9 +262,25 @@ body {
     overflow: hidden; 
     overflow-wrap: break-word;
     word-break: break-word;
+    position: relative; /* For pseudo-element */
   }
   .tool-card:nth-child(odd) { --random-rotate: 0.55; }
   .tool-card:nth-child(even) { --random-rotate: 0.45; }
+  
+  /* "Pin" or "Tack" for tool cards */
+  .tool-card::after {
+    content: '';
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    width: 10px; /* Slightly larger pin head */
+    height: 10px;
+    background-color: hsl(var(--foreground) / 0.5); /* Dark "pin head" color */
+    border-radius: 50%;
+    box-shadow: 1px 1px 2px hsl(var(--foreground) / 0.4); /* Slightly more defined shadow */
+    pointer-events: none;
+  }
+
 
   #tipBox { 
     background-color: hsl(var(--accent)/0.15); /* Very subtle teal/green wash */
@@ -259,16 +301,34 @@ body {
   color: hsl(var(--primary)); /* New primary blue */
   overflow-wrap: break-word; 
   word-break: break-word;
+  position: relative; /* For pseudo-element */
 }
 .collapsible-header-style:hover {
   color: hsl(var(--primary) / 0.8);
 }
+/* Subtle underline for accordion headers */
+.collapsible-header-style::after {
+  content: '';
+  position: absolute;
+  bottom: 2px; /* Adjust vertical position */
+  left: 0;
+  width: 40px; /* Length of the underline */
+  height: 3px; /* Thickness of the underline */
+  background-color: hsl(var(--primary) / 0.5); /* Graffiti color, semi-transparent */
+  transition: background-color 0.2s ease-in-out, width 0.2s ease-in-out;
+}
+.collapsible-header-style:hover::after {
+  width: 60px; /* Underline expands slightly on hover */
+  background-color: hsl(var(--primary)); /* More opaque on hover */
+}
+
 .collapsible-trigger-style > svg {
   @apply h-6 w-6 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; /* New primary blue */
 }
 .collapsible-trigger-style[data-state=open] > svg {
   transform: rotate(90deg); 
 }
+
 
 .word-association-chat {
     @apply border border-dashed border-[hsl(var(--border))] rounded p-3 max-h-[300px] overflow-y-auto bg-[hsl(var(--muted)/0.3)] text-sm mt-4;
@@ -350,3 +410,4 @@ body {
     
 
     
+
