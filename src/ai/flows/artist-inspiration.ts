@@ -32,11 +32,13 @@ const prompt = ai.definePrompt({
   name: 'artistInspirationPrompt',
   input: {schema: ArtistInspirationInputSchema},
   output: {schema: ArtistInspirationOutputSchema},
-  prompt: `You are a music expert specializing in folk, Americana, and related singer-songwriter genres.
+  prompt: `You are a music expert and historian with deep knowledge across various genres, including folk, Americana, indie, alt-rock, R&B, soul, and experimental music.
 
 You will provide artist inspiration based on a desired songwriting quality.
 
-For the songwriting quality of '{{{desiredQuality}}}', suggest 2-3 critically lauded artists primarily in the folk, alt-rock, Americana, indie, or related singer-songwriter genres. Provide a brief (1-2 sentence) explanation of how they exemplify this quality and one specific, critically recognized song example for each artist.
+For the songwriting quality of '{{{desiredQuality}}}', suggest 2-3 critically lauded artists who exemplify this. These artists could come from genres like folk, alt-rock, Americana, indie, R&B/soul, or other related singer-songwriter traditions. Consider artists known for their innovative songwriting, such as D'Angelo, Big Thief, Neutral Milk Hotel, Frank Ocean, The Microphones, or Sufjan Stevens, alongside others, if they fit the requested quality.
+
+Provide a brief (1-2 sentence) explanation of how each artist exemplifies this quality and one specific, critically recognized song example for each. Ensure your suggestions are thoughtful and connect clearly to the '{{{desiredQuality}}}'.
 `,
 });
 
