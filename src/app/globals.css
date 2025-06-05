@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -102,12 +103,45 @@ body {
   .page-title-font {
     font-family: var(--font-rock-salt);
     color: hsl(var(--primary)); /* Use primary blue */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
-  .handwritten-main-title-font { font-family: var(--font-homemade-apple); font-size: 2.5rem; color: hsl(var(--secondary-foreground) / 80%); background-color: hsl(var(--secondary)); padding: 0.2em 0.5em; display: inline-block; transform: rotate(-2deg); box-shadow: 3px 3px 0px hsl(var(--foreground) / 0.2); } 
-  .handwritten-section-title-font { font-family: var(--font-architects-daughter); font-size: 1.85rem; color: hsl(var(--primary)); }
-  .typewriter-font { font-family: var(--font-special-elite); } /* This class name was correct, but ensure it's used if specific typewriter styling is needed beyond body */
-  .alt-heading-font { font-family: var(--font-bangers); letter-spacing: 0.05em; color: hsl(var(--secondary)); }
-  .scrapbook-note-font { font-family: var(--font-covered-by-your-grace); font-size: 1.1rem; color: hsl(var(--foreground) / 0.9); }
+  .handwritten-main-title-font { 
+    font-family: var(--font-homemade-apple); 
+    font-size: 2.5rem; 
+    color: hsl(var(--secondary-foreground) / 80%); 
+    background-color: hsl(var(--secondary)); 
+    padding: 0.2em 0.5em; 
+    display: inline-block; 
+    transform: rotate(-2deg); 
+    box-shadow: 3px 3px 0px hsl(var(--foreground) / 0.2); 
+    overflow-wrap: break-word;
+    word-break: break-word;
+  } 
+  .handwritten-section-title-font { 
+    font-family: var(--font-architects-daughter); 
+    font-size: 1.85rem; 
+    color: hsl(var(--primary)); 
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .typewriter-font { 
+    font-family: var(--font-special-elite); 
+  } 
+  .alt-heading-font { 
+    font-family: var(--font-bangers); 
+    letter-spacing: 0.05em; 
+    color: hsl(var(--secondary)); 
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
+  .scrapbook-note-font { 
+    font-family: var(--font-covered-by-your-grace); 
+    font-size: 1.1rem; 
+    color: hsl(var(--foreground) / 0.9); 
+    overflow-wrap: break-word;
+    word-break: break-word;
+  }
   .dylan-quote {
     font-family: var(--font-nothing-you-could-do);
     font-size: 1.3rem;
@@ -115,16 +149,22 @@ body {
     border-left-width: 4px;
     border-left-style: dashed;
     border-left-color: hsl(var(--accent)); /* Bright yellow */
-    @apply pl-3.5 mt-2 italic bg-muted/30 p-2 rounded-sm;
+    @apply pl-4 pr-3 py-3 mt-2 italic bg-muted/30 rounded-sm; /* Increased padding */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .main-section-title {
     font-family: var(--font-rock-salt);
-    @apply text-4xl text-center mb-6 pb-2 border-b-2 border-dashed border-accent; /* Yellow dashed border */
+    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-dashed border-accent; /* Yellow dashed border */
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   .subsection-title {
     font-family: var(--font-architects-daughter);
-    @apply text-2xl mb-3;
+    @apply text-xl sm:text-2xl mb-3;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
   
   /* Theme colors for main section titles */
@@ -158,10 +198,12 @@ body {
   .section-expander-title { color: hsl(33 100% 50%); } /* Dark Orange */
 
   .output-display-area {
-    @apply mt-4 p-4 bg-white rounded border-2 border-dashed border-muted-foreground shadow-inner min-h-[60px] whitespace-pre-wrap;
+    @apply mt-4 p-4 bg-white rounded border-2 border-dashed border-muted-foreground shadow-inner min-h-[80px] whitespace-pre-wrap; /* Increased min-height and padding */
     font-family: var(--font-special-elite); /* Explicitly ensure typewriter font */
     color: hsl(var(--foreground));
-    line-height: 1.6;
+    line-height: 1.7; /* Slightly increased line-height */
+    overflow-wrap: break-word; /* Crucial for breaking long words */
+    word-break: break-word; /* Alternative, often interchangeable */
   }
   .send-buttons-container {
     @apply mt-4 flex gap-3 flex-wrap;
@@ -173,7 +215,7 @@ body {
   }
   .main-section-box {
     background-color: hsl(var(--card) / 0.8); /* Slightly transparent card */
-    @apply border-2 border-dashed border-[hsl(var(--border))] rounded-lg p-6 mb-8 shadow-xl relative;
+    @apply border-2 border-dashed border-[hsl(var(--border))] rounded-lg p-4 sm:p-6 mb-8 shadow-xl relative; /* Responsive padding */
      backdrop-filter: blur(2px); /* Frosted glass for collage */
   }
 
@@ -188,8 +230,9 @@ body {
 
   .tool-card {
     background-color: hsl(var(--background)); /* Use main background for cards to make them look like cutouts on the section */
-    @apply border-2 border-dotted border-[hsl(var(--foreground)/0.5)] rounded-md p-6 shadow-lg relative;
-    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 2deg )); /* Random small rotation for collage */
+    @apply border-2 border-dotted border-[hsl(var(--foreground)/0.5)] rounded-md p-4 sm:p-6 shadow-lg relative; /* Responsive padding */
+    transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 1.5deg )); /* Reduced Random small rotation for collage */
+    overflow: hidden; /* Helps contain children if absolutely necessary, but padding/wrapping is preferred */
   }
   .tool-card:nth-child(odd) { --random-rotate: 0.6; }
   .tool-card:nth-child(even) { --random-rotate: 0.4; }
@@ -205,15 +248,19 @@ body {
     font-family: var(--font-covered-by-your-grace);
     color: hsl(var(--accent-foreground)); 
     @apply p-4 mb-6 rounded-md text-center text-lg shadow-md;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 }
 
 /* Styles for Shadcn Accordion to match collapsible sections */
 .collapsible-header-style {
-  @apply flex flex-1 items-center justify-between py-4 font-medium transition-all;
+  @apply flex flex-1 items-center justify-between py-4 font-medium transition-all text-left; /* Added text-left */
   font-family: var(--font-bangers); /* Bangers for accordion headers */
   font-size: 1.5rem;
   letter-spacing: 0.05em;
+  overflow-wrap: break-word; /* For accordion headers */
+  word-break: break-word;
 }
 .collapsible-header-style:hover {
   color: hsl(var(--primary));
@@ -228,6 +275,8 @@ body {
 .word-association-chat {
     @apply border-2 border-dashed border-[hsl(var(--border))] rounded p-3 max-h-[300px] overflow-y-auto bg-[hsl(var(--muted)/0.5)] text-sm mt-4;
     font-family: var(--font-special-elite);
+    overflow-wrap: break-word;
+    word-break: break-word;
 }
 .word-association-message-user {
     @apply text-[hsl(var(--primary))] text-right mb-2; /* Blue for user */
@@ -245,7 +294,7 @@ body {
 }
 
 /* Specific button styles for the new theme */
-.btn-send-lyrics { /* Keep this specific class if needed, or rely on variants */
+.btn-send-lyrics { 
   @apply bg-primary text-primary-foreground hover:bg-primary/80 border-2 border-primary-foreground/50 shadow-md;
   font-family: var(--font-caveat);
   font-size: 1.1rem;
@@ -253,7 +302,7 @@ body {
   border-radius: 0.3rem;
   transform: rotate(-1deg);
 }
-.btn-send-canvas { /* More generic button styling will come from Shadcn defaults */
+.btn-send-canvas { 
   @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border-2 border-secondary-foreground/50 shadow-lg;
   font-family: var(--font-caveat);
   font-size: 1.1rem;
@@ -278,3 +327,28 @@ body {
     font-family: var(--font-architects-daughter);
     @apply px-3 py-1.5 text-sm rounded-sm border-2 border-dashed border-[hsl(var(--border))] m-1 hover:bg-[hsl(var(--border))] hover:text-background shadow-sm;
 }
+
+/* Ensure Card Content manages overflow */
+.tool-card > div[data-slot="card-content"], /* Targeting ShadCN CardContent slot if possible */
+.tool-card .p-6.pt-0 { /* Fallback if direct slot targeting isn't straightforward */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.phrase-card {
+  @apply p-3 flex flex-col bg-background shadow-sm hover:shadow-lg transition-shadow border-muted-foreground;
+  overflow-wrap: break-word; /* ensure text within phrase cards wraps */
+  word-break: break-word;
+}
+
+.phrase-card > span.font-semibold { /* Target the phrase text itself */
+  display: block; /* Ensure it respects width */
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Add to existing AccordionItem to ensure content within doesn't break out due to padding */
+.main-section-box .pb-4.pt-0 { /* Targeting AccordionContent inner div */
+  overflow-x: hidden; /* Prevent horizontal overflow from accordion content */
+}
+
