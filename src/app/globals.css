@@ -106,6 +106,9 @@ body {
     overflow-wrap: break-word;
     word-break: break-word;
     @apply text-4xl sm:text-5xl; /* Smaller */
+    text-shadow: 1px 1px 0px hsl(var(--foreground) / 0.2), 
+                 2px 2px 0px hsl(var(--foreground) / 0.15),
+                 3px 3px 0px hsl(var(--primary) / 0.3); /* Stencil/graffiti depth */
   }
   .handwritten-main-title-font { 
     font-family: var(--font-homemade-apple); 
@@ -118,6 +121,7 @@ body {
     box-shadow: 2px 2px 0px hsl(var(--foreground) / 0.3); 
     overflow-wrap: break-word;
     word-break: break-word;
+    text-shadow: 1px 1px 0px hsl(var(--foreground) / 0.15); /* Subtle lift */
   } 
   .handwritten-section-title-font { 
     font-family: var(--font-architects-daughter); 
@@ -125,6 +129,9 @@ body {
     color: hsl(var(--accent)); /* Faded Teal/Green */
     overflow-wrap: break-word;
     word-break: break-word;
+    padding-bottom: 4px; /* Space for underline */
+    border-bottom: 2px dashed hsl(var(--muted-foreground) / 0.4); /* Sketched underline */
+    display: inline-block; /* So border-bottom only spans the text */
   }
   .typewriter-font { 
     font-family: var(--font-special-elite); 
@@ -227,23 +234,23 @@ body {
   .main-section-box::after {
     content: '';
     position: absolute;
-    width: 20px; /* Smaller size */
-    height: 20px; /* Smaller size */
-    border-color: hsl(var(--primary) / 0.6); /* Using primary graffiti color, slightly transparent */
+    width: 25px; /* Slightly larger */
+    height: 25px; /* Slightly larger */
+    border-color: hsl(var(--foreground) / 0.65); /* More solid, darker */
     border-style: solid;
     pointer-events: none; /* So they don't interfere with clicks */
   }
   .main-section-box::before {
-    top: -5px; /* Adjusted for new size */
-    left: -5px; /* Adjusted for new size */
-    border-width: 3px 0 0 3px; /* Thinner border for top-left L-shape */
-    border-top-left-radius: 3px; /* Slight rounding to match card */
+    top: -7px; /* Adjusted for new size */
+    left: -7px; /* Adjusted for new size */
+    border-width: 4px 0 0 4px; /* Thicker border */
+    border-top-left-radius: 4px; /* Slight rounding to match card */
   }
   .main-section-box::after {
-    bottom: -5px; /* Adjusted for new size */
-    right: -5px; /* Adjusted for new size */
-    border-width: 0 3px 3px 0; /* Thinner border for bottom-right L-shape */
-    border-bottom-right-radius: 3px; /* Slight rounding to match card */
+    bottom: -7px; /* Adjusted for new size */
+    right: -7px; /* Adjusted for new size */
+    border-width: 0 4px 4px 0; /* Thicker border */
+    border-bottom-right-radius: 4px; /* Slight rounding to match card */
   }
 
 
@@ -255,6 +262,8 @@ body {
   #lyricalToolkitSection { background-color: hsl(var(--card) / 0.88); border-top: 2px solid hsl(var(--secondary)); } 
   #musicalToolkitSection { background-color: hsl(var(--card) / 0.92); border-top: 2px solid hsl(var(--primary)); } 
   #completeSongGeneratorSection { background-color: hsl(var(--card) / 0.88); border-top: 2px solid hsl(var(--accent)); }
+  #inspirationWellSection { background-color: hsl(var(--card) / 0.9); border-top: 2px solid hsl(var(--border));}
+
 
   .tool-card {
     background-color: hsl(var(--background)); /* Main paper, like cutouts */
@@ -272,14 +281,16 @@ body {
   .tool-card::after {
     content: '';
     position: absolute;
-    top: 6px; /* Adjusted */
-    left: 6px; /* Adjusted */
-    width: 8px; /* Smaller pin head */
-    height: 8px;
-    background-color: hsl(var(--foreground) / 0.5); /* Dark "pin head" color */
+    top: 5px; /* Adjusted */
+    left: 5px; /* Adjusted */
+    width: 10px; /* Larger "tack" head */
+    height: 10px;
+    background-color: hsl(var(--muted-foreground)); /* More metallic color */
+    border: 1px solid hsl(var(--foreground) / 0.5); /* Outline for tack */
     border-radius: 50%;
-    box-shadow: 1px 1px 1px hsl(var(--foreground) / 0.3); /* Slightly less shadow */
+    box-shadow: 1px 1px 2px hsl(var(--foreground) / 0.4); /* Slightly stronger shadow */
     pointer-events: none;
+    z-index: 1; /* Ensure it's on top */
   }
 
 
@@ -421,6 +432,7 @@ body {
     
 
     
+
 
 
 
