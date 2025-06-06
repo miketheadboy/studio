@@ -670,33 +670,33 @@ const AppClientPage: FC = () => {
 
   return (
     <TooltipProvider>
-    <div className="container mx-auto p-4 sm:p-6 lg:p-8 max-w-7xl">
-      <header className="text-center mb-10">
-        <h1 className="page-title-font text-5xl sm:text-6xl font-bold mb-2">The Songsmith's Den</h1>
-        <p className="text-lg text-muted-foreground mt-2 dylan-quote">"I was born a long way from where I belong and I am on my way home." &mdash; B. Dylan</p>
+    <div className="container mx-auto p-2 sm:p-3 lg:p-4 max-w-7xl"> {/* Reduced padding */}
+      <header className="text-center mb-8"> {/* Reduced margin */}
+        <h1 className="page-title-font text-5xl sm:text-6xl font-bold mb-1">The Songsmith's Den</h1> {/* Reduced margin */}
+        <p className="text-lg text-muted-foreground mt-1 dylan-quote">"I was born a long way from where I belong and I am on my way home." &mdash; B. Dylan</p>
       </header>
 
-      <Accordion type="multiple" defaultValue={['item-intro', 'item-canvas']} className="w-full space-y-6">
+      <Accordion type="multiple" defaultValue={['item-intro', 'item-canvas']} className="w-full space-y-4"> {/* Reduced space-y */}
         {/* Intro Section */}
         <AccordionItem value="item-intro" className="main-section-box" id="introSection">
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="handwritten-main-title-font text-4xl">Welcome, Songwriter.</h2>
           </AccordionTrigger>
-          <AccordionContent className="pt-4">
-            <p className="text-foreground leading-relaxed text-base">
+          <AccordionContent className="pt-2 accordion-content-inner-padding"> {/* Reduced padding */}
+            <p className="text-foreground leading-relaxed text-sm"> {/* Smaller text */}
              This space is for crafting songs. For words to find meter, melodies to emerge, and pieces to take shape.
              Tools for lyrical sparks, AI for development, chord utilities, and echoes of songwriting wisdom await.
              A focused aid through creative moments, from spark to draft.
             </p>
-            <div className="mt-4 text-sm text-muted-foreground">
-              <h4 className="font-semibold scrapbook-note-font text-lg">Notes on the Craft: A Songwriting Flow</h4>
-              <ul className="list-disc list-inside ml-4 mt-1 space-y-1">
+            <div className="mt-3 text-xs text-muted-foreground"> {/* Smaller text, tighter margin */}
+              <h4 className="font-semibold scrapbook-note-font text-base">Notes on the Craft: A Songwriting Flow</h4> {/* Smaller text */}
+              <ul className="list-disc list-inside ml-3 mt-1 space-y-0.5"> {/* Tighter spacing */}
                 <li><strong>Start Anywhere:</strong> A title, a chord, an emotion, a single line. Don't wait.</li>
                 <li><strong>Collect Ideas:</strong> Use the tools, jot in "Quick Notes" or "Song Canvas." Capture everything.</li>
                 <li><strong>Structure Emerges:</strong> Try a common structure, or let the song dictate. "Structure Blocks" can guide.
                 <Tooltip>
                     <TooltipTrigger asChild>
-                      <Button variant="link" size="sm" className="text-primary p-0 h-auto ml-1 hover:text-accent" onClick={() => document.getElementById('songCanvasSectionAccordionTrigger')?.click()}>Details.</Button>
+                      <Button variant="link" size="sm" className="text-primary p-0 h-auto ml-1 hover:text-accent text-xs">Details.</Button>
                     </TooltipTrigger>
                     <TooltipContent><p>Use the Song Structure Helper in The Songwriter's Canvas.</p></TooltipContent>
                   </Tooltip>
@@ -708,12 +708,12 @@ const AppClientPage: FC = () => {
           </AccordionContent>
         </AccordionItem>
 
-        <div className="my-6 text-center">
+        <div className="my-4 text-center"> {/* Reduced margin */}
             <Button onClick={handleStuckButtonClick} className="btn-suggestion">
-                <Lightbulb className="h-5 w-5 mr-2" />
+                <Lightbulb className="h-4 w-4 mr-1.5" /> {/* Smaller icon */}
                 Creative Nudge
             </Button>
-            {isTipBoxVisible && <div id="tipBox" className="mt-3">{tipBoxText}</div>}
+            {isTipBoxVisible && <div id="tipBox" className="mt-2">{tipBoxText}</div>}
         </div>
 
         {/* How To Section */}
@@ -721,12 +721,12 @@ const AppClientPage: FC = () => {
             <AccordionTrigger className="collapsible-header-style hover:no-underline">
                 <h2 className="handwritten-section-title-font">A Suggested Workflow</h2>
             </AccordionTrigger>
-            <AccordionContent className="pt-4">
-                 <p className="text-foreground space-y-4 mt-4">This workspace offers a suite of tools. Here’s one path:</p>
-                 <ol className="list-decimal list-inside ml-4 space-y-3 mt-2">
+            <AccordionContent className="pt-2 accordion-content-inner-padding"> {/* Reduced padding */}
+                 <p className="text-foreground space-y-3 mt-2 text-sm leading-snug">This workspace offers a suite of tools. Here’s one path:</p> {/* Tighter spacing, font, leading */}
+                 <ol className="list-decimal list-inside ml-3 space-y-2 mt-1 text-xs"> {/* Smaller text, tighter spacing */}
                      <li>
                          <strong>Find Your Spark (Sparks & Muses Section):</strong>
-                         <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
+                         <ul className="list-disc list-inside ml-4 space-y-0.5 mt-0.5">
                              <li>Generate <strong className="text-[hsl(var(--secondary))]">Thematic Prompts</strong>.</li>
                              <li>Get ideas for your song's <strong className="text-[hsl(var(--accent))]">Bridge</strong>.</li>
                              <li>Seek wisdom in the <strong className="text-[hsl(var(--primary))]">Poet's Corner</strong>.</li>
@@ -741,7 +741,7 @@ const AppClientPage: FC = () => {
                      </li>
                      <li>
                          <strong>Develop Lyrics (Lyrical Toolkit Section):</strong>
-                         <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
+                         <ul className="list-disc list-inside ml-4 space-y-0.5 mt-0.5">
                             <li>Engage in <strong className="text-[hsl(var(--foreground)/0.8)]">Word Association Tennis</strong>.</li>
                             <li>Explore the <strong className="text-[hsl(var(--secondary))]">Phrase Spark</strong>.</li>
                             <li>Take lines to the <strong className="text-[hsl(var(--accent))]">Word Lab</strong>.</li>
@@ -754,7 +754,7 @@ const AppClientPage: FC = () => {
                      </li>
                      <li>
                         <strong>Explore Musical Ideas (Musical Toolkit Section):</strong>
-                        <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
+                        <ul className="list-disc list-inside ml-4 space-y-0.5 mt-0.5">
                             <li>Get chord ideas from <strong className="text-[hsl(var(--secondary))]">Chord Corner</strong>.</li>
                             <li>Use <strong className="text-[hsl(var(--accent))]">The Chord Forge</strong>.</li>
                             <li>Twist progressions with <strong className="text-[hsl(var(--primary))]">The Chord Alchemist</strong>.</li>
@@ -767,7 +767,7 @@ const AppClientPage: FC = () => {
                     </li>
                     <li>
                         <strong>The Songwriter's Canvas:</strong> Your central hub.
-                        <ul className="list-disc list-inside ml-6 space-y-1 mt-1">
+                        <ul className="list-disc list-inside ml-4 space-y-0.5 mt-0.5">
                             <li>Set <strong className="text-[hsl(var(--primary))]">Working Title</strong>, <strong className="text-[hsl(var(--primary))]">Key/Tempo</strong>, <strong className="text-[hsl(var(--primary))]">Mood/Theme</strong>.</li>
                             <li>Use <strong className="text-[hsl(var(--muted-foreground))]">Quick Notes / Scratchpad</strong>.</li>
                              <li>Sketch in <strong className="text-[hsl(var(--muted-foreground))]">Melodic Ideas / Contour Notes</strong>.</li>
@@ -776,7 +776,7 @@ const AppClientPage: FC = () => {
                         </ul>
                     </li>
                  </ol>
-                  <p><strong className="text-[hsl(var(--foreground))]">The Modal Window:</strong> AI suggestions for rhymes and expanded phrases appear here when triggered from Phrase Spark.</p>
+                  <p className="text-xs mt-2"><strong className="text-[hsl(var(--foreground))]">The Modal Window:</strong> AI suggestions for rhymes and expanded phrases appear here when triggered from Phrase Spark.</p>
             </AccordionContent>
         </AccordionItem>
         
@@ -785,11 +785,11 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="lyrical-toolkit-title main-section-title">The Inspiration Well</h2>
           </AccordionTrigger>
-          <AccordionContent className="pt-4">
-            <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I accept chaos, I'm not sure whether it accepts me." - Find a muse in unexpected places.</p>
-            <div className="text-center mb-6">
-              <Button onClick={handleDrawFromInspirationWell} disabled={inspirationLoader} className="btn-suggestion">
-                {inspirationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+          <AccordionContent className="pt-2 accordion-content-inner-padding">
+            <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I accept chaos, I'm not sure whether it accepts me." - Find a muse in unexpected places.</p>
+            <div className="text-center mb-4">
+              <Button onClick={handleDrawFromInspirationWell} disabled={inspirationLoader} className="btn-suggestion btn-sm"> {/* Smaller button */}
+                {inspirationLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Sparkles className="mr-1.5 h-3 w-3" />}
                 Draw from the Well
               </Button>
             </div>
@@ -798,34 +798,34 @@ const AppClientPage: FC = () => {
 
             {currentInspiration && !inspirationLoader && (
               <Card className="tool-card inspiration-card bg-card/80 border-dashed border-primary/50">
-                <CardHeader>
-                  <CardTitle className="subsection-title flex items-center" style={{ color: `hsl(var(--${currentInspiration.type === 'Art' ? 'primary' : currentInspiration.type === 'Film' ? 'secondary' : 'accent'}))`}}>
-                    {currentInspiration.type === 'Art' && <ImageIcon className="mr-3 h-6 w-6" />}
-                    {currentInspiration.type === 'Film' && <Film className="mr-3 h-6 w-6" />}
-                    {currentInspiration.type === 'Literature' && <Feather className="mr-3 h-6 w-6" />}
+                <CardHeader className="p-3"> {/* Reduced padding */}
+                  <CardTitle className="subsection-title flex items-center text-base" style={{ color: `hsl(var(--${currentInspiration.type === 'Art' ? 'primary' : currentInspiration.type === 'Film' ? 'secondary' : 'accent'}))`}}>
+                    {currentInspiration.type === 'Art' && <ImageIcon className="mr-2 h-5 w-5" />}
+                    {currentInspiration.type === 'Film' && <Film className="mr-2 h-5 w-5" />}
+                    {currentInspiration.type === 'Literature' && <Feather className="mr-2 h-5 w-5" />}
                     {currentInspiration.title}
                   </CardTitle>
                 </CardHeader>
-                <CardContent className="space-y-3">
-                  <p className="text-sm text-muted-foreground">
+                <CardContent className="space-y-2 p-3 pt-0"> {/* Reduced padding */}
+                  <p className="text-xs text-muted-foreground">
                     <strong>{currentInspiration.type === 'Art' ? 'Artist' : currentInspiration.type === 'Film' ? 'Director' : 'Author'}:</strong> {currentInspiration.creator} ({currentInspiration.year})
                   </p>
                   {currentInspiration.type === 'Art' && currentInspiration.imageUrl && (
-                    <div className="my-4 rounded-md overflow-hidden border-2 border-border shadow-lg aspect-video relative">
+                    <div className="my-3 rounded-md overflow-hidden border border-border shadow-md aspect-video relative"> {/* Adjusted border/shadow */}
                        <Image src={currentInspiration.imageUrl} alt={`Artwork: ${currentInspiration.title}`} layout="fill" objectFit="cover" data-ai-hint={currentInspiration.imageHint || "abstract painting"} />
                     </div>
                   )}
-                  {currentInspiration.description && <p className="text-foreground text-base leading-relaxed">{currentInspiration.description}</p>}
-                  {currentInspiration.passage && <blockquote className="dylan-quote text-base my-3 p-3 border-l-4" style={{borderColor: "hsl(var(--accent))"}}>{currentInspiration.passage}</blockquote>}
-                  <div className="flex flex-wrap gap-3 mt-4">
+                  {currentInspiration.description && <p className="text-foreground text-xs leading-snug">{currentInspiration.description}</p>}
+                  {currentInspiration.passage && <blockquote className="dylan-quote text-xs my-2 p-2 border-l-2" style={{borderColor: "hsl(var(--accent))"}}>{currentInspiration.passage}</blockquote>}
+                  <div className="flex flex-wrap gap-2 mt-3">
                     {currentInspiration.infoLink && (
-                      <Button variant="outline" asChild className="btn-send-lyrics">
+                      <Button variant="outline" size="sm" asChild className="btn-send-lyrics text-xs">
                         <a href={currentInspiration.infoLink} target="_blank" rel="noopener noreferrer">Learn More</a>
                       </Button>
                     )}
                     {currentInspiration.youtubeLink && (
-                      <Button variant="destructive" asChild className="btn-send-canvas">
-                        <a href={currentInspiration.youtubeLink} target="_blank" rel="noopener noreferrer">Watch/Listen (YouTube)</a>
+                      <Button variant="destructive" size="sm" asChild className="btn-send-canvas text-xs">
+                        <a href={currentInspiration.youtubeLink} target="_blank" rel="noopener noreferrer">Watch/Listen</a>
                       </Button>
                     )}
                   </div>
@@ -834,7 +834,7 @@ const AppClientPage: FC = () => {
             )}
              {currentInspiration && !inspirationLoader && (
               <div className="send-buttons-container">
-                <Button onClick={() => appendToTextarea('ideaCatcherTextArea', `${currentInspiration.title} by ${currentInspiration.creator}`)} variant="outline">Add Title/Creator to Notes</Button>
+                <Button onClick={() => appendToTextarea('ideaCatcherTextArea', `${currentInspiration.title} by ${currentInspiration.creator}`)} variant="outline" size="sm" className="text-xs">Add Title/Creator to Notes</Button>
               </div>
             )}
           </AccordionContent>
@@ -846,150 +846,148 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="sparks-muses-title main-section-title">Sparks & Muses</h2>
           </AccordionTrigger>
-          <AccordionContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-4">
+          <AccordionContent className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 pt-2 accordion-content-inner-padding"> {/* Reduced gap, padding */}
             {/* Thematic Prompts */}
             <Card className="tool-card">
-              <CardHeader>
-                <CardTitle className="thematic-prompts-title subsection-title">Thematic Prompts</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"An artist has got to be careful never really to arrive at a place where he thinks he's AT somewhere."</p>
-                <Button onClick={() => handleToolAction(ai.summonMuse, setMusePrompt, setMuseLoader, "Thematic prompt will appear here.")} disabled={museLoader} className="w-full" variant="secondary">
-                  {museLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />} Get Prompt
+              <CardHeader className="p-3"><CardTitle className="thematic-prompts-title subsection-title">Thematic Prompts</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"An artist has got to be careful never really to arrive at a place where he thinks he's AT somewhere."</p>
+                <Button onClick={() => handleToolAction(ai.summonMuse, setMusePrompt, setMuseLoader, "Thematic prompt will appear here.")} disabled={museLoader} className="w-full btn-sm" variant="secondary"> {/* Smaller button */}
+                  {museLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Wand2 className="mr-1.5 h-3 w-3" />} Get Prompt
                 </Button>
                 <div className="output-display-area" id="musePromptDisplayOutput">{musePrompt}</div>
                 {musePrompt !== "Thematic prompt will appear here." && !musePrompt.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('songCanvasTextArea', musePrompt)} variant="outline">Add to Song Canvas</Button>
+                    <Button onClick={() => appendToTextarea('songCanvasTextArea', musePrompt)} variant="outline" size="sm" className="text-xs">Add to Song Canvas</Button>
                   </div>
                 )}
               </CardContent>
             </Card>
             {/* Album Title Generator */}
             <Card className="tool-card">
-              <CardHeader><CardTitle className="album-title-generator-title subsection-title">Album Title Generator</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I contain multitudes."</p>
-                <Button onClick={() => handleToolAction(ai.generateAlbumTitle, setAlbumTitle, setAlbumTitleLoader, "Album title will appear here.")} disabled={albumTitleLoader} className="w-full" variant="default">
-                  {albumTitleLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} Generate Title
+              <CardHeader className="p-3"><CardTitle className="album-title-generator-title subsection-title">Album Title Generator</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I contain multitudes."</p>
+                <Button onClick={() => handleToolAction(ai.generateAlbumTitle, setAlbumTitle, setAlbumTitleLoader, "Album title will appear here.")} disabled={albumTitleLoader} className="w-full btn-sm" variant="default">
+                  {albumTitleLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Sparkles className="mr-1.5 h-3 w-3" />} Generate Title
                 </Button>
-                <div className="output-display-area alt-heading-font flex items-center justify-center h-20 text-3xl" style={{color: "hsl(var(--accent-foreground))", backgroundColor: "hsl(var(--accent)/0.7)"}} id="albumTitleDisplayOutput">{albumTitle}</div>
+                <div className="output-display-area alt-heading-font flex items-center justify-center h-16 text-2xl" style={{color: "hsl(var(--accent-foreground))", backgroundColor: "hsl(var(--accent)/0.7)"}} id="albumTitleDisplayOutput">{albumTitle}</div>
                 {albumTitle !== "Album title will appear here." && !albumTitle.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => setSongWorkingTitle(albumTitle)} variant="outline">Set as Song Title</Button>
+                    <Button onClick={() => setSongWorkingTitle(albumTitle)} variant="outline" size="sm" className="text-xs">Set as Song Title</Button>
                   </div>
                 )}
               </CardContent>
             </Card>
             {/* Poet's Corner */}
             <Card className="tool-card">
-              <CardHeader><CardTitle className="poets-corner-title subsection-title">Poet's Corner</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I'll let you be in my dreams if I can be in yours."</p>
+              <CardHeader className="p-3"><CardTitle className="poets-corner-title subsection-title">Poet's Corner</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I'll let you be in my dreams if I can be in yours."</p>
                 <Button onClick={() => {
                     const randomIndex = Math.floor(Math.random() * DYLAN_QUOTES.length);
                     setDylanQuote(`"${DYLAN_QUOTES[randomIndex]}"`);
-                }} className="w-full" variant="ghost">
-                  <BookOpen className="mr-2 h-4 w-4" /> Get Dylan Quote
+                }} className="w-full btn-sm" variant="ghost">
+                  <BookOpen className="mr-1.5 h-3 w-3" /> Get Dylan Quote
                 </Button>
-                <div className="output-display-area dylan-quote text-lg min-h-[8rem] flex items-center justify-center" style={{borderColor: "hsl(var(--secondary))"}} id="dylanQuoteDisplayOutput">{dylanQuote}</div>
+                <div className="output-display-area dylan-quote text-base min-h-[6rem] flex items-center justify-center" style={{borderColor: "hsl(var(--secondary))"}} id="dylanQuoteDisplayOutput">{dylanQuote}</div>
                 {dylanQuote !== "What's the word on the wire today?" && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', dylanQuote)} variant="outline">Add to Notes</Button>
+                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', dylanQuote)} variant="outline" size="sm" className="text-xs">Add to Notes</Button>
                   </div>
                 )}
               </CardContent>
             </Card>
             {/* Bridge Builder */}
             <Card className="tool-card md:col-span-1 lg:col-span-2">
-              <CardHeader><CardTitle className="bridge-builder-title subsection-title">Bridge Builder Prompts</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A bridge can still be built, while the bitter waters are rising."</p>
-                <div className="space-y-2 mb-3">
-                    <Label htmlFor="bridgeContextInput">Main Theme/Chorus Idea (Optional):</Label>
-                    <Input id="bridgeContextInput" value={bridgeContext} onChange={(e) => setBridgeContext(e.target.value)} placeholder="e.g., a song about lost love and train tracks" />
+              <CardHeader className="p-3"><CardTitle className="bridge-builder-title subsection-title">Bridge Builder Prompts</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"A bridge can still be built, while the bitter waters are rising."</p>
+                <div className="space-y-1.5 mb-2"> {/* Tighter spacing */}
+                    <Label htmlFor="bridgeContextInput" className="text-xs">Main Theme/Chorus Idea (Optional):</Label>
+                    <Input id="bridgeContextInput" value={bridgeContext} onChange={(e) => setBridgeContext(e.target.value)} placeholder="e.g., a song about lost love and train tracks" className="h-8 text-xs" />
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.generateBridgePrompt({context: bridgeContext}), setBridgePrompt, setBridgeLoader, "Bridge ideas will appear here.")} disabled={bridgeLoader} className="w-full" variant="default">
-                  {bridgeLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Settings className="mr-2 h-4 w-4" />} Get Bridge Idea
+                <Button onClick={() => handleToolAction(() => ai.generateBridgePrompt({context: bridgeContext}), setBridgePrompt, setBridgeLoader, "Bridge ideas will appear here.")} disabled={bridgeLoader} className="w-full btn-sm" variant="default">
+                  {bridgeLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Settings className="mr-1.5 h-3 w-3" />} Get Bridge Idea
                 </Button>
                 <div className="output-display-area" id="bridgePromptDisplayOutput">{bridgePrompt}</div>
                  {bridgePrompt !== "Bridge ideas will appear here." && !bridgePrompt.startsWith("Error") && (
                   <div className="send-buttons-container">
-                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', bridgePrompt)} variant="outline">Add to Notes</Button>
+                    <Button onClick={() => appendToTextarea('ideaCatcherTextArea', bridgePrompt)} variant="outline" size="sm" className="text-xs">Add to Notes</Button>
                   </div>
                 )}
               </CardContent>
             </Card>
              {/* Melody Spark */}
             <Card className="tool-card">
-                <CardHeader><CardTitle className="melody-spark-title subsection-title">Melody Maker's Memo</CardTitle></CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"May your song always be sung."</p>
-                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdeaOutput, setMelodyIdeaLoader, "Melody concepts will appear here.")} disabled={melodyIdeaLoader} className="w-full" variant="ghost">
-                        {melodyIdeaLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Music2 className="mr-2 h-4 w-4" />} Get Melodic Idea
+                <CardHeader className="p-3"><CardTitle className="melody-spark-title subsection-title">Melody Maker's Memo</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                    <p className="text-muted-foreground mb-3 dylan-quote text-xs">"May your song always be sung."</p>
+                    <Button onClick={() => handleToolAction(() => ai.generateMelodyIdea({ query: "" }), setMelodyIdeaOutput, setMelodyIdeaLoader, "Melody concepts will appear here.")} disabled={melodyIdeaLoader} className="w-full btn-sm" variant="ghost">
+                        {melodyIdeaLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Music2 className="mr-1.5 h-3 w-3" />} Get Melodic Idea
                     </Button>
-                    <div className="output-display-area" id="melodyIdeaDisplayOutput">
+                    <div className="output-display-area text-xs" id="melodyIdeaDisplayOutput"> {/* Smaller text for output */}
                       {formatMelodyIdeaOutput(melodyIdeaOutput)}
                     </div>
                     {getMelodyIdeaTextForCanvas(melodyIdeaOutput) && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', getMelodyIdeaTextForCanvas(melodyIdeaOutput))} variant="outline">Add to Melodic Ideas</Button>
+                            <Button onClick={() => appendToTextarea('melodicIdeasTextArea', getMelodyIdeaTextForCanvas(melodyIdeaOutput))} variant="outline" size="sm" className="text-xs">Add to Melodic Ideas</Button>
                         </div>
                     )}
                 </CardContent>
             </Card>
             {/* Rhythm Architect */}
             <Card className="tool-card">
-                <CardHeader><CardTitle className="rhythm-architect-title subsection-title">Rhythm Architect</CardTitle></CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"The tempo is what it is."</p>
-                    <Button onClick={() => handleToolAction(() => ai.generateRhythmIdea({}), setRhythmIdea, setRhythmIdeaLoader, "Rhythm ideas will appear here.")} disabled={rhythmIdeaLoader} className="w-full" variant="secondary">
-                         {rhythmIdeaLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <SlidersHorizontal className="mr-2 h-4 w-4" />} Get Rhythm Idea
+                <CardHeader className="p-3"><CardTitle className="rhythm-architect-title subsection-title">Rhythm Architect</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                    <p className="text-muted-foreground mb-3 dylan-quote text-xs">"The tempo is what it is."</p>
+                    <Button onClick={() => handleToolAction(() => ai.generateRhythmIdea({}), setRhythmIdea, setRhythmIdeaLoader, "Rhythm ideas will appear here.")} disabled={rhythmIdeaLoader} className="w-full btn-sm" variant="secondary">
+                         {rhythmIdeaLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <SlidersHorizontal className="mr-1.5 h-3 w-3" />} Get Rhythm Idea
                     </Button>
                     <div className="output-display-area" id="rhythmIdeaDisplayOutput">{rhythmIdea}</div>
                      {rhythmIdea !== "Rhythm ideas will appear here." && !rhythmIdea.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', rhythmIdea)} variant="outline">Add to Notes</Button>
+                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', rhythmIdea)} variant="outline" size="sm" className="text-xs">Add to Notes</Button>
                         </div>
                     )}
                 </CardContent>
             </Card>
             {/* Artist Inspiration */}
             <Card className="tool-card md:col-span-3">
-                <CardHeader><CardTitle className="artist-inspiration-title subsection-title">Mentor's Corner (Artist Inspiration)</CardTitle></CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I think a hero is any person really intent on making this a better place for all people."</p>
-                    <div className="space-y-2 mb-3">
-                        <Label htmlFor="desiredQualityInput">Looking for inspiration in...</Label>
-                        <Input id="desiredQualityInput" value={desiredQuality} onChange={(e) => setDesiredQuality(e.target.value)} placeholder="e.g., 'Poetic Lyrics', 'Unique Chord Changes'" />
+                <CardHeader className="p-3"><CardTitle className="artist-inspiration-title subsection-title">Mentor's Corner (Artist Inspiration)</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                    <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I think a hero is any person really intent on making this a better place for all people."</p>
+                    <div className="space-y-1.5 mb-2">
+                        <Label htmlFor="desiredQualityInput" className="text-xs">Looking for inspiration in...</Label>
+                        <Input id="desiredQualityInput" value={desiredQuality} onChange={(e) => setDesiredQuality(e.target.value)} placeholder="e.g., 'Poetic Lyrics', 'Unique Chord Changes'" className="h-8 text-xs" />
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.getArtistInspiration({ desiredQuality }), setArtistInspiration, setArtistInspirationLoader, "Artist inspiration will appear here.")} disabled={artistInspirationLoader || !desiredQuality} className="w-full" variant="secondary">
-                        {artistInspirationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Users className="mr-2 h-4 w-4" />} Find Artist Inspiration
+                    <Button onClick={() => handleToolAction(() => ai.getArtistInspiration({ desiredQuality }), setArtistInspiration, setArtistInspirationLoader, "Artist inspiration will appear here.")} disabled={artistInspirationLoader || !desiredQuality} className="w-full btn-sm" variant="secondary">
+                        {artistInspirationLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Users className="mr-1.5 h-3 w-3" />} Find Artist Inspiration
                     </Button>
                     <div className="output-display-area" id="artistInspirationOutputResult">{artistInspiration}</div>
                     {artistInspiration !== "Artist inspiration will appear here." && !artistInspiration.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', artistInspiration)} variant="outline">Add to Notes</Button>
+                            <Button onClick={() => appendToTextarea('ideaCatcherTextArea', artistInspiration)} variant="outline" size="sm" className="text-xs">Add to Notes</Button>
                         </div>
                     )}
                 </CardContent>
             </Card>
              {/* Study a Song */}
             <Card className="tool-card md:col-span-3">
-                <CardHeader><CardTitle className="study-song-title subsection-title">Mentor's Discography (Study a Song)</CardTitle></CardHeader>
-                <CardContent>
-                     <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
-                    <div className="space-y-2 mb-3">
-                        <Label htmlFor="songStudyQueryInput">What kind of song or technique to study? (Optional)</Label>
-                        <Input id="songStudyQueryInput" value={songStudyQuery} onChange={(e) => setSongStudyQuery(e.target.value)} placeholder="e.g., Songs with great storytelling in G" />
+                <CardHeader className="p-3"><CardTitle className="study-song-title subsection-title">Mentor's Discography (Study a Song)</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                     <p className="text-muted-foreground mb-3 dylan-quote text-xs">"A song is anything that can walk by itself."</p>
+                    <div className="space-y-1.5 mb-2">
+                        <Label htmlFor="songStudyQueryInput" className="text-xs">What kind of song or technique to study? (Optional)</Label>
+                        <Input id="songStudyQueryInput" value={songStudyQuery} onChange={(e) => setSongStudyQuery(e.target.value)} placeholder="e.g., Songs with great storytelling in G" className="h-8 text-xs" />
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.studySong({ query: songStudyQuery }), setStudySongResult, setStudySongLoader, "Song study suggestions will appear here.")} disabled={studySongLoader} className="w-full" variant="default">
-                       {studySongLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Library className="mr-2 h-4 w-4" />} Get Song Study Suggestion
+                    <Button onClick={() => handleToolAction(() => ai.studySong({ query: songStudyQuery }), setStudySongResult, setStudySongLoader, "Song study suggestions will appear here.")} disabled={studySongLoader} className="w-full btn-sm" variant="default">
+                       {studySongLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Library className="mr-1.5 h-3 w-3" />} Get Song Study Suggestion
                     </Button>
                     <div className="output-display-area" id="studySongOutputResult">{studySongResult}</div>
                     {studySongResult !== "Song study suggestions will appear here." && !studySongResult.startsWith("Error") && (
                         <div className="send-buttons-container">
-                             <Button onClick={() => appendToTextarea('ideaCatcherTextArea', studySongResult)} variant="outline">Add to Notes</Button>
+                             <Button onClick={() => appendToTextarea('ideaCatcherTextArea', studySongResult)} variant="outline" size="sm" className="text-xs">Add to Notes</Button>
                         </div>
                     )}
                 </CardContent>
@@ -1002,15 +1000,15 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="lyrical-toolkit-title main-section-title">Lyrical Toolkit</h2>
           </AccordionTrigger>
-          <AccordionContent className="space-y-8 pt-4">
+          <AccordionContent className="space-y-4 pt-2 accordion-content-inner-padding"> {/* Reduced space-y, padding */}
             {/* Word Association Tennis */}
             <Card className="tool-card">
-              <CardHeader><CardTitle className="word-association-title subsection-title">Word Association Tennis</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You want to know what it is to be a songwriter? Write songs."</p>
-                <div className="word-association-chat mb-4">
+              <CardHeader className="p-3"><CardTitle className="word-association-title subsection-title">Word Association Tennis</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"You want to know what it is to be a songwriter? Write songs."</p>
+                <div className="word-association-chat mb-3">
                   {wordAssociationChat.length === 0 ? (
-                    <p className="text-muted-foreground">Start a rally by typing a word or phrase below!</p>
+                    <p className="text-muted-foreground text-xs">Start a rally by typing a word or phrase below!</p>
                   ) : (
                     wordAssociationChat.map((msg, index) => (
                       <p key={index} className={msg.sender === 'user' ? 'word-association-message-user' : 'word-association-message-ai'}>
@@ -1019,173 +1017,170 @@ const AppClientPage: FC = () => {
                     ))
                   )}
                 </div>
-                <div className="flex gap-2 mb-3">
+                <div className="flex gap-1.5 mb-2"> {/* Reduced gap */}
                   <Input id="wordAssociationInput" value={wordAssociationInput} onChange={(e) => setWordAssociationInput(e.target.value)} placeholder="e.g., 'blue', 'whisper of the wind'" 
-                    onKeyPress={(e) => e.key === 'Enter' && handleWordAssociationSubmit()} className="flex-grow"
+                    onKeyPress={(e) => e.key === 'Enter' && handleWordAssociationSubmit()} className="flex-grow h-8 text-xs"
                   />
-                  <Button onClick={handleWordAssociationSubmit} disabled={wordAssociationLoader} variant="secondary" className="whitespace-nowrap">
-                    {wordAssociationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <MessageSquare className="mr-2 h-4 w-4" />} Send
+                  <Button onClick={handleWordAssociationSubmit} disabled={wordAssociationLoader} variant="secondary" size="sm" className="whitespace-nowrap text-xs"> {/* Smaller button */}
+                    {wordAssociationLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <MessageSquare className="mr-1.5 h-3 w-3" />} Send
                   </Button>
                 </div>
-                <Button onClick={handleAddLastAIRhymeToNotes} variant="outline" size="sm" className="w-full">
-                  <FilePlus2 className="mr-2 h-4 w-4" /> Add AI's Last Rhyme to Notes
+                <Button onClick={handleAddLastAIRhymeToNotes} variant="outline" size="sm" className="w-full text-xs">
+                  <FilePlus2 className="mr-1.5 h-3 w-3" /> Add AI's Last Rhyme to Notes
                 </Button>
               </CardContent>
             </Card>
 
             {/* Phrase Spark */}
             <Card className="tool-card">
-              <CardHeader className="flex flex-row items-center justify-between">
+              <CardHeader className="flex flex-row items-center justify-between p-3"> {/* Reduced padding */}
                 <CardTitle className="phrase-spark-title subsection-title">Phrase Spark</CardTitle>
-                <Button onClick={() => setShowPhraseList(!showPhraseList)} variant="outline" className="btn-toggle-phrases">
-                  {showPhraseList ? 'Hide' : 'Show'} Phrases <ListFilter className="ml-2 h-4 w-4" />
+                <Button onClick={() => setShowPhraseList(!showPhraseList)} variant="outline" size="sm" className="btn-toggle-phrases text-xs"> {/* Smaller button */}
+                  {showPhraseList ? 'Hide' : 'Show'} Phrases <ListFilter className="ml-1.5 h-3 w-3" />
                 </Button>
               </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-6 dylan-quote text-sm">"May your song always be sung."</p>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-4 dylan-quote text-xs">"May your song always be sung."</p>
                 {showPhraseList && (
                   <>
-                    <div className="space-y-6 mb-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        <div><Label htmlFor="phraseSearchInput">Search Phrases</Label><Input id="phraseSearchInput" value={phraseSearchTerm} onChange={(e) => setPhraseSearchTerm(e.target.value)} placeholder="Find that fleeting phrase..." /></div>
-                        <div><Label htmlFor="phraseCommonalityFilter">Filter by Commonality</Label>
+                    <div className="space-y-4 mb-4"> {/* Reduced spacing */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"> {/* Reduced gap */}
+                        <div><Label htmlFor="phraseSearchInput" className="text-xs">Search Phrases</Label><Input id="phraseSearchInput" value={phraseSearchTerm} onChange={(e) => setPhraseSearchTerm(e.target.value)} placeholder="Find that fleeting phrase..." className="h-8 text-xs" /></div>
+                        <div><Label htmlFor="phraseCommonalityFilter" className="text-xs">Filter by Commonality</Label>
                           <Select value={phraseCommonalityFilter} onValueChange={setPhraseCommonalityFilter}>
-                            <SelectTrigger><SelectValue placeholder="All Commonality Levels" /></SelectTrigger>
-                            <SelectContent>{commonalityLevels.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+                            <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="All Commonality Levels" /></SelectTrigger>
+                            <SelectContent>{commonalityLevels.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                           </Select>
                         </div>
-                        <div><Label>Filter by Total Syllables</Label><div className="flex gap-2">
-                          <Input type="number" value={phraseMinSyllables} onChange={(e) => setPhraseMinSyllables(e.target.value)} placeholder="Min" className="w-1/2" />
-                          <Input type="number" value={phraseMaxSyllables} onChange={(e) => setPhraseMaxSyllables(e.target.value)} placeholder="Max" className="w-1/2" />
+                        <div><Label className="text-xs">Filter by Total Syllables</Label><div className="flex gap-1.5">
+                          <Input type="number" value={phraseMinSyllables} onChange={(e) => setPhraseMinSyllables(e.target.value)} placeholder="Min" className="w-1/2 h-8 text-xs" />
+                          <Input type="number" value={phraseMaxSyllables} onChange={(e) => setPhraseMaxSyllables(e.target.value)} placeholder="Max" className="w-1/2 h-8 text-xs" />
                         </div></div>
                       </div>
-                      <div><Label>Filter by Adjective's First Letter</Label><div className="flex flex-wrap gap-1 mt-1">
-                        <Button variant={phraseLetterFilter === 'All' ? 'default': 'outline'} size="sm" onClick={() => setPhraseLetterFilter('All')}>All</Button>
-                        {wordLetters.map(letter => <Button key={letter} variant={phraseLetterFilter === letter ? 'default': 'outline'} size="sm" onClick={() => setPhraseLetterFilter(letter)}>{letter}</Button>)}
+                      <div><Label className="text-xs">Filter by Adjective's First Letter</Label><div className="flex flex-wrap gap-0.5 mt-1"> {/* Reduced gap */}
+                        <Button variant={phraseLetterFilter === 'All' ? 'default': 'outline'} size="sm" className="text-xs px-1.5 py-0.5 h-auto" onClick={() => setPhraseLetterFilter('All')}>All</Button>
+                        {wordLetters.map(letter => <Button key={letter} variant={phraseLetterFilter === letter ? 'default': 'outline'} size="sm" className="text-xs px-1.5 py-0.5 h-auto" onClick={() => setPhraseLetterFilter(letter)}>{letter}</Button>)}
                       </div></div>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 items-end">
-                        <div><Label htmlFor="phraseSortOptions">Sort By</Label>
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 items-end"> {/* Reduced gap */}
+                        <div><Label htmlFor="phraseSortOptions" className="text-xs">Sort By</Label>
                           <Select value={phraseSortOption} onValueChange={setPhraseSortOption}>
-                            <SelectTrigger><SelectValue placeholder="Alphabetical (A-Z)" /></SelectTrigger>
+                            <SelectTrigger className="h-8 text-xs"><SelectValue placeholder="Alphabetical (A-Z)" /></SelectTrigger>
                             <SelectContent>
-                              <SelectItem value="alpha-asc">Alphabetical (A-Z)</SelectItem><SelectItem value="alpha-desc">Alphabetical (Z-A)</SelectItem>
-                              <SelectItem value="commonality-desc">Commonality (High-Low)</SelectItem><SelectItem value="commonality-asc">Commonality (Low-High)</SelectItem>
-                              <SelectItem value="syllables-asc">Total Syllables (Low-High)</SelectItem><SelectItem value="syllables-desc">Total Syllables (High-Low)</SelectItem>
+                              <SelectItem value="alpha-asc" className="text-xs">Alphabetical (A-Z)</SelectItem><SelectItem value="alpha-desc" className="text-xs">Alphabetical (Z-A)</SelectItem>
+                              <SelectItem value="commonality-desc" className="text-xs">Commonality (High-Low)</SelectItem><SelectItem value="commonality-asc" className="text-xs">Commonality (Low-High)</SelectItem>
+                              <SelectItem value="syllables-asc" className="text-xs">Total Syllables (Low-High)</SelectItem><SelectItem value="syllables-desc" className="text-xs">Total Syllables (High-Low)</SelectItem>
                             </SelectContent>
                           </Select>
                         </div>
-                        <div className="flex flex-wrap gap-2 items-center justify-start md:justify-end">
-                          <Button onClick={handleRandomPhrase} variant="default"><Shuffle className="mr-2 h-4 w-4" />Random Phrase</Button>
-                          <Button onClick={handleGetAIPhrases} disabled={phraseListLoading} variant="ghost">
-                            {phraseListLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}Get AI Phrases
+                        <div className="flex flex-wrap gap-1.5 items-center justify-start md:justify-end"> {/* Reduced gap */}
+                          <Button onClick={handleRandomPhrase} variant="default" size="sm" className="text-xs"><Shuffle className="mr-1.5 h-3 w-3" />Random Phrase</Button>
+                          <Button onClick={handleGetAIPhrases} disabled={phraseListLoading} variant="ghost" size="sm" className="text-xs">
+                            {phraseListLoading ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Sparkles className="mr-1.5 h-3 w-3" />}Get AI Phrases
                           </Button>
-                          <Button onClick={() => setShowingFavoritesOnly(!showingFavoritesOnly)} variant={showingFavoritesOnly ? "default" : "outline"}>
-                            <Star className="mr-2 h-4 w-4" />Show Favorites ({favoritePhrases.length})
+                          <Button onClick={() => setShowingFavoritesOnly(!showingFavoritesOnly)} variant={showingFavoritesOnly ? "default" : "outline"} size="sm" className="text-xs">
+                            <Star className="mr-1.5 h-3 w-3" />Show Favorites ({favoritePhrases.length})
                           </Button>
                         </div>
                       </div>
                       {randomlySelectedPhrase && (
-                        <div className="mt-4 p-3 border border-dashed rounded bg-muted/30">
-                          <p className="text-sm text-muted-foreground">Randomly Selected:</p>
-                          <p className="font-semibold text-lg mb-2" style={{fontFamily: "var(--font-caveat)"}}>{randomlySelectedPhrase}</p>
-                          <div className="flex gap-2">
-                            <Button size="sm" variant="outline" onClick={() => { setLineToRephrase(randomlySelectedPhrase); setSectionExpanderInputText(randomlySelectedPhrase); toast({title: "Phrase Sent!", description: "Ready in Word Lab & Section Expander."})}}>
+                        <div className="mt-3 p-2 border border-dashed rounded bg-muted/30"> {/* Reduced padding/margin */}
+                          <p className="text-xs text-muted-foreground">Randomly Selected:</p>
+                          <p className="font-semibold text-base mb-1.5" style={{fontFamily: "var(--font-caveat)"}}>{randomlySelectedPhrase}</p>
+                          <div className="flex gap-1.5">
+                            <Button size="sm" variant="outline" className="text-xs" onClick={() => { setLineToRephrase(randomlySelectedPhrase); setSectionExpanderInputText(randomlySelectedPhrase); toast({title: "Phrase Sent!", description: "Ready in Word Lab & Section Expander."})}}>
                                <Edit3 className="mr-1 h-3 w-3"/> Use in Word Lab
                             </Button>
-                            <Button size="sm" variant="outline" onClick={() => { appendToTextarea('ideaCatcherTextArea', randomlySelectedPhrase); toast({title: "Phrase Added!", description: "Added to Quick Notes."})}}>
+                            <Button size="sm" variant="outline" className="text-xs" onClick={() => { appendToTextarea('ideaCatcherTextArea', randomlySelectedPhrase); toast({title: "Phrase Added!", description: "Added to Quick Notes."})}}>
                                <FilePlus2 className="mr-1 h-3 w-3"/> Add to Notes
                             </Button>
                           </div>
                         </div>
                       )}
                       {showingFavoritesOnly && favoritePhrases.length > 0 && (
-                        <div className="mt-4 flex gap-2">
-                          <Button onClick={handleCopyFavorites}><Copy className="mr-2 h-4 w-4" />Copy Favorites</Button>
+                        <div className="mt-3 flex gap-1.5"> {/* Reduced margin/gap */}
+                          <Button onClick={handleCopyFavorites} size="sm" className="text-xs"><Copy className="mr-1.5 h-3 w-3" />Copy Favorites</Button>
                           <AlertDialog open={confirmClearFavoritesOpen} onOpenChange={setConfirmClearFavoritesOpen}>
-                            <AlertDialogTrigger asChild><Button variant="destructive"><Trash2 className="mr-2 h-4 w-4" />Clear Favorites</Button></AlertDialogTrigger>
-                            <AlertDialogContent>
-                              <AlertDialogHeader><AlertDialogTitle>Clear All Favorites?</AlertDialogTitle><AlertDialogDescription>This action cannot be undone.</AlertDialogDescription></AlertDialogHeader>
-                              <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={handleClearFavorites}>Yes, Clear</AlertDialogAction></AlertDialogFooter>
-                            </AlertDialogContent>
+                            <AlertDialogTrigger asChild><Button variant="destructive" size="sm" className="text-xs"><Trash2 className="mr-1.5 h-3 w-3" />Clear Favorites</Button></AlertDialogTrigger>
+                            <AlertDialogContent><AlertDialogHeader><AlertDialogTitle>Clear All Favorites?</AlertDialogTitle><AlertDialogDescription>This action cannot be undone.</AlertDialogDescription></AlertDialogHeader><AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={handleClearFavorites}>Yes, Clear</AlertDialogAction></AlertDialogFooter></AlertDialogContent>
                           </AlertDialog>
                         </div>
                       )}
                     </div>
-                    <p className="text-muted-foreground my-4"><em>Wander through these word pairings... "May your song always be sung."</em></p>
+                    <p className="text-muted-foreground my-3 text-xs"><em>Wander through these word pairings... "May your song always be sung."</em></p>
                     {phraseListLoading && <div className="loader">Loading phrases...</div>}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 max-h-[70vh] overflow-y-auto p-2 border-2 border-dashed rounded bg-card/50">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3 max-h-[60vh] overflow-y-auto p-1.5 border-2 border-dashed rounded bg-card/50"> {/* Reduced gap, padding, max-height */}
                       {filteredPhrases.map(phrase => (
-                        <Card key={phrase.text} className="phrase-card p-3 flex flex-col bg-background shadow-sm hover:shadow-lg transition-shadow border-muted-foreground">
+                        <Card key={phrase.text} className="phrase-card">
                            <Tooltip>
                             <TooltipTrigger asChild>
-                              <span className="font-semibold mb-1 cursor-pointer text-lg" style={{fontFamily: "var(--font-caveat)"}} onDragStart={(e) => { e.dataTransfer.setData('text/plain', phrase.text); e.dataTransfer.effectAllowed = 'copy';}} draggable>{phrase.text}</span>
+                              <span className="font-semibold mb-1 cursor-pointer text-base" style={{fontFamily: "var(--font-caveat)"}} onDragStart={(e) => { e.dataTransfer.setData('text/plain', phrase.text); e.dataTransfer.effectAllowed = 'copy';}} draggable>{phrase.text}</span>
                             </TooltipTrigger>
                             <TooltipContent><p>Drag to canvas</p></TooltipContent>
                           </Tooltip>
-                          <div className="text-xs text-muted-foreground mb-2">Comm: {phrase.commonality} | Syll: {phrase.totalSyllables} (A:{phrase.syllablesAdjective}, N:{phrase.syllablesNoun})</div>
-                          <div className="flex items-center justify-between mt-auto pt-2 border-t border-dashed">
-                            <div className="flex gap-1">
+                          <div className="text-xs text-muted-foreground">Comm: {phrase.commonality} | Syll: {phrase.totalSyllables} (A:{phrase.syllablesAdjective}, N:{phrase.syllablesNoun})</div>
+                          <div className="flex items-center justify-between mt-auto pt-1 border-t border-dashed">
+                            <div className="flex gap-0.5"> {/* Reduced gap */}
                               <Tooltip><TooltipTrigger asChild>
-                                <Button size="sm" variant="ghost" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Rhymes for "${phrase.noun}"`, () => ai.rhymeTennis({ word: phrase.noun }), null)}>Rhyme <Sparkles className="ml-1 h-3 w-3" /></Button>
+                                <Button size="sm" variant="ghost" className="text-xs px-1 py-0.5 h-auto" onClick={() => openGeminiModalWithSuggestion(`Rhymes for "${phrase.noun}"`, () => ai.rhymeTennis({ word: phrase.noun }), null)}>Rhyme <Sparkles className="ml-1 h-2.5 w-2.5" /></Button>
                               </TooltipTrigger><TooltipContent>Get rhymes for "{phrase.noun}"</TooltipContent></Tooltip>
                               <Tooltip><TooltipTrigger asChild>
-                                <Button size="sm" variant="ghost" className="text-xs" onClick={() => openGeminiModalWithSuggestion(`Expanding on "${phrase.text}"`, () => ai.expandSection({ idea: phrase.text, expandType: 'verse'}), null)}>Expand <Sparkles className="ml-1 h-3 w-3" /></Button>
+                                <Button size="sm" variant="ghost" className="text-xs px-1 py-0.5 h-auto" onClick={() => openGeminiModalWithSuggestion(`Expanding on "${phrase.text}"`, () => ai.expandSection({ idea: phrase.text, expandType: 'verse'}), null)}>Expand <Sparkles className="ml-1 h-2.5 w-2.5" /></Button>
                               </TooltipTrigger><TooltipContent>Expand on "{phrase.text}"</TooltipContent></Tooltip>
                             </div>
                             <Tooltip><TooltipTrigger asChild>
-                              <Button variant="ghost" size="icon" onClick={() => toggleFavoritePhrase(phrase.text)} className={`hover:text-red-500 ${favoritePhrases.includes(phrase.text) ? 'text-red-500' : 'text-muted-foreground'}`}>
-                                <Star className={`h-5 w-5 ${favoritePhrases.includes(phrase.text) ? 'fill-current' : ''}`} />
+                              <Button variant="ghost" size="icon" className="h-6 w-6 hover:text-red-500" onClick={() => toggleFavoritePhrase(phrase.text)}> {/* Smaller icon button */}
+                                <Star className={`h-4 w-4 ${favoritePhrases.includes(phrase.text) ? 'text-red-500 fill-current' : 'text-muted-foreground'}`} />
                               </Button>
                             </TooltipTrigger><TooltipContent>{favoritePhrases.includes(phrase.text) ? 'Unfavorite' : 'Favorite'}</TooltipContent></Tooltip>
                           </div>
                         </Card>
                       ))}
                     </div>
-                    {filteredPhrases.length === 0 && !phraseListLoading && <p className="text-center text-muted-foreground py-8 text-lg">No phrases match your search right now.</p>}
+                    {filteredPhrases.length === 0 && !phraseListLoading && <p className="text-center text-muted-foreground py-6 text-base">No phrases match your search right now.</p>}
                   </>
                 )}
               </CardContent>
             </Card>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap */}
               {/* Word Lab */}
               <Card className="tool-card">
-                <CardHeader><CardTitle className="sonic-lab-title subsection-title">Word Lab</CardTitle></CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Even the President of the United States must sometimes have to stand naked."</p>
-                  <div className="space-y-2 mb-3">
-                    <Label htmlFor="lineToRephrase">Enter a line to rephrase:</Label>
-                    <Input id="lineToRephrase" value={lineToRephrase} onChange={(e) => setLineToRephrase(e.target.value)} placeholder="e.g., The sun is bright" />
+                <CardHeader className="p-3"><CardTitle className="sonic-lab-title subsection-title">Word Lab</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                  <p className="text-muted-foreground mb-3 dylan-quote text-xs">"Even the President of the United States must sometimes have to stand naked."</p>
+                  <div className="space-y-1.5 mb-2">
+                    <Label htmlFor="lineToRephrase" className="text-xs">Enter a line to rephrase:</Label>
+                    <Input id="lineToRephrase" value={lineToRephrase} onChange={(e) => setLineToRephrase(e.target.value)} placeholder="e.g., The sun is bright" className="h-8 text-xs" />
                   </div>
-                  <div className="space-y-2 mb-3">
-                    <Label htmlFor="rephraseStyleSelectWordLab">Rephrasing Style:</Label>
+                  <div className="space-y-1.5 mb-2">
+                    <Label htmlFor="rephraseStyleSelectWordLab" className="text-xs">Rephrasing Style:</Label>
                     <Select value={rephraseStyle} onValueChange={setRephraseStyle}>
-                      <SelectTrigger id="rephraseStyleSelectWordLab"><SelectValue /></SelectTrigger>
-                      <SelectContent>{rephraseStyleOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+                      <SelectTrigger id="rephraseStyleSelectWordLab" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                      <SelectContent>{rephraseStyleOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.rephraseLine({ lineToRephrase, rephraseStyle }), setRephrasedLine, setLyricalLabLoader, "Rephrased line will appear here.")} disabled={lyricalLabLoader || !lineToRephrase} className="w-full" variant="ghost">
-                    {lyricalLabLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Edit3 className="mr-2 h-4 w-4" />} Rephrase Line
+                  <Button onClick={() => handleToolAction(() => ai.rephraseLine({ lineToRephrase, rephraseStyle }), setRephrasedLine, setLyricalLabLoader, "Rephrased line will appear here.")} disabled={lyricalLabLoader || !lineToRephrase} className="w-full btn-sm" variant="ghost">
+                    {lyricalLabLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Edit3 className="mr-1.5 h-3 w-3" />} Rephrase Line
                   </Button>
                   <div className="output-display-area" id="rephrasedLineOutput">{rephrasedLine}</div>
                   {rephrasedLine !== "Rephrased line will appear here." && !rephrasedLine.startsWith("Error") && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', rephrasedLine)} variant="outline">Add to Song Draft</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', rephrasedLine)} variant="outline" size="sm" className="text-xs">Add to Song Draft</Button>
                     </div>
                   )}
                 </CardContent>
               </Card>
               {/* Lyrical Mood Ring */}
               <Card className="tool-card">
-                <CardHeader><CardTitle className="lyrical-mood-ring-title subsection-title">Lyrical Mood Ring</CardTitle></CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You don't need a weatherman to know which way the wind blows."</p>
-                  <div className="space-y-2 mb-3">
-                    <Label htmlFor="lyricsToAnalyze">Paste lyrics to analyze mood:</Label>
-                    <Textarea id="lyricsToAnalyze" value={lyricsToAnalyze} onChange={(e) => setLyricsToAnalyze(e.target.value)} placeholder="Your lyrics here..." rows={4} />
+                <CardHeader className="p-3"><CardTitle className="lyrical-mood-ring-title subsection-title">Lyrical Mood Ring</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                  <p className="text-muted-foreground mb-3 dylan-quote text-xs">"You don't need a weatherman to know which way the wind blows."</p>
+                  <div className="space-y-1.5 mb-2">
+                    <Label htmlFor="lyricsToAnalyze" className="text-xs">Paste lyrics to analyze mood:</Label>
+                    <Textarea id="lyricsToAnalyze" value={lyricsToAnalyze} onChange={(e) => setLyricsToAnalyze(e.target.value)} placeholder="Your lyrics here..." rows={3} className="text-xs min-h-[60px]" />
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.analyzeLyricalMood({ lyrics: lyricsToAnalyze }), setLyricalMood, setLyricalMoodLoader, "Lyrical mood analysis will appear here.")} disabled={lyricalMoodLoader || !lyricsToAnalyze} className="w-full" variant="ghost">
-                    {lyricalMoodLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Brain className="mr-2 h-4 w-4" />} Analyze Mood
+                  <Button onClick={() => handleToolAction(() => ai.analyzeLyricalMood({ lyrics: lyricsToAnalyze }), setLyricalMood, setLyricalMoodLoader, "Lyrical mood analysis will appear here.")} disabled={lyricalMoodLoader || !lyricsToAnalyze} className="w-full btn-sm" variant="ghost">
+                    {lyricalMoodLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Brain className="mr-1.5 h-3 w-3" />} Analyze Mood
                   </Button>
                   <div className="output-display-area" id="lyricalMoodOutput">{lyricalMood}</div>
                 </CardContent>
@@ -1193,69 +1188,69 @@ const AppClientPage: FC = () => {
             </div>
              {/* Metaphor Builder */}
             <Card className="tool-card">
-                <CardHeader><CardTitle className="metaphor-builder-title subsection-title">Metaphor Builder</CardTitle></CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"All the truth in the world adds up to one big lie." - Find a new way to say it.</p>
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-3">
-                        <div className="space-y-2"><Label htmlFor="metaphorConceptInput">Concept/Object for Metaphor:</Label><Input id="metaphorConceptInput" value={metaphorConcept} onChange={e => setMetaphorConcept(e.target.value)} placeholder="e.g., love, a river, journey" /></div>
-                        <div className="space-y-2"><Label htmlFor="metaphorFeelingInput">Desired Feeling/Comparison (Optional):</Label><Input id="metaphorFeelingInput" value={metaphorFeeling} onChange={e => setMetaphorFeeling(e.target.value)} placeholder="e.g., fleeting, strong, like a storm" /></div>
+                <CardHeader className="p-3"><CardTitle className="metaphor-builder-title subsection-title">Metaphor Builder</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                    <p className="text-muted-foreground mb-3 dylan-quote text-xs">"All the truth in the world adds up to one big lie." - Find a new way to say it.</p>
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-2"> {/* Reduced gap */}
+                        <div className="space-y-1"><Label htmlFor="metaphorConceptInput" className="text-xs">Concept/Object for Metaphor:</Label><Input id="metaphorConceptInput" value={metaphorConcept} onChange={e => setMetaphorConcept(e.target.value)} placeholder="e.g., love, a river, journey" className="h-8 text-xs" /></div>
+                        <div className="space-y-1"><Label htmlFor="metaphorFeelingInput" className="text-xs">Desired Feeling/Comparison (Optional):</Label><Input id="metaphorFeelingInput" value={metaphorFeeling} onChange={e => setMetaphorFeeling(e.target.value)} placeholder="e.g., fleeting, strong, like a storm" className="h-8 text-xs" /></div>
                     </div>
-                    <Button onClick={() => handleToolAction(() => ai.generateMetaphor({ concept: metaphorConcept, feeling: metaphorFeeling }), setMetaphorResult, setMetaphorLoader, "Generated metaphor will appear here.")} disabled={metaphorLoader || !metaphorConcept} className="w-full" variant="default">
-                        {metaphorLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Wand2 className="mr-2 h-4 w-4" />} Build Metaphor
+                    <Button onClick={() => handleToolAction(() => ai.generateMetaphor({ concept: metaphorConcept, feeling: metaphorFeeling }), setMetaphorResult, setMetaphorLoader, "Generated metaphor will appear here.")} disabled={metaphorLoader || !metaphorConcept} className="w-full btn-sm" variant="default">
+                        {metaphorLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Wand2 className="mr-1.5 h-3 w-3" />} Build Metaphor
                     </Button>
                     <div className="output-display-area" id="metaphorResultOutput">{metaphorResult}</div>
                     {metaphorResult !== "Generated metaphor will appear here." && !metaphorResult.startsWith("Error") && (
                         <div className="send-buttons-container">
-                            <Button onClick={() => appendToTextarea('songCanvasTextArea', metaphorResult)} variant="outline">Add to Song Draft</Button>
+                            <Button onClick={() => appendToTextarea('songCanvasTextArea', metaphorResult)} variant="outline" size="sm" className="text-xs">Add to Song Draft</Button>
                         </div>
                     )}
                 </CardContent>
             </Card>
             {/* Rhyme Scheme Generator */}
             <Card className="tool-card">
-              <CardHeader><CardTitle className="rhyme-scheme-title subsection-title">Rhyme Scheme Generator</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I was so much older then, I'm younger than that now."</p>
-                <div className="space-y-2 mb-3">
-                  <Label htmlFor="rhymeSchemeInputText">Enter a few lines or a topic:</Label>
-                  <Textarea id="rhymeSchemeInputText" value={rhymeSchemeInputText} onChange={(e) => setRhymeSchemeInputText(e.target.value)} placeholder="e.g., The road unwinds before me / A story yet untold" rows={3} />
+              <CardHeader className="p-3"><CardTitle className="rhyme-scheme-title subsection-title">Rhyme Scheme Generator</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I was so much older then, I'm younger than that now."</p>
+                <div className="space-y-1.5 mb-2">
+                  <Label htmlFor="rhymeSchemeInputText" className="text-xs">Enter a few lines or a topic:</Label>
+                  <Textarea id="rhymeSchemeInputText" value={rhymeSchemeInputText} onChange={(e) => setRhymeSchemeInputText(e.target.value)} placeholder="e.g., The road unwinds before me / A story yet untold" rows={2} className="text-xs min-h-[50px]" />
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.generateRhymeScheme({ inputText: rhymeSchemeInputText }), setRhymeSchemeResult, setRhymeSchemeLoader, "Rhyme scheme analysis will appear here.")} disabled={rhymeSchemeLoader || !rhymeSchemeInputText} className="w-full" variant="ghost">
-                  {rhymeSchemeLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Rows className="mr-2 h-4 w-4" />} Get Rhyme Scheme
+                <Button onClick={() => handleToolAction(() => ai.generateRhymeScheme({ inputText: rhymeSchemeInputText }), setRhymeSchemeResult, setRhymeSchemeLoader, "Rhyme scheme analysis will appear here.")} disabled={rhymeSchemeLoader || !rhymeSchemeInputText} className="w-full btn-sm" variant="ghost">
+                  {rhymeSchemeLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Rows className="mr-1.5 h-3 w-3" />} Get Rhyme Scheme
                 </Button>
                 <div className="output-display-area" id="rhymeSchemeResultOutput">{rhymeSchemeResult}</div>
                 {rhymeSchemeResult !== "Rhyme scheme analysis will appear here." && !rhymeSchemeResult.startsWith("Error") && (
                     <div className="send-buttons-container">
-                        <Button onClick={() => appendToTextarea('songCanvasTextArea', rhymeSchemeResult)} variant="outline">Add to Song Draft</Button>
+                        <Button onClick={() => appendToTextarea('songCanvasTextArea', rhymeSchemeResult)} variant="outline" size="sm" className="text-xs">Add to Song Draft</Button>
                     </div>
                 )}
               </CardContent>
             </Card>
             {/* Section Expander */}
             <Card className="tool-card">
-              <CardHeader><CardTitle className="section-expander-title subsection-title">Section Expander</CardTitle></CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself."</p>
-                <div className="space-y-2 mb-3">
-                  <Label htmlFor="sectionExpanderInputText">Enter a starting line or idea:</Label>
-                  <Textarea id="sectionExpanderInputText" value={sectionExpanderInputText} onChange={(e) => setSectionExpanderInputText(e.target.value)} placeholder="e.g., The city sleeps under a blanket of stars" rows={3} />
+              <CardHeader className="p-3"><CardTitle className="section-expander-title subsection-title">Section Expander</CardTitle></CardHeader>
+              <CardContent className="p-3 pt-0">
+                <p className="text-muted-foreground mb-3 dylan-quote text-xs">"A song is anything that can walk by itself."</p>
+                <div className="space-y-1.5 mb-2">
+                  <Label htmlFor="sectionExpanderInputText" className="text-xs">Enter a starting line or idea:</Label>
+                  <Textarea id="sectionExpanderInputText" value={sectionExpanderInputText} onChange={(e) => setSectionExpanderInputText(e.target.value)} placeholder="e.g., The city sleeps under a blanket of stars" rows={2} className="text-xs min-h-[50px]" />
                 </div>
-                <div className="space-y-2 mb-3">
-                  <Label htmlFor="sectionExpanderTypeSelect">Expand to:</Label>
+                <div className="space-y-1.5 mb-2">
+                  <Label htmlFor="sectionExpanderTypeSelect" className="text-xs">Expand to:</Label>
                   <Select value={sectionExpanderType} onValueChange={setSectionExpanderType}>
-                    <SelectTrigger id="sectionExpanderTypeSelect"><SelectValue /></SelectTrigger>
+                    <SelectTrigger id="sectionExpanderTypeSelect" className="h-8 text-xs"><SelectValue /></SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="verse">Verse</SelectItem><SelectItem value="chorus">Chorus</SelectItem><SelectItem value="bridge">Bridge</SelectItem>
+                      <SelectItem value="verse" className="text-xs">Verse</SelectItem><SelectItem value="chorus" className="text-xs">Chorus</SelectItem><SelectItem value="bridge" className="text-xs">Bridge</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <Button onClick={() => handleToolAction(() => ai.expandSection({ idea: sectionExpanderInputText, expandType: sectionExpanderType as "verse"|"chorus"|"bridge" }), setSectionExpanderResult, setSectionExpanderLoader, "Expanded lyrical section will appear here.")} disabled={sectionExpanderLoader || !sectionExpanderInputText} className="w-full" variant="ghost">
-                  {sectionExpanderLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Columns className="mr-2 h-4 w-4" />} Expand Section
+                <Button onClick={() => handleToolAction(() => ai.expandSection({ idea: sectionExpanderInputText, expandType: sectionExpanderType as "verse"|"chorus"|"bridge" }), setSectionExpanderResult, setSectionExpanderLoader, "Expanded lyrical section will appear here.")} disabled={sectionExpanderLoader || !sectionExpanderInputText} className="w-full btn-sm" variant="ghost">
+                  {sectionExpanderLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Columns className="mr-1.5 h-3 w-3" />} Expand Section
                 </Button>
                 <div className="output-display-area" id="sectionExpanderResultOutput">{sectionExpanderResult}</div>
                  {sectionExpanderResult !== "Expanded lyrical section will appear here." && !sectionExpanderResult.startsWith("Error") && (
                     <div className="send-buttons-container">
-                        <Button onClick={() => appendToTextarea('songCanvasTextArea', sectionExpanderResult)} variant="outline">Add to Song Draft</Button>
+                        <Button onClick={() => appendToTextarea('songCanvasTextArea', sectionExpanderResult)} variant="outline" size="sm" className="text-xs">Add to Song Draft</Button>
                     </div>
                 )}
               </CardContent>
@@ -1268,63 +1263,63 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="musical-toolkit-title main-section-title">Musical Toolkit</h2>
           </AccordionTrigger>
-          <AccordionContent className="space-y-8 pt-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <AccordionContent className="space-y-4 pt-2 accordion-content-inner-padding"> {/* Reduced space-y, padding */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap */}
               {/* Chord Corner */}
               <Card className="tool-card">
-                <CardHeader><CardTitle className="riff-altar-title subsection-title">Chord Corner</CardTitle></CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Chaos is a friend of mine."</p>
-                  <div className="space-y-2 mb-3">
-                    <Label htmlFor="moodSelectorChordCorner">Select a Mood:</Label>
+                <CardHeader className="p-3"><CardTitle className="riff-altar-title subsection-title">Chord Corner</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                  <p className="text-muted-foreground mb-3 dylan-quote text-xs">"Chaos is a friend of mine."</p>
+                  <div className="space-y-1.5 mb-2">
+                    <Label htmlFor="moodSelectorChordCorner" className="text-xs">Select a Mood:</Label>
                     <Select value={selectedMood} onValueChange={(value) => {
                         setSelectedMood(value);
                         if (value && CHORD_PROGRESSIONS_DATA[value]) {
                             const mood = CHORD_PROGRESSIONS_DATA[value];
-                            setChordProgression(`<h4 class="text-lg font-semibold mb-2" style="color:hsl(var(--secondary)); font-family: var(--font-architects-daughter);">${mood.name} Progressions:</h4>` + mood.progressions.map(p => `<div class="mb-1">${p}</div>`).join(''));
+                            setChordProgression(`<h4 class="text-base font-semibold mb-1.5" style="color:hsl(var(--secondary)); font-family: var(--font-architects-daughter);">${mood.name} Progressions:</h4>` + mood.progressions.map(p => `<div class="mb-0.5 text-xs">${p}</div>`).join(''));
                         } else {
                             setChordProgression('Select a mood for chord progressions.');
                         }
                     }}>
-                      <SelectTrigger id="moodSelectorChordCorner"><SelectValue placeholder="-- Choose a Vibe --" /></SelectTrigger>
+                      <SelectTrigger id="moodSelectorChordCorner" className="h-8 text-xs"><SelectValue placeholder="-- Choose a Vibe --" /></SelectTrigger>
                       <SelectContent>
                         {Object.entries(CHORD_PROGRESSIONS_DATA).map(([key, mood]) => (
-                          <SelectItem key={key} value={key}>{mood.name}</SelectItem>
+                          <SelectItem key={key} value={key} className="text-xs">{mood.name}</SelectItem>
                         ))}
                       </SelectContent>
                     </Select>
                   </div>
-                  <div className="output-display-area" dangerouslySetInnerHTML={{ __html: chordProgression }} id="chordProgressionDisplayOutput" />
+                  <div className="output-display-area text-xs" dangerouslySetInnerHTML={{ __html: chordProgression }} id="chordProgressionDisplayOutput" /> {/* Smaller text for output */}
                   {selectedMood && chordProgression !== "Select a mood for chord progressions." && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', chordProgression.replace(/<[^>]+>/g, '\n').replace(/\n\n+/g, '\n').trim())} variant="outline">Send to Song Canvas</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', chordProgression.replace(/<[^>]+>/g, '\n').replace(/\n\n+/g, '\n').trim())} variant="outline" size="sm" className="text-xs">Send to Song Canvas</Button>
                     </div>
                   )}
                 </CardContent>
               </Card>
               {/* Chord Alchemist (Reharmonizer) */}
               <Card className="tool-card">
-                <CardHeader><CardTitle className="chord-reharmonizer-title subsection-title">The Chord Alchemist</CardTitle></CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground mb-4 dylan-quote text-sm">"I change during the course of a day."</p>
-                  <div className="space-y-2 mb-3"><Label htmlFor="originalChordsInputReharm">Original Chords (e.g., C - G - Am - F)</Label><Input id="originalChordsInputReharm" value={originalChords} onChange={(e) => setOriginalChords(e.target.value)} placeholder="Enter your chord progression" /></div>
-                  <div className="space-y-2 mb-3"><Label htmlFor="reharmStyleSelectInput">Reharmonization Style</Label>
-                    <Select value={reharmStyle} onValueChange={setReharmStyle}><SelectTrigger id="reharmStyleSelectInput"><SelectValue /></SelectTrigger>
-                      <SelectContent>{reharmStyleOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+                <CardHeader className="p-3"><CardTitle className="chord-reharmonizer-title subsection-title">The Chord Alchemist</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                  <p className="text-muted-foreground mb-3 dylan-quote text-xs">"I change during the course of a day."</p>
+                  <div className="space-y-1.5 mb-2"><Label htmlFor="originalChordsInputReharm" className="text-xs">Original Chords (e.g., C - G - Am - F)</Label><Input id="originalChordsInputReharm" value={originalChords} onChange={(e) => setOriginalChords(e.target.value)} placeholder="Enter your chord progression" className="h-8 text-xs"/></div>
+                  <div className="space-y-1.5 mb-2"><Label htmlFor="reharmStyleSelectInput" className="text-xs">Reharmonization Style</Label>
+                    <Select value={reharmStyle} onValueChange={setReharmStyle}><SelectTrigger id="reharmStyleSelectInput" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                      <SelectContent>{reharmStyleOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  <div className="space-y-2 mb-3"><Label htmlFor="reharmIntensitySelectInput">Reharmonization Intensity:</Label>
-                    <Select value={reharmIntensity} onValueChange={setReharmIntensity}><SelectTrigger id="reharmIntensitySelectInput"><SelectValue /></SelectTrigger>
-                      <SelectContent>{reharmIntensityOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+                  <div className="space-y-1.5 mb-2"><Label htmlFor="reharmIntensitySelectInput" className="text-xs">Reharmonization Intensity:</Label>
+                    <Select value={reharmIntensity} onValueChange={setReharmIntensity}><SelectTrigger id="reharmIntensitySelectInput" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                      <SelectContent>{reharmIntensityOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                     </Select>
                   </div>
-                  <Button onClick={() => handleToolAction(() => ai.reharmonizeChords({ chords: originalChords, style: reharmStyle, intensity: reharmIntensity }), setReharmonizedChords, setReharmonizerLoader, "Reharmonized chords will appear here.")} disabled={reharmonizerLoader || !originalChords} className="w-full" variant="default">
-                    {reharmonizerLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <RefreshCw className="mr-2 h-4 w-4" />} Reharmonize Chords
+                  <Button onClick={() => handleToolAction(() => ai.reharmonizeChords({ chords: originalChords, style: reharmStyle, intensity: reharmIntensity }), setReharmonizedChords, setReharmonizerLoader, "Reharmonized chords will appear here.")} disabled={reharmonizerLoader || !originalChords} className="w-full btn-sm" variant="default">
+                    {reharmonizerLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <RefreshCw className="mr-1.5 h-3 w-3" />} Reharmonize Chords
                   </Button>
                   <div className="output-display-area" id="reharmonizedChordsOutput">{reharmonizedChords}</div>
                   {reharmonizedChords !== "Reharmonized chords will appear here." && !reharmonizedChords.startsWith("Error") && (
                     <div className="send-buttons-container">
-                      <Button onClick={() => appendToTextarea('songCanvasTextArea', reharmonizedChords)} variant="outline">Send to Song Canvas</Button>
+                      <Button onClick={() => appendToTextarea('songCanvasTextArea', reharmonizedChords)} variant="outline" size="sm" className="text-xs">Send to Song Canvas</Button>
                     </div>
                   )}
                 </CardContent>
@@ -1332,76 +1327,76 @@ const AppClientPage: FC = () => {
             </div>
             {/* Chord Forge */}
             <Card className="tool-card">
-                <CardHeader><CardTitle className="chord-forge-title subsection-title">The Chord Forge</CardTitle></CardHeader>
-                <CardContent>
-                    <p className="text-muted-foreground mb-4 dylan-quote text-sm">"Play it loud!"</p>
-                    <div className="mb-6 p-4 bg-muted/50 rounded-lg border-2 border-dashed">
-                        <h4 className="text-xl font-semibold mb-3" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Standard Progression Generator</h4>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
-                            <div className="space-y-1"> <Label htmlFor="stdProgKey">Key</Label> <Select value={stdProgKey} onValueChange={setStdProgKey}><SelectTrigger id="stdProgKey"><SelectValue/></SelectTrigger><SelectContent>{["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"].map(k => <SelectItem key={k} value={k}>{k}</SelectItem>)}</SelectContent></Select></div>
-                            <div className="space-y-1"> <Label htmlFor="stdProgScale">Scale/Mood</Label> <Select value={stdProgScale} onValueChange={setStdProgScale}><SelectTrigger id="stdProgScale"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="Major">Major</SelectItem><SelectItem value="Minor">Minor</SelectItem><SelectItem value="Bluesy">Bluesy</SelectItem><SelectItem value="Jazzy">Jazzy</SelectItem><SelectItem value="Folk">Folk</SelectItem></SelectContent></Select></div>
-                            <div className="space-y-1"> <Label htmlFor="stdProgNumChords"># Chords</Label> <Input id="stdProgNumChords" type="number" value={stdProgNumChords} onChange={e=>setStdProgNumChords(parseInt(e.target.value))} min="2" max="8"/></div>
-                            <div className="space-y-1"> <Label htmlFor="stdProgComplexity">Complexity</Label> <Select value={stdProgComplexity} onValueChange={setStdProgComplexity}><SelectTrigger id="stdProgComplexity"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="1">Simple</SelectItem><SelectItem value="2">Medium</SelectItem><SelectItem value="3">Complex</SelectItem></SelectContent></Select></div>
+                <CardHeader className="p-3"><CardTitle className="chord-forge-title subsection-title">The Chord Forge</CardTitle></CardHeader>
+                <CardContent className="p-3 pt-0">
+                    <p className="text-muted-foreground mb-3 dylan-quote text-xs">"Play it loud!"</p>
+                    <div className="mb-4 p-3 bg-muted/50 rounded-lg border-2 border-dashed"> {/* Reduced padding/margin */}
+                        <h4 className="text-lg font-semibold mb-2" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Standard Progression Generator</h4> {/* Smaller */}
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-3"> {/* Reduced gap */}
+                            <div className="space-y-0.5"> <Label htmlFor="stdProgKey" className="text-xs">Key</Label> <Select value={stdProgKey} onValueChange={setStdProgKey}><SelectTrigger id="stdProgKey" className="h-8 text-xs"><SelectValue/></SelectTrigger><SelectContent>{["C","C#","D","D#","E","F","F#","G","G#","A","A#","B"].map(k => <SelectItem key={k} value={k} className="text-xs">{k}</SelectItem>)}</SelectContent></Select></div>
+                            <div className="space-y-0.5"> <Label htmlFor="stdProgScale" className="text-xs">Scale/Mood</Label> <Select value={stdProgScale} onValueChange={setStdProgScale}><SelectTrigger id="stdProgScale" className="h-8 text-xs"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="Major" className="text-xs">Major</SelectItem><SelectItem value="Minor" className="text-xs">Minor</SelectItem><SelectItem value="Bluesy" className="text-xs">Bluesy</SelectItem><SelectItem value="Jazzy" className="text-xs">Jazzy</SelectItem><SelectItem value="Folk" className="text-xs">Folk</SelectItem></SelectContent></Select></div>
+                            <div className="space-y-0.5"> <Label htmlFor="stdProgNumChords" className="text-xs"># Chords</Label> <Input id="stdProgNumChords" type="number" value={stdProgNumChords} onChange={e=>setStdProgNumChords(parseInt(e.target.value))} min="2" max="8" className="h-8 text-xs"/></div>
+                            <div className="space-y-0.5"> <Label htmlFor="stdProgComplexity" className="text-xs">Complexity</Label> <Select value={stdProgComplexity} onValueChange={setStdProgComplexity}><SelectTrigger id="stdProgComplexity" className="h-8 text-xs"><SelectValue/></SelectTrigger><SelectContent><SelectItem value="1" className="text-xs">Simple</SelectItem><SelectItem value="2" className="text-xs">Medium</SelectItem><SelectItem value="3" className="text-xs">Complex</SelectItem></SelectContent></Select></div>
                         </div>
-                         <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: `${stdProgKey} ${stdProgScale}`, complexity: stdProgComplexity === "3" ? 'complex': 'simple' }), setStdProgResult, setStdProgLoader, "Standard progression will appear here.")} disabled={stdProgLoader} variant="default">
-                            {stdProgLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Music className="mr-2 h-4 w-4" />} Generate Standard Progression
+                         <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: `${stdProgKey} ${stdProgScale}`, complexity: stdProgComplexity === "3" ? 'complex': 'simple' }), setStdProgResult, setStdProgLoader, "Standard progression will appear here.")} disabled={stdProgLoader} variant="default" size="sm" className="text-xs">
+                            {stdProgLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Music className="mr-1.5 h-3 w-3" />} Generate Standard Progression
                          </Button>
-                        <div className="output-display-area mt-3" style={{color: "hsl(var(--accent-foreground))"}} id="stdProgResultOutput">{stdProgResult}</div>
+                        <div className="output-display-area mt-2 text-xs" style={{color: "hsl(var(--accent-foreground))"}} id="stdProgResultOutput">{stdProgResult}</div> {/* Smaller text */}
                         {stdProgResult !== "Standard progression will appear here." && !stdProgResult.startsWith("Error") && (
-                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', stdProgResult)} variant="outline">Send to Song Canvas</Button></div>
+                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', stdProgResult)} variant="outline" size="sm" className="text-xs">Send to Song Canvas</Button></div>
                         )}
                     </div>
-                    <div className="p-4 bg-muted/50 rounded-lg border-2 border-dashed">
-                        <h4 className="text-xl font-semibold mb-3" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Random Progression Generator</h4>
-                         <div className="space-y-2 mb-3"><Label htmlFor="randomProgFeelInputRandom">Desired Feel/Genre (Optional):</Label><Input id="randomProgFeelInputRandom" value={randomProgFeel} onChange={e => setRandomProgFeel(e.target.value)} placeholder="e.g., Mellow folk, Driving alt-country" /></div>
-                        <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: randomProgFeel || "any", complexity: "simple" }), setRandomProgResult, setRandomProgLoader, "Random progression will appear here.")} disabled={randomProgLoader} variant="secondary">
-                            {randomProgLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Shuffle className="mr-2 h-4 w-4" />} Generate Random Progression
+                    <div className="p-3 bg-muted/50 rounded-lg border-2 border-dashed"> {/* Reduced padding */}
+                        <h4 className="text-lg font-semibold mb-2" style={{fontFamily: "var(--font-architects-daughter)", color: "hsl(var(--accent-foreground))"}}>Random Progression Generator</h4> {/* Smaller */}
+                         <div className="space-y-1.5 mb-2"><Label htmlFor="randomProgFeelInputRandom" className="text-xs">Desired Feel/Genre (Optional):</Label><Input id="randomProgFeelInputRandom" value={randomProgFeel} onChange={e => setRandomProgFeel(e.target.value)} placeholder="e.g., Mellow folk, Driving alt-country" className="h-8 text-xs" /></div>
+                        <Button onClick={() => handleToolAction(() => ai.generateChords({ mood: randomProgFeel || "any", complexity: "simple" }), setRandomProgResult, setRandomProgLoader, "Random progression will appear here.")} disabled={randomProgLoader} variant="secondary" size="sm" className="text-xs">
+                            {randomProgLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Shuffle className="mr-1.5 h-3 w-3" />} Generate Random Progression
                         </Button>
-                        <div className="output-display-area mt-3" style={{color: "hsl(var(--accent-foreground))"}} id="randomProgResultOutput">{randomProgResult}</div>
+                        <div className="output-display-area mt-2 text-xs" style={{color: "hsl(var(--accent-foreground))"}} id="randomProgResultOutput">{randomProgResult}</div> {/* Smaller text */}
                         {randomProgResult !== "Random progression will appear here." && !randomProgResult.startsWith("Error") && (
-                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', randomProgResult)} variant="outline">Send to Song Canvas</Button></div>
+                            <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', randomProgResult)} variant="outline" size="sm" className="text-xs">Send to Song Canvas</Button></div>
                         )}
                     </div>
                 </CardContent>
             </Card>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap */}
               {/* Chord Voicing Suggester */}
               <Card className="tool-card">
-                  <CardHeader><CardTitle className="chord-voicing-title subsection-title">Chord Voicing Suggester</CardTitle></CardHeader>
-                  <CardContent>
-                      <p className="text-muted-foreground mb-4 dylan-quote text-sm">"You can't be wise and in love at the same time." - Find new ways to say it with chords.</p>
-                      <div className="space-y-2 mb-3"><Label htmlFor="chordsForVoicingInput">Chords to Get Voicing Ideas For (e.g., C G Am F)</Label><Input id="chordsForVoicingInput" value={chordsForVoicing} onChange={e => setChordsForVoicing(e.target.value)} placeholder="Enter a few chords..." /></div>
-                      <Button onClick={() => handleToolAction(() => ai.getChordVoicingSuggestions({ chords: chordsForVoicing }), setVoicingSuggestions, setVoicingLoader, "Chord voicing ideas will appear here.")} disabled={voicingLoader || !chordsForVoicing} className="w-full" variant="ghost">
-                          {voicingLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Mic2 className="mr-2 h-4 w-4" />} Suggest Voicings
+                  <CardHeader className="p-3"><CardTitle className="chord-voicing-title subsection-title">Chord Voicing Suggester</CardTitle></CardHeader>
+                  <CardContent className="p-3 pt-0">
+                      <p className="text-muted-foreground mb-3 dylan-quote text-xs">"You can't be wise and in love at the same time." - Find new ways to say it with chords.</p>
+                      <div className="space-y-1.5 mb-2"><Label htmlFor="chordsForVoicingInput" className="text-xs">Chords to Get Voicing Ideas For (e.g., C G Am F)</Label><Input id="chordsForVoicingInput" value={chordsForVoicing} onChange={e => setChordsForVoicing(e.target.value)} placeholder="Enter a few chords..." className="h-8 text-xs" /></div>
+                      <Button onClick={() => handleToolAction(() => ai.getChordVoicingSuggestions({ chords: chordsForVoicing }), setVoicingSuggestions, setVoicingLoader, "Chord voicing ideas will appear here.")} disabled={voicingLoader || !chordsForVoicing} className="w-full btn-sm" variant="ghost">
+                          {voicingLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Mic2 className="mr-1.5 h-3 w-3" />} Suggest Voicings
                       </Button>
                       <div className="output-display-area" id="voicingSuggestionsOutput">{voicingSuggestions}</div>
                       {voicingSuggestions !== "Chord voicing ideas will appear here." && !voicingSuggestions.startsWith("Error") && (
-                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', voicingSuggestions)} variant="outline">Send to Song Canvas</Button></div>
+                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('songCanvasTextArea', voicingSuggestions)} variant="outline" size="sm" className="text-xs">Send to Song Canvas</Button></div>
                       )}
                   </CardContent>
               </Card>
               {/* Sound Palette (Instrumentation) */}
               <Card className="tool-card">
-                  <CardHeader><CardTitle className="instrumentation-title subsection-title">Sound Palette (Instrumentation)</CardTitle></CardHeader>
-                  <CardContent>
-                      <p className="text-muted-foreground mb-4 dylan-quote text-sm">"All this talk about equality..."</p>
-                      <div className="space-y-2 mb-3"><Label htmlFor="instrumentationVibeInput">Song Vibe/Genre (e.g., 'Dusty Americana')</Label><Input id="instrumentationVibeInput" value={instrumentationVibe} onChange={e => setInstrumentationVibe(e.target.value)} placeholder="Describe your song's feel" /></div>
-                      <div className="space-y-2 mb-3"><Label htmlFor="instrumentationStyleEraSelectInput">Musical Style/Era:</Label>
-                          <Select value={instrumentationStyleEra} onValueChange={setInstrumentationStyleEra}><SelectTrigger id="instrumentationStyleEraSelectInput"><SelectValue /></SelectTrigger>
+                  <CardHeader className="p-3"><CardTitle className="instrumentation-title subsection-title">Sound Palette (Instrumentation)</CardTitle></CardHeader>
+                  <CardContent className="p-3 pt-0">
+                      <p className="text-muted-foreground mb-3 dylan-quote text-xs">"All this talk about equality..."</p>
+                      <div className="space-y-1.5 mb-2"><Label htmlFor="instrumentationVibeInput" className="text-xs">Song Vibe/Genre (e.g., 'Dusty Americana')</Label><Input id="instrumentationVibeInput" value={instrumentationVibe} onChange={e => setInstrumentationVibe(e.target.value)} placeholder="Describe your song's feel" className="h-8 text-xs" /></div>
+                      <div className="space-y-1.5 mb-2"><Label htmlFor="instrumentationStyleEraSelectInput" className="text-xs">Musical Style/Era:</Label>
+                          <Select value={instrumentationStyleEra} onValueChange={setInstrumentationStyleEra}><SelectTrigger id="instrumentationStyleEraSelectInput" className="h-8 text-xs"><SelectValue /></SelectTrigger>
                               <SelectContent>
-                                  <SelectItem value="General Folk/Americana">General Folk/Americana</SelectItem><SelectItem value="60s Folk Revival">60s Folk Revival</SelectItem>
-                                  <SelectItem value="70s Singer-Songwriter">70s Singer-Songwriter</SelectItem><SelectItem value="90s Alt-Country">90s Alt-Country</SelectItem>
-                                  <SelectItem value="Modern Indie Folk">Modern Indie Folk</SelectItem><SelectItem value="Roots Rock">Roots Rock</SelectItem>
-                                  <SelectItem value="Psychedelic Folk">Psychedelic Folk</SelectItem>
+                                  <SelectItem value="General Folk/Americana" className="text-xs">General Folk/Americana</SelectItem><SelectItem value="60s Folk Revival" className="text-xs">60s Folk Revival</SelectItem>
+                                  <SelectItem value="70s Singer-Songwriter" className="text-xs">70s Singer-Songwriter</SelectItem><SelectItem value="90s Alt-Country" className="text-xs">90s Alt-Country</SelectItem>
+                                  <SelectItem value="Modern Indie Folk" className="text-xs">Modern Indie Folk</SelectItem><SelectItem value="Roots Rock" className="text-xs">Roots Rock</SelectItem>
+                                  <SelectItem value="Psychedelic Folk" className="text-xs">Psychedelic Folk</SelectItem>
                               </SelectContent>
                           </Select>
                       </div>
-                      <Button onClick={() => handleToolAction(() => ai.suggestInstruments({ vibe: instrumentationVibe, styleEra: instrumentationStyleEra }), setInstrumentationResult, setInstrumentationLoader, "Instrumentation ideas will appear here.")} disabled={instrumentationLoader || !instrumentationVibe} className="w-full" variant="ghost">
-                          {instrumentationLoader ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Palette className="mr-2 h-4 w-4" />} Suggest Instruments
+                      <Button onClick={() => handleToolAction(() => ai.suggestInstruments({ vibe: instrumentationVibe, styleEra: instrumentationStyleEra }), setInstrumentationResult, setInstrumentationLoader, "Instrumentation ideas will appear here.")} disabled={instrumentationLoader || !instrumentationVibe} className="w-full btn-sm" variant="ghost">
+                          {instrumentationLoader ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Palette className="mr-1.5 h-3 w-3" />} Suggest Instruments
                       </Button>
                       <div className="output-display-area" id="instrumentationResultOutput">{instrumentationResult}</div>
                       {instrumentationResult !== "Instrumentation ideas will appear here." && !instrumentationResult.startsWith("Error") && (
-                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('ideaCatcherTextArea', instrumentationResult)} variant="outline">Send to Notes</Button></div>
+                          <div className="send-buttons-container"><Button onClick={() => appendToTextarea('ideaCatcherTextArea', instrumentationResult)} variant="outline" size="sm" className="text-xs">Send to Notes</Button></div>
                       )}
                   </CardContent>
               </Card>
@@ -1414,29 +1409,29 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline">
             <h2 className="song-generator-title main-section-title">AI Song Draft Generator</h2>
           </AccordionTrigger>
-          <AccordionContent className="space-y-6 pt-4">
-            <p className="text-muted-foreground mb-4 dylan-quote text-sm">"A song is anything that can walk by itself." - Let's get a first draft walking.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="space-y-2"><Label htmlFor="fullSongThemeInput">Theme/Topic of Your Song:</Label><Input id="fullSongThemeInput" value={fullSongTheme} onChange={e => setFullSongTheme(e.target.value)} placeholder="e.g., A train journey at dusk" /></div>
-              <div className="space-y-2"><Label htmlFor="fullSongStyleInput">Musical Style/Mood:</Label><Input id="fullSongStyleInput" value={fullSongStyle} onChange={e => setFullSongStyle(e.target.value)} placeholder="e.g., Mellow Folk Ballad, Uptempo Alt-Country" /></div>
-              <div className="space-y-2"><Label htmlFor="fullSongStructureSelect">Desired Song Structure:</Label>
-                <Select value={fullSongStructure} onValueChange={setFullSongStructure}><SelectTrigger id="fullSongStructureSelect"><SelectValue /></SelectTrigger>
-                  <SelectContent>{songStructureOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+          <AccordionContent className="space-y-4 pt-2 accordion-content-inner-padding"> {/* Reduced space-y, padding */}
+            <p className="text-muted-foreground mb-3 dylan-quote text-xs">"A song is anything that can walk by itself." - Let's get a first draft walking.</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4"> {/* Reduced gap */}
+              <div className="space-y-1"><Label htmlFor="fullSongThemeInput" className="text-xs">Theme/Topic of Your Song:</Label><Input id="fullSongThemeInput" value={fullSongTheme} onChange={e => setFullSongTheme(e.target.value)} placeholder="e.g., A train journey at dusk" className="h-8 text-xs"/></div>
+              <div className="space-y-1"><Label htmlFor="fullSongStyleInput" className="text-xs">Musical Style/Mood:</Label><Input id="fullSongStyleInput" value={fullSongStyle} onChange={e => setFullSongStyle(e.target.value)} placeholder="e.g., Mellow Folk Ballad, Uptempo Alt-Country" className="h-8 text-xs"/></div>
+              <div className="space-y-1"><Label htmlFor="fullSongStructureSelect" className="text-xs">Desired Song Structure:</Label>
+                <Select value={fullSongStructure} onValueChange={setFullSongStructure}><SelectTrigger id="fullSongStructureSelect" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                  <SelectContent>{songStructureOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
-              <div className="space-y-2"><Label htmlFor="fullSongKeywordsInput">Key Lyrical Phrases/Keywords (Optional):</Label><Input id="fullSongKeywordsInput" value={fullSongKeywords} onChange={e => setFullSongKeywords(e.target.value)} placeholder="e.g., lonely road, setting sun" /></div>
-              <div className="space-y-2 md:col-span-2"><Label htmlFor="fullSongVerseCountInput">Approximate Number of Verses (e.g., 2-3):</Label><Input type="number" id="fullSongVerseCountInput" value={fullSongVerseCount} onChange={e => setFullSongVerseCount(parseInt(e.target.value))} min="1" max="5" className="w-full md:w-1/4" /></div>
+              <div className="space-y-1"><Label htmlFor="fullSongKeywordsInput" className="text-xs">Key Lyrical Phrases/Keywords (Optional):</Label><Input id="fullSongKeywordsInput" value={fullSongKeywords} onChange={e => setFullSongKeywords(e.target.value)} placeholder="e.g., lonely road, setting sun" className="h-8 text-xs"/></div>
+              <div className="space-y-1 md:col-span-2"><Label htmlFor="fullSongVerseCountInput" className="text-xs">Approximate Number of Verses (e.g., 2-3):</Label><Input type="number" id="fullSongVerseCountInput" value={fullSongVerseCount} onChange={e => setFullSongVerseCount(parseInt(e.target.value))} min="1" max="5" className="w-full md:w-1/4 h-8 text-xs" /></div>
             </div>
-            <Button onClick={() => handleToolAction(() => ai.generateFullSong({ theme: fullSongTheme, songStyle: fullSongStyle, structure: fullSongStructure, keywords: fullSongKeywords, verseCount: fullSongVerseCount }), setFullSongDraft, setFullSongLoaderState, "Your AI-generated song draft will appear here.")} disabled={fullSongLoaderState || !fullSongTheme || !fullSongStyle} className="w-full" variant="default">
-              {fullSongLoaderState ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <FileText className="mr-2 h-4 w-4" />} Compose Full Song Draft
+            <Button onClick={() => handleToolAction(() => ai.generateFullSong({ theme: fullSongTheme, songStyle: fullSongStyle, structure: fullSongStructure, keywords: fullSongKeywords, verseCount: fullSongVerseCount }), setFullSongDraft, setFullSongLoaderState, "Your AI-generated song draft will appear here.")} disabled={fullSongLoaderState || !fullSongTheme || !fullSongStyle} className="w-full btn-sm" variant="default">
+              {fullSongLoaderState ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <FileText className="mr-1.5 h-3 w-3" />} Compose Full Song Draft
             </Button>
-            <div className="space-y-2 mt-4">
-              <Label htmlFor="fullSongOutputTextarea">Generated Song Draft:</Label>
-              <Textarea id="fullSongOutputTextarea" value={fullSongDraft} onChange={e => setFullSongDraft(e.target.value)} rows={20} className="w-full p-3 output-display-area" placeholder="Your AI-generated song draft will appear here..." />
+            <div className="space-y-1.5 mt-3"> {/* Reduced spacing */}
+              <Label htmlFor="fullSongOutputTextarea" className="text-xs">Generated Song Draft:</Label>
+              <Textarea id="fullSongOutputTextarea" value={fullSongDraft} onChange={e => setFullSongDraft(e.target.value)} rows={15} className="w-full p-2 output-display-area text-xs min-h-[200px]" placeholder="Your AI-generated song draft will appear here..." /> {/* Smaller rows, padding, font */}
             </div>
              {fullSongDraft !== "Your AI-generated song draft will appear here..." && !fullSongDraft.startsWith("Error") && (
               <div className="send-buttons-container">
-                <Button onClick={() => { appendToTextarea('songCanvasTextArea', fullSongDraft); toast({title: "Draft Copied!", description: "Full song draft copied to main canvas."}) }} variant="outline">Copy to Main Song Canvas</Button>
+                <Button onClick={() => { appendToTextarea('songCanvasTextArea', fullSongDraft); toast({title: "Draft Copied!", description: "Full song draft copied to main canvas."}) }} variant="outline" size="sm" className="text-xs">Copy to Main Song Canvas</Button>
               </div>
             )}
           </AccordionContent>
@@ -1447,27 +1442,28 @@ const AppClientPage: FC = () => {
           <AccordionTrigger className="collapsible-header-style hover:no-underline" id="songCanvasSectionAccordionTrigger">
             <h2 className="canvas-title main-section-title">The Songwriter's Canvas</h2>
           </AccordionTrigger>
-          <AccordionContent className="pt-4">
-            <p className="text-muted-foreground mb-6 dylan-quote">"Take what you have gathered from coincidence." - Assemble your masterpiece here.</p>
-            <Card className="mb-6 bg-muted/50 border-2 border-dashed">
-              <CardHeader><CardTitle className="song-structure-title subsection-title">Song Structure Helper</CardTitle></CardHeader>
-              <CardContent className="space-y-4">
-                <div className="space-y-2"><Label htmlFor="songStructureSelectCanvasInput">Choose a Common Structure Template:</Label>
-                  <Select value={selectedStructureCanvas} onValueChange={setSelectedStructureCanvas}><SelectTrigger id="songStructureSelectCanvasInput"><SelectValue placeholder="-- Select a Structure --" /></SelectTrigger>
+          <AccordionContent className="pt-2 accordion-content-inner-padding"> {/* Reduced padding */}
+            <p className="text-muted-foreground mb-4 dylan-quote text-xs">"Take what you have gathered from coincidence." - Assemble your masterpiece here.</p>
+            <Card className="mb-4 bg-muted/50 border-2 border-dashed"> {/* Reduced margin */}
+              <CardHeader className="p-3"><CardTitle className="song-structure-title subsection-title">Song Structure Helper</CardTitle></CardHeader>
+              <CardContent className="space-y-3 p-3 pt-0"> {/* Reduced spacing, padding */}
+                <div className="space-y-1"><Label htmlFor="songStructureSelectCanvasInput" className="text-xs">Choose a Common Structure Template:</Label>
+                  <Select value={selectedStructureCanvas} onValueChange={setSelectedStructureCanvas}><SelectTrigger id="songStructureSelectCanvasInput" className="h-8 text-xs"><SelectValue placeholder="-- Select a Structure --" /></SelectTrigger>
                     <SelectContent>
-                      {songStructureOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}
-                      <SelectItem value="Blues Form (12-bar)">Blues Form (12-bar)</SelectItem>
-                      <SelectItem value="Folk Ballad (Strophic with refrain)">Folk Ballad (Strophic with refrain)</SelectItem>
-                      <SelectItem value="Freeform/Stream of Consciousness (Dylan-esque)">Freeform/Stream of Consciousness (Dylan-esque)</SelectItem>
+                      {songStructureOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}
+                      <SelectItem value="Blues Form (12-bar)" className="text-xs">Blues Form (12-bar)</SelectItem>
+                      <SelectItem value="Folk Ballad (Strophic with refrain)" className="text-xs">Folk Ballad (Strophic with refrain)</SelectItem>
+                      <SelectItem value="Freeform/Stream of Consciousness (Dylan-esque)" className="text-xs">Freeform/Stream of Consciousness (Dylan-esque)</SelectItem>
                     </SelectContent>
                   </Select>
                 </div>
-                <div className="space-y-2"><Label htmlFor="structureContextCanvasInput">Song Idea/Theme (Optional context):</Label><Input id="structureContextCanvasInput" value={structureContextCanvas} onChange={e => setStructureContextCanvas(e.target.value)} placeholder="e.g., journey of self-discovery" /></div>
-                <Button onClick={handleGenerateStructureCanvas} disabled={structureLoaderCanvas || !selectedStructureCanvas} variant="default">
-                  {structureLoaderCanvas ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />} Generate & Add Structure to Draft
+                <div className="space-y-1"><Label htmlFor="structureContextCanvasInput" className="text-xs">Song Idea/Theme (Optional context):</Label><Input id="structureContextCanvasInput" value={structureContextCanvas} onChange={e => setStructureContextCanvas(e.target.value)} placeholder="e.g., journey of self-discovery" className="h-8 text-xs"/></div>
+                <Button onClick={handleGenerateStructureCanvas} disabled={structureLoaderCanvas || !selectedStructureCanvas} variant="default" size="sm" className="text-xs">
+                  {structureLoaderCanvas ? <Loader2 className="mr-1.5 h-3 w-3 animate-spin" /> : <Sparkles className="mr-1.5 h-3 w-3" />} Generate & Add Structure to Draft
                 </Button>
-                <div className="space-y-2 mt-3"><Label>Or, Add Individual Blocks:</Label>
-                  <div className="flex flex-wrap gap-2">
+                <div className="space-y-1.5 mt-2"> {/* Reduced spacing */}
+                  <Label className="text-xs">Or, Add Individual Blocks:</Label>
+                  <div className="flex flex-wrap gap-1.5"> {/* Reduced gap */}
                     {structureBlockButtons.map(block => (
                       <Button key={block.label} onClick={() => appendToTextarea('songCanvasTextArea', `${block.structure}\n\n`)} className="btn-structure">{block.label}</Button>
                     ))}
@@ -1476,55 +1472,55 @@ const AppClientPage: FC = () => {
               </CardContent>
             </Card>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-              <div className="space-y-2"><Label htmlFor="songWorkingTitleInputCanvas">Working Title:</Label><Input id="songWorkingTitleInputCanvas" value={songWorkingTitle} onChange={e => setSongWorkingTitle(e.target.value)} placeholder="e.g., Visions of Johanna" /></div>
-              <div className="space-y-2"><Label htmlFor="songKeyTempoInputCanvas">Key / Tempo:</Label><Input id="songKeyTempoInputCanvas" value={songKeyTempo} onChange={e => setSongKeyTempo(e.target.value)} placeholder="e.g., E Major / 98bpm" /></div>
-              <div className="space-y-2"><Label htmlFor="songMoodThemeInputCanvas">Mood / Theme:</Label><Input id="songMoodThemeInputCanvas" value={songMoodTheme} onChange={e => setSongMoodTheme(e.target.value)} placeholder="e.g., Melancholy, Redemption" /></div>
-              <div className="space-y-2"><Label htmlFor="songCanvasFontSelectInput">Font Style:</Label>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-3"> {/* Reduced gap, margin */}
+              <div className="space-y-1"><Label htmlFor="songWorkingTitleInputCanvas" className="text-xs">Working Title:</Label><Input id="songWorkingTitleInputCanvas" value={songWorkingTitle} onChange={e => setSongWorkingTitle(e.target.value)} placeholder="e.g., Visions of Johanna" className="h-8 text-xs"/></div>
+              <div className="space-y-1"><Label htmlFor="songKeyTempoInputCanvas" className="text-xs">Key / Tempo:</Label><Input id="songKeyTempoInputCanvas" value={songKeyTempo} onChange={e => setSongKeyTempo(e.target.value)} placeholder="e.g., E Major / 98bpm" className="h-8 text-xs"/></div>
+              <div className="space-y-1"><Label htmlFor="songMoodThemeInputCanvas" className="text-xs">Mood / Theme:</Label><Input id="songMoodThemeInputCanvas" value={songMoodTheme} onChange={e => setSongMoodTheme(e.target.value)} placeholder="e.g., Melancholy, Redemption" className="h-8 text-xs"/></div>
+              <div className="space-y-1"><Label htmlFor="songCanvasFontSelectInput" className="text-xs">Font Style:</Label>
                 <Select value={songCanvasFont} onValueChange={setSongCanvasFont}>
-                  <SelectTrigger id="songCanvasFontSelectInput"><SelectValue /></SelectTrigger>
-                  <SelectContent>{canvasFontOptions.map(opt => <SelectItem key={opt.value} value={opt.value}>{opt.label}</SelectItem>)}</SelectContent>
+                  <SelectTrigger id="songCanvasFontSelectInput" className="h-8 text-xs"><SelectValue /></SelectTrigger>
+                  <SelectContent>{canvasFontOptions.map(opt => <SelectItem key={opt.value} value={opt.value} className="text-xs">{opt.label}</SelectItem>)}</SelectContent>
                 </Select>
               </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-              <div className="space-y-2"><Label htmlFor="ideaCatcherTextArea">Quick Notes / Scratchpad:</Label><Textarea id="ideaCatcherTextArea" value={ideaCatcherText} onChange={e => setIdeaCatcherText(e.target.value)} rows={4} placeholder="Fleeting thoughts, images, random lines..." className="bg-white/80 border-dashed" /></div>
-              <div className="space-y-2"><Label htmlFor="melodicIdeasTextArea">Melodic Ideas / Contour Notes:</Label><Textarea id="melodicIdeasTextArea" value={melodicIdeasText} onChange={e => setMelodicIdeasText(e.target.value)} rows={4} placeholder="e.g., Verse melody rises slowly..." className="bg-white/80 border-dashed" /></div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-3"> {/* Reduced gap, margin */}
+              <div className="space-y-1"><Label htmlFor="ideaCatcherTextArea" className="text-xs">Quick Notes / Scratchpad:</Label><Textarea id="ideaCatcherTextArea" value={ideaCatcherText} onChange={e => setIdeaCatcherText(e.target.value)} rows={3} placeholder="Fleeting thoughts, images, random lines..." className="bg-white/80 border-dashed text-xs min-h-[60px]" /></div>
+              <div className="space-y-1"><Label htmlFor="melodicIdeasTextArea" className="text-xs">Melodic Ideas / Contour Notes:</Label><Textarea id="melodicIdeasTextArea" value={melodicIdeasText} onChange={e => setMelodicIdeasText(e.target.value)} rows={3} placeholder="e.g., Verse melody rises slowly..." className="bg-white/80 border-dashed text-xs min-h-[60px]" /></div>
             </div>
-            <div className="space-y-2">
-              <Label htmlFor="songCanvasTextArea">Song Draft & Lyrics:</Label>
-              <Textarea id="songCanvasTextArea" value={songCanvasText} onChange={e => setSongCanvasText(e.target.value)} rows={18} placeholder="Lay down your tracks here..." className="p-3 bg-white border-2 border-foreground/30" style={{ fontFamily: songCanvasFont, lineHeight: 1.7 }} />
+            <div className="space-y-1.5"> {/* Reduced spacing */}
+              <Label htmlFor="songCanvasTextArea" className="text-xs">Song Draft & Lyrics:</Label>
+              <Textarea id="songCanvasTextArea" value={songCanvasText} onChange={e => setSongCanvasText(e.target.value)} rows={15} placeholder="Lay down your tracks here..." className="p-2 bg-white border-2 border-foreground/30 text-xs min-h-[250px]" style={{ fontFamily: songCanvasFont, lineHeight: 1.5 }} /> {/* Reduced rows, padding, line-height */}
             </div>
-            <div className="mt-4 flex flex-wrap gap-2">
-              <Button onClick={saveProject} variant="default"><Save className="mr-2 h-4 w-4" />Save Project</Button>
-              <Button onClick={loadProject} variant="secondary"><FolderOpen className="mr-2 h-4 w-4" />Load Project</Button>
+            <div className="mt-3 flex flex-wrap gap-1.5"> {/* Reduced margin, gap */}
+              <Button onClick={saveProject} variant="default" size="sm" className="text-xs"><Save className="mr-1.5 h-3 w-3" />Save Project</Button>
+              <Button onClick={loadProject} variant="secondary" size="sm" className="text-xs"><FolderOpen className="mr-1.5 h-3 w-3" />Load Project</Button>
               <AlertDialog open={confirmClearOpen} onOpenChange={setConfirmClearOpen}>
-                  <AlertDialogTrigger asChild><Button variant="destructive"><Trash2 className="mr-2 h-4 w-4" />Clear Saved Project</Button></AlertDialogTrigger>
+                  <AlertDialogTrigger asChild><Button variant="destructive" size="sm" className="text-xs"><Trash2 className="mr-1.5 h-3 w-3" />Clear Saved Project</Button></AlertDialogTrigger>
                   <AlertDialogContent>
                       <AlertDialogHeader><AlertDialogTitle>Clear Saved Project?</AlertDialogTitle><AlertDialogDescription>This action cannot be undone.</AlertDialogDescription></AlertDialogHeader>
                       <AlertDialogFooter><AlertDialogCancel>Cancel</AlertDialogCancel><AlertDialogAction onClick={clearProject}>Yes, Clear</AlertDialogAction></AlertDialogFooter>
                   </AlertDialogContent>
               </AlertDialog>
-              <Button onClick={exportSongDraft} variant="ghost"><FileText className="mr-2 h-4 w-4" />Export Song Draft</Button>
+              <Button onClick={exportSongDraft} variant="ghost" size="sm" className="text-xs"><FileText className="mr-1.5 h-3 w-3" />Export Song Draft</Button>
             </div>
-            {projectStatusMessage && <p className="text-sm mt-2 text-muted-foreground">{projectStatusMessage}</p>}
+            {projectStatusMessage && <p className="text-xs mt-1.5 text-muted-foreground">{projectStatusMessage}</p>} {/* Reduced margin */}
           </AccordionContent>
         </AccordionItem>
       </Accordion>
 
       {/* Gemini Modal for Phrase Spark AI actions */}
       <Dialog open={geminiModalOpen} onOpenChange={setGeminiModalOpen}>
-        <DialogContent className="bg-background text-foreground max-w-lg border-2 border-dashed border-primary">
-          <DialogHeader>
-            <DialogTitle className="page-title-font text-2xl text-primary mb-3">{geminiModalTitle}</DialogTitle>
-             <DialogClose asChild><Button variant="ghost" size="icon" className="absolute right-4 top-4"><X className="h-4 w-4" /></Button></DialogClose>
+        <DialogContent className="bg-background text-foreground max-w-md border-2 border-dashed border-primary"> {/* Smaller max-width */}
+          <DialogHeader className="pb-2"> {/* Reduced padding */}
+            <DialogTitle className="page-title-font text-xl text-primary mb-2">{geminiModalTitle}</DialogTitle> {/* Smaller text */}
+             <DialogClose asChild><Button variant="ghost" size="icon" className="absolute right-3 top-3 h-6 w-6"><X className="h-3 w-3" /></Button></DialogClose> {/* Adjusted close button */}
           </DialogHeader>
-          <div className="py-4">
+          <div className="py-2"> {/* Reduced padding */}
             {geminiModalLoader && <div className="loader"></div>}
-            <p className="mt-2 whitespace-pre-wrap text-sm" id="geminiModalContentOutput">{geminiModalContent}</p>
+            <p className="mt-1 whitespace-pre-wrap text-xs" id="geminiModalContentOutput">{geminiModalContent}</p> {/* Smaller text */}
             {geminiModalContent && !geminiModalLoader && !geminiModalContent.startsWith("Error:") && (
-              <div className="send-buttons-container mt-4">
-                <Button onClick={handleSendFromModalToCanvas} variant="outline">Add to Song Draft</Button>
+              <div className="send-buttons-container mt-3"> {/* Reduced margin */}
+                <Button onClick={handleSendFromModalToCanvas} variant="outline" size="sm" className="text-xs">Add to Song Draft</Button>
               </div>
             )}
           </div>

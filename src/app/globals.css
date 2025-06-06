@@ -105,13 +105,14 @@ body {
     color: hsl(var(--primary)); /* Use new primary blue */
     overflow-wrap: break-word;
     word-break: break-word;
+    @apply text-4xl sm:text-5xl; /* Smaller */
   }
   .handwritten-main-title-font { 
     font-family: var(--font-homemade-apple); 
-    font-size: 2.5rem; 
+    font-size: 2rem;  /* Smaller */
     color: hsl(var(--secondary-foreground)); 
     background-color: hsl(var(--secondary)); /* Dusty Orange BG */
-    padding: 0.2em 0.5em; 
+    padding: 0.2em 0.4em; /* Slightly less padding */
     display: inline-block; 
     transform: rotate(-1.5deg); 
     box-shadow: 2px 2px 0px hsl(var(--foreground) / 0.3); 
@@ -120,7 +121,7 @@ body {
   } 
   .handwritten-section-title-font { 
     font-family: var(--font-architects-daughter); 
-    font-size: 1.85rem; 
+    font-size: 1.5rem; /* Smaller */
     color: hsl(var(--accent)); /* Faded Teal/Green */
     overflow-wrap: break-word;
     word-break: break-word;
@@ -137,32 +138,32 @@ body {
   }
   .scrapbook-note-font { /* For smaller, scribbled notes */
     font-family: var(--font-covered-by-your-grace); 
-    font-size: 1.1rem; 
+    font-size: 1rem; /* Slightly smaller */
     color: hsl(var(--muted-foreground)); 
     overflow-wrap: break-word;
     word-break: break-word;
   }
   .dylan-quote { /* Like graffiti or a found note */
     font-family: var(--font-nothing-you-could-do);
-    font-size: 1.3rem;
+    font-size: 1.15rem; /* Slightly smaller */
     color: hsl(var(--foreground) / 0.9); 
     border-left-width: 3px;
     border-left-style: solid;
     border-left-color: hsl(var(--accent)); /* Teal/Green accent line */
-    @apply pl-4 pr-3 py-3 mt-2 bg-card/70 rounded-sm italic; 
+    @apply pl-3 pr-2 py-2 mt-1 bg-card/70 rounded-sm italic; /* Tighter padding */
     overflow-wrap: break-word;
     word-break: break-word;
   }
 
   .main-section-title {
     font-family: var(--font-rock-salt); /* Graffiti style */
-    @apply text-3xl sm:text-4xl text-center mb-6 pb-2 border-b-2 border-solid border-border; /* Solid border for page edge */
+    @apply text-2xl sm:text-3xl text-center mb-4 pb-1 border-b-2 border-solid border-border; /* Smaller */
     overflow-wrap: break-word;
     word-break: break-word;
   }
   .subsection-title {
     font-family: var(--font-architects-daughter); /* Sketchy graffiti */
-    @apply text-xl sm:text-2xl mb-3;
+    @apply text-lg sm:text-xl mb-2; /* Smaller */
     overflow-wrap: break-word;
     word-break: break-word;
   }
@@ -198,24 +199,24 @@ body {
   .section-expander-title { color: hsl(var(--primary)); } 
 
   .output-display-area {
-    @apply mt-4 p-4 bg-input rounded border border-dashed border-border shadow-inner min-h-[80px] whitespace-pre-wrap; /* Like a taped-on piece of paper */
+    @apply mt-3 p-3 bg-input rounded border border-dashed border-border shadow-inner min-h-[60px] whitespace-pre-wrap; /* Smaller min-height, tighter padding */
     font-family: var(--font-special-elite); 
     color: hsl(var(--foreground));
-    line-height: 1.7; 
+    line-height: 1.6; /* Tighter line height */
     overflow-wrap: break-word; 
     word-break: break-word; 
   }
   .send-buttons-container {
-    @apply mt-4 flex gap-3 flex-wrap;
+    @apply mt-3 flex gap-2 flex-wrap; /* Tighter margin, gap */
   }
   .loader {
-    border: 4px solid hsl(var(--muted)); 
-    border-top: 4px solid hsl(var(--primary)); /* New Primary blue spinner */
-    @apply rounded-full w-8 h-8 animate-spin mx-auto my-5;
+    border: 3px solid hsl(var(--muted)); 
+    border-top: 3px solid hsl(var(--primary)); /* New Primary blue spinner */
+    @apply rounded-full w-6 h-6 animate-spin mx-auto my-4; /* Smaller */
   }
   .main-section-box {
     background-color: hsl(var(--card)); /* Aged paper/concrete */
-    @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-4 sm:p-6 mb-8 shadow-lg relative; /* Solid, worn border for page edge */
+    @apply border border-solid border-[hsl(var(--border)/0.7)] rounded-md p-3 sm:p-4 mb-6 shadow-lg relative; /* Smaller padding & margin */
     overflow-wrap: break-word;
     word-break: break-word;
     /* Corner bracket graphical elements */
@@ -226,22 +227,22 @@ body {
   .main-section-box::after {
     content: '';
     position: absolute;
-    width: 25px; /* Increased size */
-    height: 25px; /* Increased size */
+    width: 20px; /* Smaller size */
+    height: 20px; /* Smaller size */
     border-color: hsl(var(--primary) / 0.6); /* Using primary graffiti color, slightly transparent */
     border-style: solid;
     pointer-events: none; /* So they don't interfere with clicks */
   }
   .main-section-box::before {
-    top: -6px; /* Adjusted for new size */
-    left: -6px; /* Adjusted for new size */
-    border-width: 4px 0 0 4px; /* Thicker border for top-left L-shape */
+    top: -5px; /* Adjusted for new size */
+    left: -5px; /* Adjusted for new size */
+    border-width: 3px 0 0 3px; /* Thinner border for top-left L-shape */
     border-top-left-radius: 3px; /* Slight rounding to match card */
   }
   .main-section-box::after {
-    bottom: -6px; /* Adjusted for new size */
-    right: -6px; /* Adjusted for new size */
-    border-width: 0 4px 4px 0; /* Thicker border for bottom-right L-shape */
+    bottom: -5px; /* Adjusted for new size */
+    right: -5px; /* Adjusted for new size */
+    border-width: 0 3px 3px 0; /* Thinner border for bottom-right L-shape */
     border-bottom-right-radius: 3px; /* Slight rounding to match card */
   }
 
@@ -257,7 +258,7 @@ body {
 
   .tool-card {
     background-color: hsl(var(--background)); /* Main paper, like cutouts */
-    @apply border border-dashed border-[hsl(var(--foreground)/0.4)] rounded-sm p-4 sm:p-6 shadow-md relative; /* Dashed like chalk or tape */
+    @apply border border-dashed border-[hsl(var(--foreground)/0.4)] rounded-sm p-3 sm:p-4 shadow-md relative; /* Smaller padding, dashed like chalk or tape */
     transform: rotate(calc( (var(--random-rotate, 0) - 0.5) * 0.5deg )); /* Even more subtle rotation */
     overflow: hidden; 
     overflow-wrap: break-word;
@@ -271,13 +272,13 @@ body {
   .tool-card::after {
     content: '';
     position: absolute;
-    top: 8px;
-    left: 8px;
-    width: 10px; /* Slightly larger pin head */
-    height: 10px;
+    top: 6px; /* Adjusted */
+    left: 6px; /* Adjusted */
+    width: 8px; /* Smaller pin head */
+    height: 8px;
     background-color: hsl(var(--foreground) / 0.5); /* Dark "pin head" color */
     border-radius: 50%;
-    box-shadow: 1px 1px 2px hsl(var(--foreground) / 0.4); /* Slightly more defined shadow */
+    box-shadow: 1px 1px 1px hsl(var(--foreground) / 0.3); /* Slightly less shadow */
     pointer-events: none;
   }
 
@@ -287,16 +288,16 @@ body {
     border: 1px solid hsl(var(--accent)); 
     font-family: var(--font-covered-by-your-grace); /* Scribbled tip */
     color: hsl(var(--accent-foreground)); 
-    @apply p-4 mb-6 rounded-sm text-center text-lg shadow-sm;
+    @apply p-3 mb-4 rounded-sm text-center text-base shadow-sm; /* Smaller padding, margin, font */
     overflow-wrap: break-word;
     word-break: break-word;
   }
 }
 
 .collapsible-header-style {
-  @apply flex flex-1 items-center justify-between py-4 font-medium transition-all text-left;
+  @apply flex flex-1 items-center justify-between py-3 font-medium transition-all text-left; /* Smaller py */
   font-family: var(--font-bangers); /* Stencil/Graffiti style */
-  font-size: 1.5rem;
+  font-size: 1.25rem; /* Smaller */
   letter-spacing: 0.05em;
   color: hsl(var(--primary)); /* New primary blue */
   overflow-wrap: break-word; 
@@ -310,20 +311,20 @@ body {
 .collapsible-header-style::after {
   content: '';
   position: absolute;
-  bottom: 2px; /* Adjust vertical position */
+  bottom: 1px; /* Adjust vertical position */
   left: 0;
-  width: 40px; /* Length of the underline */
-  height: 3px; /* Thickness of the underline */
+  width: 30px; /* Length of the underline */
+  height: 2px; /* Thickness of the underline */
   background-color: hsl(var(--primary) / 0.5); /* Graffiti color, semi-transparent */
   transition: background-color 0.2s ease-in-out, width 0.2s ease-in-out;
 }
 .collapsible-header-style:hover::after {
-  width: 60px; /* Underline expands slightly on hover */
+  width: 50px; /* Underline expands slightly on hover */
   background-color: hsl(var(--primary)); /* More opaque on hover */
 }
 
 .collapsible-trigger-style > svg {
-  @apply h-6 w-6 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; /* New primary blue */
+  @apply h-5 w-5 shrink-0 transition-transform duration-300 text-[hsl(var(--primary))]; /* Smaller icon */
 }
 .collapsible-trigger-style[data-state=open] > svg {
   transform: rotate(90deg); 
@@ -331,16 +332,16 @@ body {
 
 
 .word-association-chat {
-    @apply border border-dashed border-[hsl(var(--border))] rounded p-3 max-h-[300px] overflow-y-auto bg-[hsl(var(--muted)/0.3)] text-sm mt-4;
+    @apply border border-dashed border-[hsl(var(--border))] rounded p-2 max-h-[250px] overflow-y-auto bg-[hsl(var(--muted)/0.3)] text-xs mt-3; /* Smaller padding, max-height, font */
     font-family: var(--font-special-elite);
     overflow-wrap: break-word;
     word-break: break-word;
 }
 .word-association-message-user {
-    @apply text-[hsl(var(--primary))] text-right mb-2; /* New primary blue for user */
+    @apply text-[hsl(var(--primary))] text-right mb-1; /* New primary blue for user, smaller margin */
 }
 .word-association-message-ai {
-    @apply text-[hsl(var(--accent))] text-left mb-2; /* Teal/Green for AI */
+    @apply text-[hsl(var(--accent))] text-left mb-1; /* Teal/Green for AI, smaller margin */
 }
 .word-association-message-user::before {
     content: 'You: ';
@@ -355,23 +356,23 @@ body {
 .btn-send-lyrics { 
   @apply bg-primary text-primary-foreground hover:bg-primary/80 border border-primary-foreground/30 shadow-sm;
   font-family: var(--font-caveat);
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Smaller */
+  padding: 0.4rem 0.8rem; /* Smaller */
   border-radius: 0.2rem; /* Sharper edges */
   transform: rotate(-0.5deg);
 }
 .btn-send-canvas { 
   @apply bg-secondary text-secondary-foreground hover:bg-secondary/80 border border-secondary-foreground/30 shadow-md;
   font-family: var(--font-caveat);
-  font-size: 1.1rem;
-  padding: 0.5rem 1rem;
+  font-size: 1rem; /* Smaller */
+  padding: 0.4rem 0.8rem; /* Smaller */
   border-radius: 0.2rem;
   transform: rotate(0.5deg);
 }
 .btn-suggestion {
   @apply bg-accent text-accent-foreground border border-accent-foreground/50 hover:bg-accent/80 shadow-lg;
   font-family: var(--font-rock-salt);
-  @apply text-base px-6 py-3 rounded-sm; /* Small radius */
+  @apply text-sm px-4 py-2 rounded-sm; /* Smaller font, padding */
   transform: rotate(0.5deg);
 }
 .btn-toggle-phrases {
@@ -383,17 +384,19 @@ body {
     background-color: hsl(var(--muted)); 
     color: hsl(var(--muted-foreground));
     font-family: var(--font-architects-daughter);
-    @apply px-3 py-1.5 text-sm rounded-sm border border-dashed border-[hsl(var(--border))] m-1 hover:bg-[hsl(var(--border))] hover:text-background shadow-sm;
+    @apply px-2 py-1 text-xs rounded-sm border border-dashed border-[hsl(var(--border))] m-1 hover:bg-[hsl(var(--border))] hover:text-background shadow-sm; /* Smaller font, padding */
 }
 
 .tool-card > div[data-slot="card-content"], 
 .tool-card .p-6.pt-0 { 
+  @apply p-3; /* Override default ShadCN card content padding */
+  padding-top: 0px; /* Explicitly set padding-top to 0 to avoid circular dependency */
   overflow-wrap: break-word;
   word-break: break-word;
 }
 
 .phrase-card {
-  @apply p-3 flex flex-col bg-background shadow-sm hover:shadow-md transition-shadow border-border/70;
+  @apply p-2 flex flex-col bg-background shadow-sm hover:shadow-md transition-shadow border-border/70; /* Smaller padding */
   overflow-wrap: break-word; 
   word-break: break-word;
 }
@@ -402,12 +405,22 @@ body {
   display: block; 
   overflow-wrap: break-word;
   word-break: break-word;
+  @apply text-base; /* Ensure it's not too large */
+}
+.phrase-card .text-xs {
+  @apply mb-1; /* Tighter spacing */
+}
+.phrase-card .mt-auto {
+ @apply pt-1; /* Tighter spacing */
 }
 
-.main-section-box .pb-4.pt-0 { 
-  overflow-x: hidden; 
+
+.main-section-box .accordion-content-inner-padding { /* New class to target inner content of accordion */
+  @apply pt-2 pb-3 px-1; /* Tighter padding for content within main sections */
 }
     
 
     
+
+
 
